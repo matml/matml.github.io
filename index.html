@@ -336,10 +336,10 @@ Other teaching activities amount to:
 <b>Moving particle!</b>
 <p>This videogame shows how a discrete-time Markov chain works. This particle moves, at each step, 
 	one unit to the left with probability p, and to the right with probability 1-p. Position 9 is a reflecting barrier, so 
-	that if the particle is at position 9, it moves right in the next step with probability 1. Position 0 is an absorbing 
+	that if the particle is at position 9, it moves left in the next step with probability 1. Position 0 is an absorbing 
 	barrier, so that the particle stops once it reaches position 0. Can you guess how many movements are needed for 
-	reaching position 0? Choose a value for p, simulate the process 100 times and observe how long it takes for 
-		     the particle to reach position 0 in each simulation.</p>
+	reaching position 0? Choose a value for p, a starting position, simulate the process 100 times and observe how long 
+	it takes for the particle to reach position 0 in each simulation.</p>
 
 <script language="javascript">
 	if (AC_FL_RunContent == 0) {
@@ -348,7 +348,7 @@ Other teaching activities amount to:
 		AC_FL_RunContent(
 			'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
 			'width', '100%',
-			'height', '100%', 'src', 'Particle_Fast',
+			'height', '400', 'src', 'Particle_Fast',
 			'quality', 'high',
 			'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
 			'align', 'middle',
@@ -369,10 +369,10 @@ Other teaching activities amount to:
 	}
 </script>
 <noscript>
-	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="100%" height="100%" id="Particle_Fast" align="middle">
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="100%" height="400" id="Particle_Fast" align="middle">
 	<param name="allowScriptAccess" value="sameDomain" />
 	<param name="allowFullScreen" value="false" />
-	<param name="movie" value="Particle_Fast.swf" /><param name="quality" value="high" /><param name="scale" value="exactfit" /><param name="bgcolor" value="#ffffff" />	<embed src="Particle_Fast.swf" quality="high" scale="exactfit" bgcolor="#ffffff" width="100%" height="100%" name="Particle_Fast" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+	<param name="movie" value="Particle_Fast.swf" /><param name="quality" value="high" /><param name="scale" value="exactfit" /><param name="bgcolor" value="#ffffff" />	<embed src="Particle_Fast.swf" quality="high" scale="exactfit" bgcolor="#ffffff" width="100%" height="400" name="Particle_Fast" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 	</object>
 </noscript>
 </div>
