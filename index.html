@@ -67,7 +67,8 @@
                                 <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#research">Research</a></li>
                                 <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#media">Media</a></li>
 				<li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#teaching">Teaching</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#contact">Contact</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#videogames">Videogames</a></li>
+				<li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#contact">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -320,7 +321,62 @@ Other teaching activities amount to:
 </div>
         <!-- End Teaching -->
 
-        
+<!-- Videogames -->
+<div id="videogames">
+    <div class="container content-lg">
+         <div class="row">
+	     <div class="col-sm-12">
+<h2>Videogames</h2>
+		     <center>You need Flash installed in order to play these videogames</center>
+<b>Moving particle!</b>
+<p>This videogame shows how a discrete-time Markov chain works. This particle moves, at each step, 
+	one unit to the left with probability p, and to the right with probability 1-p. Position 9 is a reflecting barrier, so 
+	that if the particle is at position 9, it moves right in the next step with probability 1. Position 0 is an absorbing 
+	barrier, so that the particle stops once it reaches position 0. Can you guess how many movements are needed for 
+	reaching position 0? Choose a value for p, simulate the process 100 times and observe how long it takes for 
+		     the particle to reach position 0 in each simulation.</p>
+
+<script language="javascript">
+	if (AC_FL_RunContent == 0) {
+		alert("Esta p�gina requiere el archivo AC_RunActiveContent.js.");
+	} else {
+		AC_FL_RunContent(
+			'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
+			'width', '550',
+			'height', '400',
+			'src', 'Particle_Fast',
+			'quality', 'high',
+			'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+			'align', 'middle',
+			'play', 'true',
+			'loop', 'true',
+			'scale', 'exactfit',
+			'wmode', 'window',
+			'devicefont', 'false',
+			'id', 'Particle_Fast',
+			'bgcolor', '#ffffff',
+			'name', 'Particle_Fast',
+			'menu', 'true',
+			'allowFullScreen', 'false',
+			'allowScriptAccess','sameDomain',
+			'movie', 'Particle_Fast',
+			'salign', ''
+			); //end AC code
+	}
+</script>
+<noscript>
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="550" height="400" id="Particle_Fast" align="middle">
+	<param name="allowScriptAccess" value="sameDomain" />
+	<param name="allowFullScreen" value="false" />
+	<param name="movie" value="Particle_Fast.swf" /><param name="quality" value="high" /><param name="scale" value="exactfit" /><param name="bgcolor" value="#ffffff" />	<embed src="Particle_Fast.swf" quality="high" scale="exactfit" bgcolor="#ffffff" width="550" height="400" name="Particle_Fast" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+	</object>
+</noscript>
+		 
+</div>
+</div>
+</div>
+</div>
+        <!-- End Videogames -->
             
         <!-- Contact -->
         <div id="contact">
