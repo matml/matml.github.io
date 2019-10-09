@@ -188,9 +188,17 @@ also because of the transparent implementation.
 <br>
 <b>Wednesday 30th October 2019, 12:00-13:00</b>
 <br>
-<p style="margin-bottom:0cm;"><i>TBC</i></p> <a href="https://www.research.manchester.ac.uk/portal/Magnus.Rattray.html">Prof. Magnus Rattray</a> (The University of Manchester, UK) 
+<p style="margin-bottom:0cm;"><i>Using Gaussian processes to infer pseudotime and branching from single-cell data</i></p> <a href="https://www.research.manchester.ac.uk/portal/Magnus.Rattray.html">Prof. Magnus Rattray</a> (The University of Manchester, UK) 
 <br>
-TBC
+Gaussian processes are a flexible class of model for statistical modelling and have been applied extensively to spatial and
+temporal data. I will provide a brief introduction to Gaussian process inference and describe some applications of Gaussian 
+process models to single-cell genomics data. We have developed a scalable implementation of the Gaussian process latent 
+variable model (GPLVM) that can be used for pseudotime estimation when there is prior knowledge about pseudotime, e.g. from 
+capture times available in single-cell time course data. Other dimensions of the GPLVM latent space can then be used to model 
+additional sources of variation, e.g. from branching of cells into different lineages. We have also developed a branching 
+Gaussian process to explicitly model such branching and identify which genes are associated with cellular branching and 
+whether they branch late or early. To scale up inference in these applications we use sparse variational Bayesian inference 
+algorithms to deal with large matrix inversions and intractable likelihood functions, implemented using the gpflow library. 
 <br>
 <br>
 <br>
