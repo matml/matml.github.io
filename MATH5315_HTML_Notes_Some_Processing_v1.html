@@ -1,11 +1,11 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html><html>
 <head>
-<title>MATH5315 Notes - Post-processed v2</title>
+<title>MATH5315 Notes - Post-processed v1</title>
 <!--Generated on Fri May  1 09:36:43 2020 by LaTeXML (version 0.8.4) http://dlmf.nist.gov/LaTeXML/.-->
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="LaTeXML.css" type="text/css">
 <link rel="stylesheet" href="ltx-article.css" type="text/css">
@@ -15,7 +15,7 @@
 <div class="ltx_page_content">
 <article class="ltx_document">
 <div id="p1" class="ltx_para ltx_align_left ltx_align_center">
-<p class="ltx_p" align="center"><span class="ltx_text ltx_font_bold" style="font-size:144%;">MATH5315M: Applied probability &amp; statistics - HTML Version of module Lecture Notes</span></p>
+<p class="ltx_p"><span class="ltx_text ltx_font_bold" style="font-size:144%;">MATH5315M: Applied probability &amp; statistics</span></p>
 </div>
 <div id="p2" class="ltx_para ltx_align_left ltx_noindent">
 <p class="ltx_p">The aim of this module is to learn the most important concepts in probability theory and statistics, and to introduce and develop a number of methods in
@@ -36,24 +36,32 @@ some of our focus will be on implementation in a statistical package called R. W
 <ul id="S0.I1" class="ltx_itemize">
 <li id="S0.I1.i1" class="ltx_item" style="list-style-type:none;">
 <span class="ltx_tag ltx_tag_item">•</span> 
-is rich enough to handle all the techniques we cover in this module
+<div id="S0.I1.i1.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">is rich enough to handle all the techniques we cover in this module</p>
+</div>
 </li>
 <li id="S0.I1.i2" class="ltx_item" style="list-style-type:none;">
 <span class="ltx_tag ltx_tag_item">•</span> 
-can be used to do more advanced analyses that you will be facing later in the programme
+<div id="S0.I1.i2.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">can be used to do more advanced analyses that you will be facing later in the programme</p>
+</div>
 </li>
 <li id="S0.I1.i3" class="ltx_item" style="list-style-type:none;">
 <span class="ltx_tag ltx_tag_item">•</span> 
-is free and available on many operating systems, and
+<div id="S0.I1.i3.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">is free and available on many operating systems, and</p>
+</div>
 </li>
 <li id="S0.I1.i4" class="ltx_item" style="list-style-type:none;">
 <span class="ltx_tag ltx_tag_item">•</span> 
-is versatile enough for new methods to be easily created (which might be important in your future careers).
+<div id="S0.I1.i4.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">is versatile enough for new methods to be easily created (which might be important in your future careers).</p>
+</div>
 </li>
 </ul>
 </div>
 <div id="p5" class="ltx_para ltx_align_left ltx_align_right">
-<p class="ltx_p" align="right">Martín López-García (September, 2019)</p>
+<p class="ltx_p">Martín López-García (September, 2019)</p>
 </div>
 <div class="ltx_pagination ltx_align_left ltx_role_newpage"></div>
 <section id="S1" class="ltx_section ltx_align_left">
@@ -74,15 +82,15 @@ Often, simple statistical summaries and well-made graphs can remove the need for
 <br class="ltx_break">Sample data are a set of observations that are chosen to be representative of some population.</p>
 </div>
 <div id="S1.SS1.p2" class="ltx_para ltx_noindent">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Numerical (quantitative)</b></span> - Discrete <math id="S1.SS1.p2.m1" class="ltx_Math" alttext="\{0,1,2,3,...\}\ \textrm{or}\ \{\frac{1}{2},1,2,4\}" display="inline"><mrow><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo rspace="7.5pt" stretchy="false">}</mo></mrow><mo>⁢</mo><mpadded width="+5pt"><mtext>or</mtext></mpadded><mo>⁢</mo><mrow><mo stretchy="false">{</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo stretchy="false">}</mo></mrow></mrow></math>
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Numerical (quantitative)</span> - Discrete <math id="S1.SS1.p2.m1" class="ltx_Math" alttext="\{0,1,2,3,...\}\ \textrm{or}\ \{\frac{1}{2},1,2,4\}" display="inline"><mrow><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo rspace="7.5pt" stretchy="false">}</mo></mrow><mo>⁢</mo><mpadded width="+5pt"><mtext>or</mtext></mpadded><mo>⁢</mo><mrow><mo stretchy="false">{</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo stretchy="false">}</mo></mrow></mrow></math>
 
-<br class="ltx_break">                                          &nbsp &nbsp      Continuous, e.g. height
+<br class="ltx_break">                                         Continuous, e.g. height
 
-<br class="ltx_break"><span class="ltx_text ltx_font_bold"><b>Categorical (qualitative)</b></span> - Attribute (dichotomous or binary, e.g., yes/no)
+<br class="ltx_break"><span class="ltx_text ltx_font_bold">Categorical (qualitative)</span> - Attribute (dichotomous or binary, e.g., yes/no)
 
-<br class="ltx_break">                         &nbsp &nbsp &nbsp &nbsp &nbsp            Nominal (e.g. colour) - “no order”
+<br class="ltx_break">                                        Nominal (e.g. colour) - “no order”
 
-<br class="ltx_break">                            &nbsp &nbsp &nbsp &nbsp           Ordinal (e.g. agree, disagree, don’t care…)</p>
+<br class="ltx_break">                                        Ordinal (e.g. agree, disagree, don’t care…)</p>
 </div>
 </section>
 <section id="S1.SS2" class="ltx_subsection">
@@ -94,79 +102,74 @@ Often, simple statistical summaries and well-made graphs can remove the need for
 bar charts, 3D bar charts, pie charts, grouped frequency tables,
 histograms, stem and leaf diagrams, dot and line plots, line plots and box plots (to name some common types).</p>
 </div>
-<div id="S1.SS2.p2" class="ltx_para ltx_noindent" style="border: dotted 1px black" id="mydiv">
-<b>Example 1</b>
+<div id="S1.SS2.p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 1
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">Dataset: 18, 18, 19, 22, 22, 23, 25, 25, 25, 28, 30, 31, 33, 37, 41.
-<p>Stem and leaf diagram of ages</p>
-<p>1|889</p>
-<p>2|2235558</p>
-<p>3|0137</p>
-<p>4|1</p>
-<p>Key: 3|2 denotes 32 years old.</p></span></span>
-</span>
-</span>
-</div>
-<br>
-<div id="S1.SS2.p3" class="ltx_para ltx_noindent" style="border: dotted 1px black" id="mydiv">
-<b>Example 2</b>
-<br class="ltx_break"></span>
-
-<span class="ltx_tabular ltx_align_middle">
-<span class="ltx_tbody">
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>Dataset: 18, 18, 19, 22, 22, 23, 25, 25, 25, 28, 30, 31, 33, 37, 41.
+Stem and leaf diagram of ages
+<span class="ltx_text ltx_font_typewriter">1|889</span>
+<span class="ltx_text ltx_font_typewriter">2|2235558</span>
+<span class="ltx_text ltx_font_typewriter">3|0137</span>
+<span class="ltx_text ltx_font_typewriter">4|1</span>
+Key: <span class="ltx_text ltx_font_typewriter">3|2</span> denotes 32 years old.</span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">Dataset: 18, 18, 19, 22, 22, 23, 25, 25, 25, 28, 30, 31, 33, 37, 41.
-<p>Show bar chart using same intervals and talk about relative frequency.</p>
-
-<table style="width:50%" border="1px solid black">
-  <tr>
-    <th>Interval</th>
-    <th>Count</th>
-    <th>Relative frequency</th>
-  </tr>
-  <tr align="center">
-    <td>15-</td>
-    <td>3</td>
-    <td>0.6</td>
-  </tr>
-  <tr align="center">
-    <td>20-</td>
-    <td>3</td>
-    <td>0.6</td>
-  </tr>
-  <tr align="center">
-    <td>25-</td>
-    <td>4</td>
-    <td>0.8</td>
-  </tr>
-  <tr align="center">
-    <td>30-</td>
-    <td>4</td>
-    <td>0.4</td>
-  </tr>
-  <tr align="center">
-    <td>40-50</td>
-    <td>1</td>
-    <td>0.1</td>
-  </tr>
-</table>
-<p>Draw histogram.</p>
-</span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span></p>
 </div>
-<br>
-<div id="S1.SS2.p4" class="ltx_para ltx_noindent" style="border: solid 1px black" id="mydiv">
+<div id="S1.SS2.p3" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 2
+<br class="ltx_break"></span>
+
+<span class="ltx_tabular ltx_align_middle">
+<span class="ltx_tbody">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>Dataset: 18, 18, 19, 22, 22, 23, 25, 25, 25, 28, 30, 31, 33, 37, 41.
+Show bar chart using same intervals and talk about relative frequency.
+
+<span class="ltx_tabular ltx_align_middle">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r">Interval</span>
+<span class="ltx_td ltx_align_center ltx_border_r">Count</span>
+<span class="ltx_td ltx_align_center">Relative frequency</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r ltx_border_t">15-</span>
+<span class="ltx_td ltx_align_center ltx_border_r ltx_border_t">3</span>
+<span class="ltx_td ltx_align_center ltx_border_t">0.6</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r">20-</span>
+<span class="ltx_td ltx_align_center ltx_border_r">3</span>
+<span class="ltx_td ltx_align_center">0.6</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r">25-</span>
+<span class="ltx_td ltx_align_center ltx_border_r">4</span>
+<span class="ltx_td ltx_align_center">0.8</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r">30-</span>
+<span class="ltx_td ltx_align_center ltx_border_r">4</span>
+<span class="ltx_td ltx_align_center">0.4</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r">40-50</span>
+<span class="ltx_td ltx_align_center ltx_border_r">1</span>
+<span class="ltx_td ltx_align_center">0.1</span></span>
+</span>
+Draw histogram.</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
+</span>
+</span></p>
+</div>
+<div id="S1.SS2.p4" class="ltx_para ltx_noindent">
 <table class="ltx_tabular ltx_align_middle">
 <tbody class="ltx_tbody">
 <tr class="ltx_tr">
 <td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;">
-<span class="ltx_text ltx_font_italic"></span><span class="ltx_text ltx_font_bold"><b>Bimodality</b></span><span class="ltx_text ltx_font_italic"> - when data has 2 modes.
-</span><span class="ltx_text ltx_font_bold"><p><b>Multimodality</b><span class="ltx_text ltx_wrap ltx_font_italic"> - when data has more than 2 modes.</span></p></span>
+<span class="ltx_text ltx_font_italic"></span><span class="ltx_text ltx_font_bold">Bimodality</span><span class="ltx_text ltx_font_italic"> - when data has 2 modes.
+</span><span class="ltx_text ltx_font_bold">Multimodality</span><span class="ltx_text ltx_wrap ltx_font_italic"> - when data has more than 2 modes.</span>
 </td>
 </tr>
 </tbody>
@@ -178,27 +181,28 @@ histograms, stem and leaf diagrams, dot and line plots, line plots and box plots
 <div id="S1.SS2.p6" class="ltx_para ltx_noindent">
 <p class="ltx_p">For a set of <math id="S1.SS2.p6.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> observations,
 <math id="S1.SS2.p6.m2" class="ltx_Math" alttext="x_{1},x_{2},...,x_{n}," display="inline"><mrow><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><mo>,</mo></mrow></math>
-the <span class="ltx_text ltx_font_bold"><b>mean</b></span> is defined by:</p>
+the <span class="ltx_text ltx_font_bold">mean</span> is defined by:</p>
 <table id="S17.EGx1" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
+
 <tbody id="S1.Ex1"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
 <td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S1.Ex1.m1" class="ltx_Math" alttext="\displaystyle\overline{x}=\frac{1}{n}\sum_{i=1}^{n}x_{i}." display="inline"><mrow><mrow><mover accent="true"><mi>x</mi><mo>¯</mo></mover><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><mn>1</mn><mi>n</mi></mfrac></mstyle><mo>⁢</mo><mrow><mstyle displaystyle="true"><munderover><mo largeop="true" movablelimits="false" symmetric="true">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover></mstyle><msub><mi>x</mi><mi>i</mi></msub></mrow></mrow></mrow><mo>.</mo></mrow></math></td>
 <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
 </tr></tbody>
 </table>
-<p class="ltx_p">The <span class="ltx_text ltx_font_bold"><b>median</b></span> is the ‘middle’ observation in a data set which has been
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold">median</span> is the ‘middle’ observation in a data set which has been
 sorted. If <math id="S1.SS2.p6.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is odd, it is the <math id="S1.SS2.p6.m4" class="ltx_Math" alttext="\frac{n+1}{2}^{\textrm{th}}" display="inline"><msup><mfrac><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></mfrac><mtext>th</mtext></msup></math>
 observation. If <math id="S1.SS2.p6.m5" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is even, it is the mid point between <math id="S1.SS2.p6.m6" class="ltx_Math" alttext="\frac{n}{2}^{\textrm{th}}\ \textrm{and}\ \frac{n+2}{2}^{\textrm{th}}" display="inline"><mrow><mpadded width="+5pt"><msup><mfrac><mi>n</mi><mn>2</mn></mfrac><mtext>th</mtext></msup></mpadded><mo>⁢</mo><mpadded width="+5pt"><mtext>and</mtext></mpadded><mo>⁢</mo><msup><mfrac><mrow><mi>n</mi><mo>+</mo><mn>2</mn></mrow><mn>2</mn></mfrac><mtext>th</mtext></msup></mrow></math> observation.</p>
 </div>
 <div id="S1.SS2.p7" class="ltx_para ltx_noindent">
-<p class="ltx_p">The <span class="ltx_text ltx_font_bold"><b>mode</b></span> of a dataset is the value that occurs most frequently.</p>
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold">mode</span> of a dataset is the value that occurs most frequently.</p>
 </div>
 <div id="S1.SS2.p8" class="ltx_para ltx_noindent">
 <p class="ltx_p">The mean, median and mode are all measures of <span class="ltx_text ltx_font_italic">location</span>.
 </p>
 </div>
 <div id="S1.SS2.p9" class="ltx_para ltx_noindent">
-<p class="ltx_p">The <span class="ltx_text ltx_font_bold"><b>range</b></span> is the difference between the largest and smallest values in a data set:</p>
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold">range</span> is the difference between the largest and smallest values in a data set:</p>
 <table id="S17.EGx2" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
 <tbody id="S1.Ex2"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
@@ -207,7 +211,7 @@ observation. If <math id="S1.SS2.p6.m5" class="ltx_Math" alttext="n" display="in
 <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
 </tr></tbody>
 </table>
-<p class="ltx_p">The <span class="ltx_text ltx_font_bold"><b>interquartile range</b></span> is the difference between the upper and lower quartiles:
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold">interquartile range</span> is the difference between the upper and lower quartiles:
 <math id="S1.SS2.p9.m1" class="ltx_Math" alttext="\textrm{IQR = UQ - LQ}," display="inline"><mrow><mtext>IQR = UQ - LQ</mtext><mo>,</mo></mrow></math>
 where the lower quartile is the <math id="S1.SS2.p9.m2" class="ltx_Math" alttext="25th" display="inline"><mrow><mn>25</mn><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>h</mi></mrow></math> percentile, and the upper quartile is the <math id="S1.SS2.p9.m3" class="ltx_Math" alttext="75th" display="inline"><mrow><mn>75</mn><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>h</mi></mrow></math> precentile (see below).</p>
 </div>
@@ -215,7 +219,7 @@ where the lower quartile is the <math id="S1.SS2.p9.m2" class="ltx_Math" alttext
 <p class="ltx_p">A box plot is a useful visualisation tool that shows the LQ, IQR and UQ.</p>
 </div>
 <div id="S1.SS2.p11" class="ltx_para ltx_noindent">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Percentiles</b></span> extend the idea of quartiles. For example, the <math id="S1.SS2.p11.m1" class="ltx_Math" alttext="5^{\textrm{th}}" display="inline"><msup><mn>5</mn><mtext>th</mtext></msup></math> percentile is the value such that 5% of the data falls below it. The nearest rank method for calculating the rank at which the <math id="S1.SS2.p11.m2" class="ltx_Math" alttext="P^{\textrm{th}}" display="inline"><msup><mi>P</mi><mtext>th</mtext></msup></math>-percentile will occur uses the formula:</p>
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Percentiles</span> extend the idea of quartiles. For example, the <math id="S1.SS2.p11.m1" class="ltx_Math" alttext="5^{\textrm{th}}" display="inline"><msup><mn>5</mn><mtext>th</mtext></msup></math> percentile is the value such that 5% of the data falls below it. The nearest rank method for calculating the rank at which the <math id="S1.SS2.p11.m2" class="ltx_Math" alttext="P^{\textrm{th}}" display="inline"><msup><mi>P</mi><mtext>th</mtext></msup></math>-percentile will occur uses the formula:</p>
 <table id="S17.EGx3" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
 <tbody id="S1.Ex3"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
@@ -226,43 +230,36 @@ where the lower quartile is the <math id="S1.SS2.p9.m2" class="ltx_Math" alttext
 </table>
 <p class="ltx_p">where <math id="S1.SS2.p11.m3" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> is the total number of observations. We equate the <math id="S1.SS2.p11.m4" class="ltx_Math" alttext="n^{\textrm{th}}" display="inline"><msup><mi>n</mi><mtext>th</mtext></msup></math> observation with the <math id="S1.SS2.p11.m5" class="ltx_Math" alttext="P^{\textrm{th}}" display="inline"><msup><mi>P</mi><mtext>th</mtext></msup></math>-percentile.</p>
 </div>
-<div id="S1.SS2.p12" class="ltx_para ltx_noindent" style="border: solid 1px black">
+<div id="S1.SS2.p12" class="ltx_para ltx_noindent">
 <table class="ltx_tabular ltx_align_middle">
 <tbody class="ltx_tbody">
 <tr class="ltx_tr">
-<td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;"><span class="ltx_text ltx_wrap ltx_font_italic"><i>There are other methods like linear interpolation</i></span></td>
+<td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;"><span class="ltx_text ltx_wrap ltx_font_italic">There are other methods like linear interpolation</span></td>
 </tr>
 </tbody>
 </table>
 </div>
-<br>
-<div id="S1.SS2.p13" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<span class="ltx_text ltx_font_bold"><b>Example 3</b>
+<div id="S1.SS2.p13" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 3
 <br class="ltx_break"></span>
+
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>
 Given a dataset: 0, 2, 3, 8 and 7.
-<br>
 We have median value 3.
-<br>
 Including 3, we have LQ = 2 and UQ =7.
-<br>
 We have IQR = 5 - there is a lot of data in the range.
-<br>
 Produce a box plot.
-<br>
 What is the <math id="S1.SS2.p13.m1" class="ltx_Math" alttext="30^{\textrm{th}}" display="inline"><msup><mn>30</mn><mtext>th</mtext></msup></math> percentile?
-<br>
 <math id="S1.SS2.p13.m2" class="ltx_Math" alttext="n=\lceil\frac{30}{100}5\rceil=2" display="inline"><mrow><mi>n</mi><mo>=</mo><mrow><mo stretchy="false">⌈</mo><mrow><mfrac><mn>30</mn><mn>100</mn></mfrac><mo>⁢</mo><mn>5</mn></mrow><mo stretchy="false">⌉</mo></mrow><mo>=</mo><mn>2</mn></mrow></math>. The second value in the ordered set is 2.</span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
-</span>
+</span></p>
 </div>
-<br>
-<div id="S1.SS2.p14" class="ltx_para ltx_noindent" style="border: solid 1px black">
+<div id="S1.SS2.p14" class="ltx_para ltx_noindent">
 <table class="ltx_tabular ltx_align_middle">
 <tbody class="ltx_tbody">
 <tr class="ltx_tr">
@@ -282,7 +279,7 @@ squared deviations from the mean]}." display="inline"><mrow><mrow><mstyle displa
 <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
 </tr></tbody>
 </table>
-<p class="ltx_p">We define the <span class="ltx_text ltx_font_bold"><b>sample variance</b></span> to be:</p>
+<p class="ltx_p">We define the <span class="ltx_text ltx_font_bold">sample variance</span> to be:</p>
 <table id="S17.EGx5" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
 <tbody id="S1.Ex5"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
@@ -291,7 +288,7 @@ squared deviations from the mean]}." display="inline"><mrow><mrow><mstyle displa
 <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
 </tr></tbody>
 </table>
-<p class="ltx_p">and the <span class="ltx_text ltx_font_bold"><b>sample standard deviation</b></span> is:</p>
+<p class="ltx_p">and the <span class="ltx_text ltx_font_bold">sample standard deviation</span> is:</p>
 <table id="S17.EGx6" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
 <tbody id="S1.Ex6"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
@@ -305,71 +302,57 @@ squared deviations from the mean]}." display="inline"><mrow><mrow><mstyle displa
 <div id="S1.SS2.p16" class="ltx_para ltx_noindent">
 <p class="ltx_p">The range, IQR, variance and standard deviation are all measures of spread.</p>
 </div>
-<div id="S1.SS2.p17" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 4</b>
+<div id="S1.SS2.p17" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 4
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">Consider the following frequency table:
-<br>
-<table style="width:50%" border="1px solid black">
-  <tr>
-    <th>Result</th>
-    <th>Frequency</th>
-    <th>Cumulative Frequency</th>
-  </tr>
-  <tr align="center">
-    <td>1</td>
-    <td>10</td>
-    <td>10</td>
-  </tr>
-  <tr align="center">
-    <td>2</td>
-    <td>12</td>
-    <td>22</td>
-  </tr>
-  <tr align="center">
-    <td>3</td>
-    <td>15</td>
-    <td>37</td>
-  </tr>
-  <tr align="center">
-    <td>4</td>
-    <td>18</td>
-    <td>55</td>
-  </tr>
-  <tr align="center">
-    <td>5</td>
-    <td>25</td>
-    <td>80</td>
-  </tr>
-  <tr align="center">
-    <td>6</td>
-    <td>10</td>
-    <td>90</td>
-  </tr>
-  <tr align="center">
-    <td>7</td>
-    <td>5</td>
-    <td>95</td>
-  </tr>
-</table>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>Consider the following frequency table:
 
+<span class="ltx_tabular ltx_align_middle">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r">Result</span>
+<span class="ltx_td ltx_align_center ltx_border_r">Frequency</span>
+<span class="ltx_td ltx_align_center">Cumulative Frequency</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r ltx_border_t">1</span>
+<span class="ltx_td ltx_align_center ltx_border_r ltx_border_t">10</span>
+<span class="ltx_td ltx_align_center ltx_border_t">10</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r">2</span>
+<span class="ltx_td ltx_align_center ltx_border_r">12</span>
+<span class="ltx_td ltx_align_center">22</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r">3</span>
+<span class="ltx_td ltx_align_center ltx_border_r">15</span>
+<span class="ltx_td ltx_align_center">37</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r">4</span>
+<span class="ltx_td ltx_align_center ltx_border_r">18</span>
+<span class="ltx_td ltx_align_center">55</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r">5</span>
+<span class="ltx_td ltx_align_center ltx_border_r">25</span>
+<span class="ltx_td ltx_align_center">80</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r">6</span>
+<span class="ltx_td ltx_align_center ltx_border_r">10</span>
+<span class="ltx_td ltx_align_center">90</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r">7</span>
+<span class="ltx_td ltx_align_center ltx_border_r">5</span>
+<span class="ltx_td ltx_align_center">95</span></span>
+</span>
 The range is (7-1)=6.
-<br>
 The median is at the 48th observation: 4.
-<br>
 The LQ is at the 24th obs: 3.
-<br>
 The UQ is at the 72nd obs: 5.
-<br>
 The IQR is (5-3) = 2. (Data concentrated around median because IQR <math id="S1.SS2.p17.m1" class="ltx_Math" alttext="&lt;" display="inline"><mo>&lt;</mo></math> Range/2.)
-<br>
 The variance is 2.79 (to 2 d.p.) and the std. deviation is 1.67</span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span></p>
 </div>
@@ -385,13 +368,13 @@ The variance is 2.79 (to 2 d.p.) and the std. deviation is 1.67</span></span>
 <span class="ltx_tag ltx_tag_subsection">2.1 </span>Definitions</h3>
 
 <div id="S2.SS1.p1" class="ltx_para ltx_noindent">
-<p class="ltx_p">The <span class="ltx_text ltx_font_bold"><b>sample space</b></span> <math id="S2.SS1.p1.m1" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math> (for a well-defined experiment) is the set of all possible outcomes that might be observed.</p>
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold">sample space</span> <math id="S2.SS1.p1.m1" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math> (for a well-defined experiment) is the set of all possible outcomes that might be observed.</p>
 </div>
 <div id="S2.SS1.p2" class="ltx_para ltx_noindent">
-<p class="ltx_p">An <span class="ltx_text ltx_font_bold"><b>event</b></span> A is defined as a subset of <math id="S2.SS1.p2.m1" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math> (A <math id="S2.SS1.p2.m2" class="ltx_Math" alttext="\subseteq" display="inline"><mo>⊆</mo></math> <math id="S2.SS1.p2.m3" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math>).</p>
+<p class="ltx_p">An <span class="ltx_text ltx_font_bold">event</span> A is defined as a subset of <math id="S2.SS1.p2.m1" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math> (A <math id="S2.SS1.p2.m2" class="ltx_Math" alttext="\subseteq" display="inline"><mo>⊆</mo></math> <math id="S2.SS1.p2.m3" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math>).</p>
 </div>
 <div id="S2.SS1.p3" class="ltx_para ltx_noindent">
-<p class="ltx_p">A <span class="ltx_text ltx_font_bold"><b>complementary event</b></span> can be denoted by</p>
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold">complementary event</span> can be denoted by</p>
 <table id="S17.EGx7" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
 <tbody id="S2.Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
@@ -404,31 +387,28 @@ The variance is 2.79 (to 2 d.p.) and the std. deviation is 1.67</span></span>
 <p class="ltx_p">and is the subset of <math id="S2.SS1.p3.m1" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math> with all possible events not included in A.</p>
 </div>
 <div id="S2.SS1.p4" class="ltx_para ltx_noindent">
-<p class="ltx_p"><span class="ltx_text ltx_framed_underline"><u>Intersection</u></span>: Given two events A and B, their intersection A<math id="S2.SS1.p4.m1" class="ltx_Math" alttext="\cap" display="inline"><mo>∩</mo></math>B denotes the set
+<p class="ltx_p"><span class="ltx_text ltx_framed_underline">Intersection</span>: Given two events A and B, their intersection A<math id="S2.SS1.p4.m1" class="ltx_Math" alttext="\cap" display="inline"><mo>∩</mo></math>B denotes the set
 
 <br class="ltx_break">                  where both A and B occur.</p>
 </div>
 <div id="S2.SS1.p5" class="ltx_para ltx_noindent">
-<p class="ltx_p"><span class="ltx_text ltx_framed_underline"><u>Union</u></span>:        Given two events A and B, their union A<math id="S2.SS1.p5.m1" class="ltx_Math" alttext="\cup" display="inline"><mo>∪</mo></math>B denotes the set
+<p class="ltx_p"><span class="ltx_text ltx_framed_underline">Union</span>:        Given two events A and B, their union A<math id="S2.SS1.p5.m1" class="ltx_Math" alttext="\cup" display="inline"><mo>∪</mo></math>B denotes the set
 
 <br class="ltx_break">                  where A and/or B occur.</p>
 </div>
-<div id="S2.SS1.p6" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 5</b>
+<div id="S2.SS1.p6" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 5
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">Imagine rolling a six-sided die.
-<br>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>Imagine rolling a six-sided die.
 <math id="S2.SS1.p6.m1" class="ltx_Math" alttext="\mathcal{S}=\{1\text{ is on top},2\text{ is on top},3,4,5,6\}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒮</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mn>1</mn><mo>⁢</mo><mtext> is on top</mtext></mrow><mo>,</mo><mrow><mn>2</mn><mo>⁢</mo><mtext> is on top</mtext></mrow><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>6</mn><mo stretchy="false">}</mo></mrow></mrow></math>
-<br>
 The event that we have an even number on top is <math id="S2.SS1.p6.m2" class="ltx_Math" alttext="\{2,4,6\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>6</mn><mo stretchy="false">}</mo></mrow></math>, which is a subset of <math id="S2.SS1.p6.m3" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math>. The complementary event is <math id="S2.SS1.p6.m4" class="ltx_Math" alttext="\{1,3,5\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo stretchy="false">}</mo></mrow></math>, which is also subset of <math id="S2.SS1.p6.m5" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math>.
-<br>
 The event that we have a number less than 1 on top is <math id="S2.SS1.p6.m6" class="ltx_Math" alttext="\emptyset" display="inline"><mi mathvariant="normal">∅</mi></math>, which is a subset of <math id="S2.SS1.p6.m7" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math>. The complementary event is <math id="S2.SS1.p6.m8" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math>, which is a rather boring subset of <math id="S2.SS1.p6.m9" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math>.</span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span></p>
 </div>
@@ -447,11 +427,11 @@ The event that we have a number less than 1 on top is <math id="S2.SS1.p6.m6" cl
 
 <br class="ltx_break">III.    If A and B are mutually exclusive events: P(A<math id="S2.SS2.p1.m5" class="ltx_Math" alttext="\cup" display="inline"><mo>∪</mo></math>B) = P<math id="S2.SS2.p1.m6" class="ltx_Math" alttext="\left(\textrm{A}\right)+\textrm{P}\left(\textrm{B}\right)" display="inline"><mrow><mrow><mo>(</mo><mtext>A</mtext><mo>)</mo></mrow><mo>+</mo><mrow><mtext>P</mtext><mo>⁢</mo><mrow><mo>(</mo><mtext>B</mtext><mo>)</mo></mrow></mrow></mrow></math>.</p>
 </div>
-<div id="S2.SS2.p2" class="ltx_para ltx_noindent" style="border: solid 1px black">
+<div id="S2.SS2.p2" class="ltx_para ltx_noindent">
 <table class="ltx_tabular ltx_align_middle">
 <tbody class="ltx_tbody">
 <tr class="ltx_tr">
-<td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;"><span class="ltx_text ltx_wrap ltx_font_italic"><i>Powerpoint: Unit2_Support.pptx</i></span></td>
+<td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;"><span class="ltx_text ltx_wrap ltx_font_italic">Powerpoint: Unit2_Support.pptx</span></td>
 </tr>
 </tbody>
 </table>
@@ -490,14 +470,14 @@ B})}" display="inline"><mrow><mstyle displaystyle="true"><mfrac><mrow><mtext>P(A
 <div id="S2.SS3.p5" class="ltx_para ltx_noindent">
 <p class="ltx_p">P(A) = <math id="S2.SS3.p5.m1" class="ltx_Math" alttext="\displaystyle\frac{\textrm{P(A}\cap\mathcal{S})}{\textrm{P}(\mathcal{S})}" display="inline"><mstyle displaystyle="true"><mfrac><mrow><mtext>P(A</mtext><mo>∩</mo><mi class="ltx_font_mathcaligraphic">𝒮</mi><mo stretchy="false">)</mo></mrow><mrow><mtext>P</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi class="ltx_font_mathcaligraphic">𝒮</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></mstyle></math> = P(A<math id="S2.SS3.p5.m2" class="ltx_Math" alttext="|" display="inline"><mo stretchy="false">|</mo></math><math id="S2.SS3.p5.m3" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math>)</p>
 </div>
-<div id="S2.SS3.p6" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 6</b>
+<div id="S2.SS3.p6" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 6
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">Imagine rolling a fair six-sided die again. What is the probability of getting a two given that you have got an even number?
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>Imagine rolling a fair six-sided die again. What is the probability of getting a two given that you have got an even number?
 
 <span id="S17.EGx8" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
@@ -507,7 +487,7 @@ B})}" display="inline"><mrow><mstyle displaystyle="true"><mfrac><mrow><mtext>P(A
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
 </span></span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span></p>
 </div>
@@ -539,31 +519,25 @@ B})}" display="inline"><mrow><mstyle displaystyle="true"><mfrac><mrow><mtext>P(A
 </tbody>
 </table>
 </div>
-<div id="S2.SS3.p8" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 7</b>
+<div id="S2.SS3.p8" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 7
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">Is the event of rolling a 5 or a 6 (<math id="S2.SS3.p8.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>) independent of the event of rolling an even number (<math id="S2.SS3.p8.m2" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>)?
-
-<br>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>Is the event of rolling a 5 or a 6 (<math id="S2.SS3.p8.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>) independent of the event of rolling an even number (<math id="S2.SS3.p8.m2" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>)?
 
 <span id="S17.EGx10" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
 <span id="S2.Ex12"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
-<center>
-<span class="ltx_td ltx_align_right ltx_eqn_cell" align="center"><math id="S2.Ex12.m1" class="ltx_Math" alttext="\displaystyle P(A)=1/3,P(B)=1/2,P(A\cap B)=1/6," display="inline"><mrow><mrow><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow></mrow><mo>,</mo><mrow><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow><mo>,</mo><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo>∩</mo><mi>B</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mn>6</mn></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></span>
+<span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.Ex12.m1" class="ltx_Math" alttext="\displaystyle P(A)=1/3,P(B)=1/2,P(A\cap B)=1/6," display="inline"><mrow><mrow><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow></mrow><mo>,</mo><mrow><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow><mo>,</mo><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo>∩</mo><mi>B</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mn>6</mn></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S2.Ex13"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
-<span class="ltx_td ltx_align_right ltx_eqn_cell" align="center"><math id="S2.Ex13.m1" class="ltx_Math" alttext="\displaystyle P(A|B)=1/3\text{ and }P(B|A)=1/2." display="inline"><mrow><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo lspace="2.5pt" rspace="2.5pt" stretchy="false">|</mo><mi>B</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>B</mi><mo lspace="2.5pt" rspace="2.5pt" stretchy="false">|</mo><mi>A</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow><mo>.</mo></mrow></math></span>
+<span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.Ex13.m1" class="ltx_Math" alttext="\displaystyle P(A|B)=1/3\text{ and }P(B|A)=1/2." display="inline"><mrow><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo lspace="2.5pt" rspace="2.5pt" stretchy="false">|</mo><mi>B</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mn>1</mn><mo>/</mo><mn>3</mn></mrow><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>B</mi><mo lspace="2.5pt" rspace="2.5pt" stretchy="false">|</mo><mi>A</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-</center>
-<br>
 </span>What about the event of rolling a 3 or a 5 (<math id="S2.SS3.p8.m3" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>) and the event of rolling an odd number (<math id="S2.SS3.p8.m4" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>)?</span></span>
 <span class="ltx_tr">
 <span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
@@ -634,19 +608,16 @@ B})}" display="inline"><mrow><mstyle displaystyle="true"><mfrac><mrow><mtext>P(A
 </tr></tbody>
 </table>
 </div>
-<div id="S2.SS4.p3" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 8</b>
+<div id="S2.SS4.p3" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 8
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">I am interested in the probability of Man Utd winning the Champions’ League. After some thought, I propose
-
-<br>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>I am interested in the probability of Man Utd winning the Champions’ League. After some thought, I propose
 
 <span id="S17.EGx16" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
-<center>
 
 <span id="S2.Ex20"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
@@ -654,38 +625,29 @@ B})}" display="inline"><mrow><mstyle displaystyle="true"><mfrac><mrow><mtext>P(A
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S2.Ex20.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex20.m3" class="ltx_Math" alttext="\displaystyle 0.2," display="inline"><mrow><mn>0.2</mn><mo>,</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S2.Ex21"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.Ex21.m1" class="ltx_Math" alttext="\displaystyle P(\text{Win}|\text{sig. injuries, no new signings})" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mtext>Win</mtext><mo lspace="2.5pt" rspace="2.5pt" stretchy="false">|</mo><mtext>sig. injuries, no new signings</mtext></mrow><mo stretchy="false">)</mo></mrow></mrow></math></span>
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S2.Ex21.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex21.m3" class="ltx_Math" alttext="\displaystyle 0.05," display="inline"><mrow><mn>0.05</mn><mo>,</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S2.Ex22"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.Ex22.m1" class="ltx_Math" alttext="\displaystyle P(\text{Win}|\text{no sig. injuries, new signings})" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mtext>Win</mtext><mo lspace="2.5pt" rspace="2.5pt" stretchy="false">|</mo><mtext>no sig. injuries, new signings</mtext></mrow><mo stretchy="false">)</mo></mrow></mrow></math></span>
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S2.Ex22.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex22.m3" class="ltx_Math" alttext="\displaystyle 0.25," display="inline"><mrow><mn>0.25</mn><mo>,</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S2.Ex23"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.Ex23.m1" class="ltx_Math" alttext="\displaystyle P(\text{Win}|\text{sig. injuries, new signings})" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mtext>Win</mtext><mo lspace="2.5pt" rspace="2.5pt" stretchy="false">|</mo><mtext>sig. injuries, new signings</mtext></mrow><mo stretchy="false">)</mo></mrow></mrow></math></span>
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S2.Ex23.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex23.m3" class="ltx_Math" alttext="\displaystyle 0.18." display="inline"><mrow><mn>0.18</mn><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-</center>
-<br>
 </span>What is my overall probability of Man Utd winning the Champions’ League?
 This depends on what I think the chances are of each of the events that are being conditioned on.
 Suppose:
 
-<br>
-<br>
-
 <span id="S17.EGx17" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
-<center>
 
 <span id="S2.Ex24"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
@@ -693,34 +655,22 @@ Suppose:
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S2.Ex24.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex24.m3" class="ltx_Math" alttext="\displaystyle 0.4," display="inline"><mrow><mn>0.4</mn><mo>,</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S2.Ex25"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.Ex25.m1" class="ltx_Math" alttext="\displaystyle P(\text{sig. injuries, no new signings})" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mtext>sig. injuries, no new signings</mtext><mo stretchy="false">)</mo></mrow></mrow></math></span>
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S2.Ex25.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex25.m3" class="ltx_Math" alttext="\displaystyle 0.05," display="inline"><mrow><mn>0.05</mn><mo>,</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S2.Ex26"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.Ex26.m1" class="ltx_Math" alttext="\displaystyle P(\text{no sig. injuries, new signings})" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mtext>no sig. injuries, new signings</mtext><mo stretchy="false">)</mo></mrow></mrow></math></span>
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S2.Ex26.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex26.m3" class="ltx_Math" alttext="\displaystyle 0.2." display="inline"><mrow><mn>0.2</mn><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-
-<br>
-<br>
-
-</center>
-
 </span>Note that the events here are mutually exclusive.
 Now, by the theory of total probability,
 
-<br>
-<br>
-
 <span id="S17.EGx18" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
-<center>
 
 <span id="S2.Ex28"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
@@ -728,7 +678,6 @@ Now, by the theory of total probability,
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S2.Ex27.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex27.m3" class="ltx_Math" alttext="\displaystyle 0.2\times 0.4+0.05\times 0.05+0.25\times 0.2+0.18\times 0.35" display="inline"><mrow><mrow><mn>0.2</mn><mo>×</mo><mn>0.4</mn></mrow><mo>+</mo><mrow><mn>0.05</mn><mo>×</mo><mn>0.05</mn></mrow><mo>+</mo><mrow><mn>0.25</mn><mo>×</mo><mn>0.2</mn></mrow><mo>+</mo><mrow><mn>0.18</mn><mo>×</mo><mn>0.35</mn></mrow></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span>
-<br>
 <span class="ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"></span>
@@ -736,9 +685,8 @@ Now, by the theory of total probability,
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex28.m3" class="ltx_Math" alttext="\displaystyle 0.1955." display="inline"><mrow><mn>0.1955</mn><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
 </span></span></span>
-</center>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span>
 
@@ -753,7 +701,7 @@ Now, by the theory of total probability,
 <table class="ltx_tabular ltx_align_middle">
 <tbody class="ltx_tbody">
 <tr class="ltx_tr">
-<td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;"><span class="ltx_text ltx_wrap ltx_font_italic" style="border: solid 1px black"><i>Draw rectangle to describe partition and relation to</i> <math id="S2.SS5.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>.</span></td>
+<td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;"><span class="ltx_text ltx_wrap ltx_font_italic">Draw rectangle to describe partition and relation to <math id="S2.SS5.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>.</span></td>
 </tr>
 </tbody>
 </table>
@@ -771,8 +719,6 @@ Now, by the theory of total probability,
 <div id="S2.SS5.p5" class="ltx_para ltx_noindent">
 <p class="ltx_p">3) P(A) = <math id="S2.SS5.p5.m1" class="ltx_Math" alttext="\displaystyle\sum_{j=1}^{n}" display="inline"><mstyle displaystyle="true"><munderover><mo largeop="true" movablelimits="false" symmetric="true">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover></mstyle></math>P(A<math id="S2.SS5.p5.m2" class="ltx_Math" alttext="\cap\textrm{E}_{j}" display="inline"><mrow><mo>∩</mo><msub><mtext>E</mtext><mi>j</mi></msub></mrow></math>)
 
-<br>
-
 <br class="ltx_break">Thus,</p>
 <table id="S17.EGx19" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
@@ -784,31 +730,18 @@ i})}{\displaystyle\sum_{j=1}^{n}\textrm{P(E}_{j})\textrm{P(A$|$E}_{j})}" display
 </tr></tbody>
 </table>
 </div>
-<br>
-<div id="S2.SS5.p6" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 9</b>
+<div id="S2.SS5.p6" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 9
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">A financial think-tank has speculated that the probability of a major bank collapse in the next ten years is 0.5 if there is no substantial government-imposed regulation and that the probability of a major bank collapse in the next ten years is 0.2 if there is substantial government-imposed regulation.
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>A financial think-tank has speculated that the probability of a major bank collapse in the next ten years is 0.5 if there is no substantial government-imposed regulation and that the probability of a major bank collapse in the next ten years is 0.2 if there is substantial government-imposed regulation.
 Currently, it is thought that there is a 50% chance of further, substantial government-imposed regulation.
-
-<br>
-
 If we do not see a major bank collapse in the next ten years, what is the probability that there has been substantial government regulation?
-
-<br>
-
 First, let <math id="S2.SS5.p6.m1" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> be the event that a major bank collapses in the next ten years, and let <math id="S2.SS5.p6.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> be the event that there is substantial government-imposed regulation.
-
-<br>
-
 From the above statements, we have
-
-<br>
-<center>
 
 <span id="S17.EGx20" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
@@ -816,16 +749,7 @@ From the above statements, we have
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S2.Ex30.m1" class="ltx_Math" alttext="\displaystyle P(B|G^{c})=0.5,P(B|G)=0.2\text{ and }P(G)=P(G^{c})=0.5." display="inline"><mrow><mrow><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>B</mi><mo lspace="2.5pt" rspace="2.5pt" stretchy="false">|</mo><msup><mi>G</mi><mi>c</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0.5</mn></mrow><mo>,</mo><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>B</mi><mo lspace="2.5pt" rspace="2.5pt" stretchy="false">|</mo><mi>G</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>0.2</mn><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>G</mi><mi>c</mi></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0.5</mn></mrow></mrow><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-
-</center>
-<br>
-
 </span>We are interested in
-
-<br>
-<br>
-
-<center>
 
 <span id="S17.EGx21" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
@@ -836,7 +760,6 @@ From the above statements, we have
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex31.m3" class="ltx_Math" alttext="\displaystyle\frac{P(B^{c}|G)P(G)}{P(B^{c}|G)P(G)+P(B^{c}|G^{c})P(G^{c})}\text%
 { (using Bayes's theorem)}" display="inline"><mrow><mstyle displaystyle="true"><mfrac><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>B</mi><mi>c</mi></msup><mo lspace="2.5pt" rspace="2.5pt" stretchy="false">|</mo><mi>G</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>B</mi><mi>c</mi></msup><mo lspace="2.5pt" rspace="2.5pt" stretchy="false">|</mo><mi>G</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>B</mi><mi>c</mi></msup><mo lspace="2.5pt" rspace="2.5pt" stretchy="false">|</mo><msup><mi>G</mi><mi>c</mi></msup></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>G</mi><mi>c</mi></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mfrac></mstyle><mo>⁢</mo><mtext> (using Bayes’s theorem)</mtext></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span>
-<br>
 <span class="ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"></span>
@@ -844,10 +767,9 @@ From the above statements, we have
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S2.Ex32.m3" class="ltx_Math" alttext="\displaystyle\frac{0.8\times 0.5}{0.8\times 0.5+0.5\times 0.5}~{}=~{}0.62\text%
 { (to 2 d.p.)}." display="inline"><mrow><mrow><mpadded width="+3.3pt"><mstyle displaystyle="true"><mfrac><mrow><mn>0.8</mn><mo>×</mo><mn>0.5</mn></mrow><mrow><mrow><mn>0.8</mn><mo>×</mo><mn>0.5</mn></mrow><mo>+</mo><mrow><mn>0.5</mn><mo>×</mo><mn>0.5</mn></mrow></mrow></mfrac></mstyle></mpadded><mo rspace="5.8pt">=</mo><mrow><mn>0.62</mn><mo>⁢</mo><mtext> (to 2 d.p.)</mtext></mrow></mrow><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-</center>
 </span></span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span></p>
 </div>
@@ -863,7 +785,7 @@ From the above statements, we have
 <span class="ltx_tag ltx_tag_subsection">3.1 </span>Definition</h3>
 
 <div id="S3.SS1.p1" class="ltx_para ltx_noindent">
-<p class="ltx_p">Formally, a <span class="ltx_text ltx_font_bold"><b>random variable</b></span> is a rule for associating a number with each element in a sample space.
+<p class="ltx_p">Formally, a <span class="ltx_text ltx_font_bold">random variable</span> is a rule for associating a number with each element in a sample space.
 If <math id="S3.SS1.p1.m1" class="ltx_Math" alttext="w" display="inline"><mi>w</mi></math> is an element of <math id="S3.SS1.p1.m2" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math> and we associate the number <math id="S3.SS1.p1.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> with <math id="S3.SS1.p1.m4" class="ltx_Math" alttext="w" display="inline"><mi>w</mi></math>, then <math id="S3.SS1.p1.m5" class="ltx_Math" alttext="X(w)=x" display="inline"><mrow><mrow><mi>X</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>x</mi></mrow></math>.</p>
 </div>
 <div id="S3.SS1.p2" class="ltx_para ltx_noindent">
@@ -889,28 +811,24 @@ If <math id="S3.SS1.p1.m1" class="ltx_Math" alttext="w" display="inline"><mi>w</
 <div id="S3.SS1.p3" class="ltx_para ltx_noindent">
 <p class="ltx_p">Probabilities are defined over the elements of <math id="S3.SS1.p3.m1" class="ltx_Math" alttext="\mathcal{S}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒮</mi></math>, but shorthand is used in terms of the random variable such that P(<math id="S3.SS1.p3.m2" class="ltx_Math" alttext="X=x" display="inline"><mrow><mi>X</mi><mo>=</mo><mi>x</mi></mrow></math>).</p>
 </div>
-<div id="S3.SS1.p4" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 10</b>
+<div id="S3.SS1.p4" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 10
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>
 Given 8 outcomes: <math id="S3.SS1.p4.m1" class="ltx_Math" alttext="w_{1},...,w_{8}" display="inline"><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>w</mi><mn>8</mn></msub></mrow></math>. We are interested in three events:</span></span>
-<br>
 <span class="ltx_tr">
 <span class="ltx_td ltx_align_justify" style="width:425.5pt;"><math id="S3.SS1.p4.m2" class="ltx_Math" alttext="w_{1},w_{2},w_{3}" display="inline"><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><msub><mi>w</mi><mn>2</mn></msub><mo>,</mo><msub><mi>w</mi><mn>3</mn></msub></mrow></math> are considered as a single event, <math id="S3.SS1.p4.m3" class="ltx_Math" alttext="w_{4}" display="inline"><msub><mi>w</mi><mn>4</mn></msub></math> and <math id="S3.SS1.p4.m4" class="ltx_Math" alttext="w_{5}" display="inline"><msub><mi>w</mi><mn>5</mn></msub></math> are considered as a single event and <math id="S3.SS1.p4.m5" class="ltx_Math" alttext="w_{6},w_{7},w_{8}" display="inline"><mrow><msub><mi>w</mi><mn>6</mn></msub><mo>,</mo><msub><mi>w</mi><mn>7</mn></msub><mo>,</mo><msub><mi>w</mi><mn>8</mn></msub></mrow></math> also.
-<br>
 Associate <math id="S3.SS1.p4.m6" class="ltx_Math" alttext="x_{1}" display="inline"><msub><mi>x</mi><mn>1</mn></msub></math> with event {<math id="S3.SS1.p4.m7" class="ltx_Math" alttext="w_{1},w_{2},w_{3}" display="inline"><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><msub><mi>w</mi><mn>2</mn></msub><mo>,</mo><msub><mi>w</mi><mn>3</mn></msub></mrow></math>} and <math id="S3.SS1.p4.m8" class="ltx_Math" alttext="x_{2}" display="inline"><msub><mi>x</mi><mn>2</mn></msub></math> with {<math id="S3.SS1.p4.m9" class="ltx_Math" alttext="w_{4},w_{5}" display="inline"><mrow><msub><mi>w</mi><mn>4</mn></msub><mo>,</mo><msub><mi>w</mi><mn>5</mn></msub></mrow></math>},</span></span>
-<br>
 <span class="ltx_tr">
 <span class="ltx_td ltx_align_justify" style="width:425.5pt;">by P(<math id="S3.SS1.p4.m10" class="ltx_Math" alttext="X=x_{1}" display="inline"><mrow><mi>X</mi><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></math>), it is meant P(E<math id="S3.SS1.p4.m11" class="ltx_Math" alttext="{}_{1}" display="inline"><msub><mi></mi><mn>1</mn></msub></math>),</span></span>
-<br>
 <span class="ltx_tr">
 <span class="ltx_td ltx_align_justify" style="width:425.5pt;">by P(<math id="S3.SS1.p4.m12" class="ltx_Math" alttext="X=x_{2}" display="inline"><mrow><mi>X</mi><mo>=</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math>), it is meant P(E<math id="S3.SS1.p4.m13" class="ltx_Math" alttext="{}_{2}" display="inline"><msub><mi></mi><mn>2</mn></msub></math>),       E<math id="S3.SS1.p4.m14" class="ltx_Math" alttext="{}_{2}" display="inline"><msub><mi></mi><mn>2</mn></msub></math> = {<math id="S3.SS1.p4.m15" class="ltx_Math" alttext="w_{4},w_{5}" display="inline"><mrow><msub><mi>w</mi><mn>4</mn></msub><mo>,</mo><msub><mi>w</mi><mn>5</mn></msub></mrow></math>}.</span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span></p>
 </div>
@@ -991,25 +909,65 @@ f_{X}(t)\ dt." display="inline"><mrow><msub><mi>F</mi><mi>X</mi></msub><mrow><mo
 </tr></tbody>
 </table>
 </div>
-<div id="S3.SS2.p7" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 11</b>
+<div id="S3.SS2.p7" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 11
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">Suppose we have the following function: f(x)=2x (if 0≤x≤0.25), <math id="S3.SS2.p7.m3" class="ltx_Math" display="inline"><msup><mi>x</mi><mn>2</mn></msup></math>+3/16 (if 0.25≤x≤1), 0 (otherwise).
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>Suppose we have the following function:
+f(x) =
 
-<br> 
+                    {
+                    
+                      
+                        
+                          
+                            2x
+                          
+                        
+                        
+                          
+                            if  0≤x¡0.25,
+                          
+                        
+                      
+                      
+                        
+                          
+                            x
+                            
+                              
+                                <span class="ltx_text" style="font-size:70%;">2</span>
+                              
+                            
+                            +3/16
+                          
+                        
+                        
+                          
+                            if  0.25≤x¡1,
+                          
+                        
+                      
+                      
+                        
+                          
+                            0
+                          
+                        
+                        
+                          
+                            otherwise.
+                          
+                        
+                      
+                    
+                  
 
 Is it a pdf?
-
-<br>
-
 First, <math id="S3.SS2.p7.m3" class="ltx_Math" alttext="f(x)\geq 0\hskip 2.845276pt\forall x" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mrow><mpadded width="+2.8pt"><mn>0</mn></mpadded><mo>⁢</mo><mrow><mo>∀</mo><mi>x</mi></mrow></mrow></mrow></math>.
-
-<br>
-<center>
 
 <span id="S17.EGx28" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
@@ -1019,9 +977,6 @@ First, <math id="S3.SS2.p7.m3" class="ltx_Math" alttext="f(x)\geq 0\hskip 2.8452
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex41.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex41.m3" class="ltx_Math" alttext="\displaystyle\int_{0}^{0.25}2xdx+\int_{0.25}^{1}x^{2}+3/16\hskip 2.845276ptdx" display="inline"><mrow><mrow><mstyle displaystyle="true"><msubsup><mo largeop="true" symmetric="true">∫</mo><mn>0</mn><mn>0.25</mn></msubsup></mstyle><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><msubsup><mo largeop="true" symmetric="true">∫</mo><mn>0.25</mn><mn>1</mn></msubsup></mstyle><msup><mi>x</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mrow><mn>3</mn><mo>/</mo><mpadded width="+2.8pt"><mn>16</mn></mpadded></mrow><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mi>x</mi></mrow></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span>
-
-<br>
-
 <span class="ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"></span>
@@ -1029,21 +984,15 @@ First, <math id="S3.SS2.p7.m3" class="ltx_Math" alttext="f(x)\geq 0\hskip 2.8452
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex42.m3" class="ltx_Math" alttext="\displaystyle\left[x^{2}\right]_{0}^{0.25}+\left[x^{3}/3+(3/16)x\right]_{0.25}%
 ^{1}" display="inline"><mrow><msubsup><mrow><mo>[</mo><msup><mi>x</mi><mn>2</mn></msup><mo>]</mo></mrow><mn>0</mn><mn>0.25</mn></msubsup><mo>+</mo><msubsup><mrow><mo>[</mo><mrow><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>/</mo><mn>3</mn></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mn>3</mn><mo>/</mo><mn>16</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>x</mi></mrow></mrow><mo>]</mo></mrow><mn>0.25</mn><mn>1</mn></msubsup></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span>
-
-<br>
-
 <span class="ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"></span>
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex43.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex43.m3" class="ltx_Math" alttext="\displaystyle 102/192~{}\neq~{}1." display="inline"><mrow><mrow><mrow><mn>102</mn><mo>/</mo><mpadded width="+3.3pt"><mn>192</mn></mpadded></mrow><mo rspace="5.8pt">≠</mo><mn>1</mn></mrow><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-
-<br>
-</center>
 </span></span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span></p>
 </div>
@@ -1085,37 +1034,66 @@ First, <math id="S3.SS2.p7.m3" class="ltx_Math" alttext="f(x)\geq 0\hskip 2.8452
 </tr></tbody>
 </table>
 </div>
-<div id="S3.SS3.SSS1.p4" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 12</b>
+<div id="S3.SS3.SSS1.p4" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 12
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">If <math id="S3.SS3.SSS1.p4.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is the random variable associated with a roll of a fair die, we have
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>If <math id="S3.SS3.SSS1.p4.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is the random variable associated with a roll of a fair die, we have
 {1, 2, 3, 4, 5, 6},    P(<math id="S3.SS3.SSS1.p4.m2" class="ltx_Math" alttext="X=x)=\displaystyle\frac{1}{6}\ \ \ \forall\ x" display="inline"><mrow><mi>X</mi><mo>=</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><mn>6</mn></mfrac></mstyle><mo mathvariant="italic" separator="true">   </mo><mo rspace="7.5pt">∀</mo><mi>x</mi></mrow></math>,    P(<math id="S3.SS3.SSS1.p4.m3" class="ltx_Math" alttext="X=x" display="inline"><mrow><mi>X</mi><mo>=</mo><mi>x</mi></mrow></math>) = <math id="S3.SS3.SSS1.p4.m4" class="ltx_Math" alttext="f_{X}(x)" display="inline"><mrow><msub><mi>f</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
 thus, E<math id="S3.SS3.SSS1.p4.m5" class="ltx_Math" alttext="[X]=\displaystyle\frac{21}{6}" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow><mo>=</mo><mstyle displaystyle="true"><mfrac><mn>21</mn><mn>6</mn></mfrac></mstyle></mrow></math> = 3.5.</span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span></p>
 </div>
-<br>
-<div id="S3.SS3.SSS1.p5" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 13</b>
+<div id="S3.SS3.SSS1.p5" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 13
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">Suppose we have random variable <math id="S3.SS3.SSS1.p5.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> with pdf f(x)=3<math id="S3.SS2.p7.m3" class="ltx_Math" display="inline"><msup><mi>x</mi><mn>2</mn></msup></math> (if 0≤x≤1), 0 (otherwise).
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>Suppose we have random variable <math id="S3.SS3.SSS1.p5.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> with pdf:
+f(x) =
 
-<br>
+                      {
+                      
+                        
+                          
+                            
+                              3x
+                              
+                                
+                                  <span class="ltx_text" style="font-size:70%;">2</span>
+                                
+                              
+                            
+                          
+                          
+                            
+                              if  0≤x≤1,
+                            
+                          
+                        
+                        
+                          
+                            
+                              0
+                            
+                          
+                          
+                            
+                              otherwise.
+                            
+                          
+                        
+                      
+                    
 
 What is <math id="S3.SS3.SSS1.p5.m4" class="ltx_Math" alttext="\mbox{E}(X)" display="inline"><mrow><mtext>E</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>?
-
-<br>
-<center>
 
 <span id="S17.EGx31" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
@@ -1125,20 +1103,15 @@ What is <math id="S3.SS3.SSS1.p5.m4" class="ltx_Math" alttext="\mbox{E}(X)" disp
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex46.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex46.m3" class="ltx_Math" alttext="\displaystyle\int_{0}^{1}x\times 3x^{2}dx~{}=~{}\int_{0}^{1}3x^{3}dx" display="inline"><mrow><mrow><mstyle displaystyle="true"><msubsup><mo largeop="true" symmetric="true">∫</mo><mn>0</mn><mn>1</mn></msubsup></mstyle><mrow><mrow><mi>x</mi><mo>×</mo><mn>3</mn></mrow><mo>⁢</mo><msup><mi>x</mi><mn>2</mn></msup><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mpadded width="+3.3pt"><mi>x</mi></mpadded></mrow></mrow></mrow><mo rspace="5.8pt">=</mo><mrow><mstyle displaystyle="true"><msubsup><mo largeop="true" symmetric="true">∫</mo><mn>0</mn><mn>1</mn></msubsup></mstyle><mrow><mn>3</mn><mo>⁢</mo><msup><mi>x</mi><mn>3</mn></msup><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span>
-<br>
 <span class="ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"></span>
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex47.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex47.m3" class="ltx_Math" alttext="\displaystyle\left[(3/4)x^{4}\right]_{0}^{1}~{}=~{}3/4." display="inline"><mrow><mrow><mpadded width="+3.3pt"><msubsup><mrow><mo>[</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mn>3</mn><mo>/</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>x</mi><mn>4</mn></msup></mrow><mo>]</mo></mrow><mn>0</mn><mn>1</mn></msubsup></mpadded><mo rspace="5.8pt">=</mo><mrow><mn>3</mn><mo>/</mo><mn>4</mn></mrow></mrow><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-
-</center>
-<br>
-
-</span><em class="ltx_emph ltx_font_italic"><i>Perhaps draw pdf.</i></em></span></span>
+</span><em class="ltx_emph ltx_font_italic">Perhaps draw pdf.</em></span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span></p>
 </div>
@@ -1168,58 +1141,44 @@ What is <math id="S3.SS3.SSS1.p5.m4" class="ltx_Math" alttext="\mbox{E}(X)" disp
 </tr></tbody>
 </table>
 </div>
-<div id="S3.SS3.SSS2.p2" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 14</b>
+<div id="S3.SS3.SSS2.p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 14
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>
 
-<table style="width:50%" border="1px solid black">
-  <tr>
-    <th>X</th>
-    <th>-1</th>
-    <th>0</th>
-	<th>1</th>
-	<th>2</th>
-	<th>3</th>
-	<th>4</th>
-  </tr>
-  <tr align="center">
-    <td>p(X)</td>
-    <td>1/2</td>
-    <td>1/4</td>
-	<td>1/16</td>
-	<td>1/16</td>
-	<td>1/16</td>
-	<td>1/16</td>
-  </tr>
-</table>
-
-<br>
-
+<span class="ltx_tabular ltx_align_middle">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r"><math id="S3.SS3.SSS2.p2.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math></span>
+<span class="ltx_td ltx_align_center">-1</span>
+<span class="ltx_td ltx_align_center">0</span>
+<span class="ltx_td ltx_align_center">1</span>
+<span class="ltx_td ltx_align_center">2</span>
+<span class="ltx_td ltx_align_center">3</span>
+<span class="ltx_td ltx_align_center">4</span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><math id="S3.SS3.SSS2.p2.m2" class="ltx_Math" alttext="p(X)" display="inline"><mrow><mi>p</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math></span>
+<span class="ltx_td ltx_align_center ltx_border_t">1/2</span>
+<span class="ltx_td ltx_align_center ltx_border_t">1/4</span>
+<span class="ltx_td ltx_align_center ltx_border_t">1/16</span>
+<span class="ltx_td ltx_align_center ltx_border_t">1/16</span>
+<span class="ltx_td ltx_align_center ltx_border_t">1/16</span>
+<span class="ltx_td ltx_align_center ltx_border_t">1/16</span></span>
+</span>
 <math id="S3.SS3.SSS2.p2.m3" class="ltx_Math" alttext="E(X)=-\frac{1}{2}+\frac{10}{16}=\frac{1}{8}=0.125." display="inline"><mrow><mrow><mrow><mi>E</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo>-</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mo>+</mo><mfrac><mn>10</mn><mn>16</mn></mfrac></mrow><mo>=</mo><mfrac><mn>1</mn><mn>8</mn></mfrac><mo>=</mo><mn>0.125</mn></mrow><mo>.</mo></mrow></math>
 
-<br>
-
 What is <math id="S3.SS3.SSS2.p2.m4" class="ltx_Math" alttext="E(X^{2})" display="inline"><mrow><mi>E</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>X</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math>? (<em class="ltx_emph ltx_font_italic">Add <math id="S3.SS3.SSS2.p2.m5" class="ltx_Math" alttext="X^{2}" display="inline"><msup><mi>X</mi><mn mathvariant="normal">2</mn></msup></math> to table</em>)
-
-<br>
 
 <math id="S3.SS3.SSS2.p2.m6" class="ltx_Math" alttext="E(X^{2})=\frac{9}{16}+\frac{4}{16}+\frac{9}{16}+\frac{16}{16}=\frac{38}{16}=%
 \frac{152}{64}=2.375." display="inline"><mrow><mrow><mrow><mi>E</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>X</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac><mn>9</mn><mn>16</mn></mfrac><mo>+</mo><mfrac><mn>4</mn><mn>16</mn></mfrac><mo>+</mo><mfrac><mn>9</mn><mn>16</mn></mfrac><mo>+</mo><mfrac><mn>16</mn><mn>16</mn></mfrac></mrow><mo>=</mo><mfrac><mn>38</mn><mn>16</mn></mfrac><mo>=</mo><mfrac><mn>152</mn><mn>64</mn></mfrac><mo>=</mo><mn>2.375</mn></mrow><mo>.</mo></mrow></math>
 
-<br>
-
 Note that <math id="S3.SS3.SSS2.p2.m7" class="ltx_Math" alttext="E(X^{2})\neq E(X)^{2}" display="inline"><mrow><mrow><mi>E</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>X</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mrow><mi>E</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mrow></math>:
-
-<br>
-
 <math id="S3.SS3.SSS2.p2.m8" class="ltx_Math" alttext="E(X)^{2}=\left(\frac{1}{8}\right)^{2}=\frac{1}{64}=0.015625." display="inline"><mrow><mrow><mrow><mi>E</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><msup><mrow><mo>(</mo><mfrac><mn>1</mn><mn>8</mn></mfrac><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><mfrac><mn>1</mn><mn>64</mn></mfrac><mo>=</mo><mn>0.015625</mn></mrow><mo>.</mo></mrow></math></span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span></p>
 </div>
@@ -1251,14 +1210,11 @@ Note that <math id="S3.SS3.SSS2.p2.m7" class="ltx_Math" alttext="E(X^{2})\neq E(
 </tbody>
 </table>
 </div>
-
-<br>
-
-<div id="S3.SS4.p2" class="ltx_para ltx_noindent" style="border: solid 1px black">
+<div id="S3.SS4.p2" class="ltx_para ltx_noindent">
 <table class="ltx_tabular ltx_align_middle">
 <tbody class="ltx_tbody">
 <tr class="ltx_tr">
-<td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;"><span class="ltx_text ltx_wrap ltx_font_italic"><i>Demonstrate this - expand quadratic and use linear properties.</i></span></td>
+<td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;"><span class="ltx_text ltx_wrap ltx_font_italic">Demonstrate this - expand quadratic and use linear properties.</span></td>
 </tr>
 </tbody>
 </table>
@@ -1267,7 +1223,7 @@ Note that <math id="S3.SS3.SSS2.p2.m7" class="ltx_Math" alttext="E(X^{2})\neq E(
 <p class="ltx_p">The standard deviation of <math id="S3.SS4.p3.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is then given by <math id="S3.SS4.p3.m2" class="ltx_Math" alttext="\sqrt{\mbox{Var}(X)}" display="inline"><msqrt><mrow><mtext>Var</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></msqrt></math>.</p>
 </div>
 <div id="S3.SS4.p4" class="ltx_para ltx_noindent">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Notation</b>
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Notation
 <br class="ltx_break"></span></p>
 </div>
 <div id="S3.SS4.p5" class="ltx_para ltx_noindent">
@@ -1350,12 +1306,11 @@ Note that <math id="S3.SS3.SSS2.p2.m7" class="ltx_Math" alttext="E(X^{2})\neq E(
 </tbody>
 </table>
 </div>
-<br>
-<div id="S3.SS5.p2" class="ltx_para ltx_noindent" style="border: solid 1px black">
+<div id="S3.SS5.p2" class="ltx_para ltx_noindent">
 <table class="ltx_tabular ltx_align_middle">
 <tbody class="ltx_tbody">
 <tr class="ltx_tr">
-<td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;"><span class="ltx_text ltx_wrap ltx_font_italic"><i>Show why <math id="S3.SS5.p2.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S3.SS5.p2.m2" class="ltx_Math" alttext="a^{2}" display="inline"><msup><mi>a</mi><mn mathvariant="normal">2</mn></msup></math>.</span></td></i>
+<td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;"><span class="ltx_text ltx_wrap ltx_font_italic">Show why <math id="S3.SS5.p2.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S3.SS5.p2.m2" class="ltx_Math" alttext="a^{2}" display="inline"><msup><mi>a</mi><mn mathvariant="normal">2</mn></msup></math>.</span></td>
 </tr>
 </tbody>
 </table>
@@ -1367,7 +1322,7 @@ Note that <math id="S3.SS3.SSS2.p2.m7" class="ltx_Math" alttext="E(X^{2})\neq E(
 <tbody id="S3.Ex61">
 <tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
-<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex60.m1" class="ltx_Math" alttext="\displaystyle Z" display="inline"><mi>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Z</mi></math></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex60.m1" class="ltx_Math" alttext="\displaystyle Z" display="inline"><mi>Z</mi></math></td>
 <td class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex60.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></td>
 <td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex60.m3" class="ltx_Math" alttext="\displaystyle\frac{(X-\mu)}{\sigma}\ \ \ \ \ (\mu\text{ and }\sigma\textrm{ %
 are fixed for a random variable})" display="inline"><mrow><mstyle displaystyle="true"><mfrac><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>-</mo><mi>μ</mi></mrow><mo stretchy="false">)</mo></mrow><mi>σ</mi></mfrac></mstyle><mo mathvariant="italic" separator="true">    </mo><mrow><mo stretchy="false">(</mo><mrow><mi>μ</mi><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><mtext> are fixed for a random variable</mtext></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
@@ -1406,7 +1361,7 @@ are fixed for a random variable})" display="inline"><mrow><mstyle displaystyle="
 </tbody>
 <tbody id="S3.Ex65"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
-<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex65.m1" class="ltx_Math" alttext="\displaystyle\mbox{Var}(Z)" display="inline"><mrow><mtext>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Var</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Z</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex65.m1" class="ltx_Math" alttext="\displaystyle\mbox{Var}(Z)" display="inline"><mrow><mtext>Var</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Z</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
 <td class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex65.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></td>
 <td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex65.m3" class="ltx_Math" alttext="\displaystyle\displaystyle\frac{1}{\sigma^{2}}\mbox{Var}(X)~{}=~{}1." display="inline"><mrow><mrow><mrow><mstyle displaystyle="true"><mfrac><mn>1</mn><msup><mi>σ</mi><mn>2</mn></msup></mfrac></mstyle><mo>⁢</mo><mtext>Var</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo rspace="5.8pt" stretchy="false">)</mo></mrow></mrow><mo rspace="5.8pt">=</mo><mn>1</mn></mrow><mo>.</mo></mrow></math></td>
 <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
@@ -1448,21 +1403,16 @@ are fixed for a random variable})" display="inline"><mrow><mstyle displaystyle="
 </tr></tbody>
 </table>
 </div>
-<div id="S3.SS6.p5" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 15</b>
+<div id="S3.SS6.p5" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 15
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">Let <math id="S3.SS6.p5.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a random variable with <math id="S3.SS6.p5.m2" class="ltx_Math" alttext="\mbox{E}(X)=2" display="inline"><mrow><mrow><mtext>E</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>2</mn></mrow></math> and <math id="S3.SS6.p5.m3" class="ltx_Math" alttext="\mbox{Var}(X)=1" display="inline"><mrow><mrow><mtext>Var</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>.
-<br>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>Let <math id="S3.SS6.p5.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a random variable with <math id="S3.SS6.p5.m2" class="ltx_Math" alttext="\mbox{E}(X)=2" display="inline"><mrow><mrow><mtext>E</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>2</mn></mrow></math> and <math id="S3.SS6.p5.m3" class="ltx_Math" alttext="\mbox{Var}(X)=1" display="inline"><mrow><mrow><mtext>Var</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>.
 Consider the random variable <math id="S3.SS6.p5.m4" class="ltx_Math" alttext="Y=\exp(-X^{2})" display="inline"><mrow><mi>Y</mi><mo>=</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><msup><mi>X</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
-<br>
 What are the mean and variance of <math id="S3.SS6.p5.m5" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>?
-
-<br>
-<br>
 
 <span id="S17.EGx39" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
@@ -1472,7 +1422,6 @@ What are the mean and variance of <math id="S3.SS6.p5.m5" class="ltx_Math" altte
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex68.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex68.m3" class="ltx_Math" alttext="\displaystyle\exp(-x^{2})," display="inline"><mrow><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S3.Ex70"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex69.m1" class="ltx_Math" alttext="\displaystyle g^{\prime}(x)" display="inline"><mrow><msup><mi>g</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math></span>
@@ -1480,35 +1429,26 @@ What are the mean and variance of <math id="S3.SS6.p5.m5" class="ltx_Math" altte
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex69.m3" class="ltx_Math" alttext="\displaystyle\frac{d\exp(y)}{dy}\frac{-dx^{2}}{dx}~{}~{}~{}~{}~{}~{}\text{(%
 using the chain rule, $y=-x^{2}$)}" display="inline"><mrow><mrow><mstyle displaystyle="true"><mfrac><mrow><mi>d</mi><mo>⁢</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mrow><mi>d</mi><mo>⁢</mo><mi>y</mi></mrow></mfrac></mstyle><mo>⁢</mo><mstyle displaystyle="true"><mfrac><mrow><mo>-</mo><mrow><mi>d</mi><mo>⁢</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></mrow><mrow><mi>d</mi><mo>⁢</mo><mi>x</mi></mrow></mfrac></mstyle></mrow><mo mathvariant="italic" separator="true">   </mo><mrow><mtext>(using the chain rule, </mtext><mrow><mi>y</mi><mo>=</mo><mrow><mo>-</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></mrow><mtext>)</mtext></mrow></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span>
-<br>
 <span class="ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"></span>
-<span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex70.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>&nbsp &nbsp &nbsp &nbsp &nbsp=</mo></math></span>
+<span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex70.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex70.m3" class="ltx_Math" alttext="\displaystyle-2x\exp(-x^{2})," display="inline"><mrow><mrow><mo>-</mo><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S3.Ex72"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex71.m1" class="ltx_Math" alttext="\displaystyle g^{\prime\prime}(x)" display="inline"><mrow><msup><mi>g</mi><mo>′′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math></span>
-<span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex71.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo> =</mo></math></span>
+<span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex71.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex71.m3" class="ltx_Math" alttext="\displaystyle-2x\frac{d\exp(-x^{2})}{dx}+\frac{-d2x}{dx}\exp(-x^{2})~{}~{}~{}~%
 {}~{}~{}\text{(using the product rule)}" display="inline"><mrow><mrow><mrow><mo>-</mo><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mstyle displaystyle="true"><mfrac><mrow><mi>d</mi><mo>⁢</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mrow><mi>d</mi><mo>⁢</mo><mi>x</mi></mrow></mfrac></mstyle></mrow></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mo>-</mo><mrow><mi>d</mi><mo>⁢</mo><mn>2</mn><mo>⁢</mo><mi>x</mi></mrow></mrow><mrow><mi>d</mi><mo>⁢</mo><mi>x</mi></mrow></mfrac></mstyle><mo>⁢</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo mathvariant="italic" separator="true">   </mo><mtext>(using the product rule)</mtext></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span>
-<br>
 <span class="ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"></span>
-<span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex72.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>&nbsp &nbsp &nbsp &nbsp &nbsp =</mo></math></span>
+<span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex72.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex72.m3" class="ltx_Math" alttext="\displaystyle 4x^{2}\exp(-x^{2})-2\exp(x^{2})." display="inline"><mrow><mrow><mrow><mn>4</mn><mo>⁢</mo><msup><mi>x</mi><mn>2</mn></msup><mo>⁢</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>-</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
-<br>
-
 </span>Now, using the TS approximation,
-
-<br>
-<br>
 
 <span id="S17.EGx40" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
@@ -1518,14 +1458,12 @@ using the chain rule, $y=-x^{2}$)}" display="inline"><mrow><mrow><mstyle display
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex73.m2" class="ltx_Math" alttext="\displaystyle\approx" display="inline"><mo>≈</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex73.m3" class="ltx_Math" alttext="\displaystyle\exp(-4)+0.5\times 1\times\left(16\exp(-4)-2\exp(-4)\right)" display="inline"><mrow><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mn>0.5</mn><mo>×</mo><mn>1</mn><mo>×</mo><mrow><mo>(</mo><mrow><mrow><mn>16</mn><mo>⁢</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>-</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span>
-<br>
 <span class="ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"></span>
-<span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex74.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>&nbsp &nbsp &nbsp &nbsp &nbsp =</mo></math></span>
+<span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex74.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex74.m3" class="ltx_Math" alttext="\displaystyle 8\exp(-4)=0.147\text{ (to 3 d.p.)}," display="inline"><mrow><mrow><mrow><mn>8</mn><mo>⁢</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mn>0.147</mn><mo>⁢</mo><mtext> (to 3 d.p.)</mtext></mrow></mrow><mo>,</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S3.Ex75"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex75.m1" class="ltx_Math" alttext="\displaystyle\mbox{Var}(Y)" display="inline"><mrow><mtext>Var</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow></math></span>
@@ -1533,13 +1471,9 @@ using the chain rule, $y=-x^{2}$)}" display="inline"><mrow><mrow><mstyle display
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex75.m3" class="ltx_Math" alttext="\displaystyle 1\times\left(-4\exp(-4)\right)^{2}=16\exp(-8)=0.0054\text{ (to 4%
  d.p.)}." display="inline"><mrow><mrow><mrow><mn>1</mn><mo>×</mo><msup><mrow><mo>(</mo><mrow><mo>-</mo><mrow><mn>4</mn><mo>⁢</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>)</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mrow><mn>16</mn><mo>⁢</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><mn>8</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mn>0.0054</mn><mo>⁢</mo><mtext> (to 4 d.p.)</mtext></mrow></mrow><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-
-<br>
-<br>
-
 </span>Note that <math id="S3.SS6.p5.m6" class="ltx_Math" alttext="\exp(-4)\approx 0.0183" display="inline"><mrow><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mo>-</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≈</mo><mn>0.0183</mn></mrow></math>.</span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span>
 
@@ -1675,27 +1609,60 @@ The mode is the maximum of <math id="S3.SS8.p2.m1" class="ltx_Math" alttext="f_{
 <td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
 </tr></tbody>
 </table>
-<br>
-<table class="ltx_tabular ltx_align_middle" style="border: solid 1px black">
+<table class="ltx_tabular ltx_align_middle">
 <tbody class="ltx_tbody">
 <tr class="ltx_tr">
-<td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;"><span class="ltx_text ltx_wrap ltx_font_italic"><i>This falls down in cases of bimodality and discontinuous distributions.</i></span></td>
+<td class="ltx_td ltx_align_justify ltx_border_b ltx_border_l ltx_border_r ltx_border_t" style="width:425.5pt;"><span class="ltx_text ltx_wrap ltx_font_italic">This falls down in cases of bimodality and discontinuous distributions.</span></td>
 </tr>
 </tbody>
 </table>
 </div>
-<br>
-<div id="S3.SS8.p3" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 16</b>
+<div id="S3.SS8.p3" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 16
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">(a) Let <math id="S3.SS8.p3.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a random variable with pdf: f(x)=(1/263)(153+420x-300<math id="S3.SS2.p7.m3" class="ltx_Math" display="inline"><msup><mi>x</mi><mn>2</mn></msup></math>) (if 0≤x≤1), 0 (otherwise).
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>(a) Let <math id="S3.SS8.p3.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a random variable with pdf:
 
-<br>
-<center>
+f_X(x) =
+
+                    {
+                    
+                      
+                        
+                          
+                            (1/263)(153+420x-300x
+                            
+                              
+                                <span class="ltx_text" style="font-size:70%;">2</span>
+                              
+                            
+                            )
+                          
+                        
+                        
+                          
+                            if  0≤x≤1,
+                          
+                        
+                      
+                      
+                        
+                          
+                            0
+                          
+                        
+                        
+                          
+                            otherwise.
+                          
+                        
+                      
+                    
+                  
+
 
 <span id="S17.EGx47" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
@@ -1705,35 +1672,54 @@ The mode is the maximum of <math id="S3.SS8.p2.m1" class="ltx_Math" alttext="f_{
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex83.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex83.m3" class="ltx_Math" alttext="\displaystyle 420/263-600/263x," display="inline"><mrow><mrow><mrow><mn>420</mn><mo>/</mo><mn>263</mn></mrow><mo>-</mo><mrow><mrow><mn>600</mn><mo>/</mo><mn>263</mn></mrow><mo>⁢</mo><mi>x</mi></mrow></mrow><mo>,</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S3.Ex84"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex84.m1" class="ltx_Math" alttext="\displaystyle\frac{df_{X}(\text{Mode})}{dx}" display="inline"><mstyle displaystyle="true"><mfrac><mrow><mi>d</mi><mo>⁢</mo><msub><mi>f</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mtext>Mode</mtext><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>d</mi><mo>⁢</mo><mi>x</mi></mrow></mfrac></mstyle></math></span>
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex84.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex84.m3" class="ltx_Math" alttext="\displaystyle 0" display="inline"><mn>0</mn></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S3.Ex85"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex85.m1" class="ltx_Math" alttext="\displaystyle\implies\text{Mode}" display="inline"><mrow><mi></mi><mo>⟹</mo><mtext>Mode</mtext></mrow></math></span>
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex85.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex85.m3" class="ltx_Math" alttext="\displaystyle 420/600~{}=~{}0.7." display="inline"><mrow><mrow><mrow><mn>420</mn><mo>/</mo><mpadded width="+3.3pt"><mn>600</mn></mpadded></mrow><mo rspace="5.8pt">=</mo><mn>0.7</mn></mrow><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
-</center>
-
-<br>
-
 </span>And the second derivative is negative. It is also worth checking the values at <math id="S3.SS8.p3.m4" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math> and <math id="S3.SS8.p3.m5" class="ltx_Math" alttext="x=1" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow></math>.
 
-<br>
-<br>
+(b) Let <math id="S3.SS8.p3.m6" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a random variable with pdf:
 
-(b) Let <math id="S3.SS8.p3.m6" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a random variable with pdf: f(x)=4-2x (if 1≤x≤2), 0 (otherwise). We have that
+f_X(x) =
 
-<br>
-<br>
-<center>
+                    {
+                    
+                      
+                        
+                          
+                            4-2x
+                          
+                        
+                        
+                          
+                            if  1≤x≤2,
+                          
+                        
+                      
+                      
+                        
+                          
+                            0
+                          
+                        
+                        
+                          
+                            otherwise.
+                          
+                        
+                      
+                    
+                  
+
+We have that
 
 <span id="S17.EGx48" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
@@ -1743,14 +1729,12 @@ The mode is the maximum of <math id="S3.SS8.p2.m1" class="ltx_Math" alttext="f_{
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex86.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex86.m3" class="ltx_Math" alttext="\displaystyle\int_{1}^{\text{m}}4-2x\hskip 2.845276ptdx," display="inline"><mrow><mrow><mrow><mstyle displaystyle="true"><msubsup><mo largeop="true" symmetric="true">∫</mo><mn>1</mn><mtext>m</mtext></msubsup></mstyle><mn>4</mn></mrow><mo>-</mo><mrow><mn>2</mn><mo>⁢</mo><mpadded width="+2.8pt"><mi>x</mi></mpadded><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mi>x</mi></mrow></mrow><mo>,</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S3.Ex87"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex87.m1" class="ltx_Math" alttext="\displaystyle\implies 0" display="inline"><mrow><mi></mi><mo>⟹</mo><mn>0</mn></mrow></math></span>
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex87.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex87.m3" class="ltx_Math" alttext="\displaystyle-m^{2}+4m-3.5" display="inline"><mrow><mrow><mrow><mo>-</mo><msup><mi>m</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><mi>m</mi></mrow></mrow><mo>-</mo><mn>3.5</mn></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S3.Ex88"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex88.m1" class="ltx_Math" alttext="\displaystyle\implies m" display="inline"><mrow><mi></mi><mo>⟹</mo><mi>m</mi></mrow></math></span>
@@ -1758,9 +1742,8 @@ The mode is the maximum of <math id="S3.SS8.p2.m1" class="ltx_Math" alttext="f_{
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex88.m3" class="ltx_Math" alttext="\displaystyle 2-\sqrt{2}/2." display="inline"><mrow><mrow><mn>2</mn><mo>-</mo><mrow><msqrt><mn>2</mn></msqrt><mo>/</mo><mn>2</mn></mrow></mrow><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
 </span></span></span>
-</center>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span></p>
 </div>
@@ -1889,18 +1872,47 @@ chain rule]}" display="inline"><mrow><mrow><mstyle displaystyle="true"><mfrac><m
 </table>
 <p class="ltx_p">because the derivative of a increasing function will be positive and the derivative of a decreasing function will be negative.</p>
 </div>
-<div id="S3.SS9.p6" class="ltx_para ltx_noindent" style="border: dashed 1px black">
-<p class="ltx_p"><span class="ltx_text ltx_font_bold"><b>Example 17</b>
+<div id="S3.SS9.p6" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Example 17
 <br class="ltx_break"></span>
 
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;">Let <math id="S3.SS9.p6.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a random variable with pdf: f(x)=4-2x (if 1≤x≤2), 0 (otherwise). Consider the random variable <math id="S3.SS9.p6.m4" class="ltx_Math" alttext="Y=\surd X" display="inline"><mrow><mi>Y</mi><mo>=</mo><msqrt><mi>X</mi></msqrt></mrow></math>. What is the pdf for <math id="S3.SS9.p6.m5" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>?
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>Let <math id="S3.SS9.p6.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a random variable with pdf:
 
-<br>
-<br>
-<center>
+f_X(x) =
+
+                    {
+                    
+                      
+                        
+                          
+                            4-2x
+                          
+                        
+                        
+                          
+                            if  1≤x≤2,
+                          
+                        
+                      
+                      
+                        
+                          
+                            0
+                          
+                        
+                        
+                          
+                            otherwise.
+                          
+                        
+                      
+                    
+                  
+
+Consider the random variable <math id="S3.SS9.p6.m4" class="ltx_Math" alttext="Y=\surd X" display="inline"><mrow><mi>Y</mi><mo>=</mo><msqrt><mi>X</mi></msqrt></mrow></math>. What is the pdf for <math id="S3.SS9.p6.m5" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>?
 
 <span id="S17.EGx55" class="ltx_equationgroup ltx_eqn_eqnarray ltx_eqn_table">
 
@@ -1910,24 +1922,53 @@ chain rule]}" display="inline"><mrow><mrow><mstyle displaystyle="true"><mfrac><m
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex100.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex100.m3" class="ltx_Math" alttext="\displaystyle u(x)~{}=~{}\surd x." display="inline"><mrow><mrow><mrow><mi>u</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo rspace="5.8pt" stretchy="false">)</mo></mrow></mrow><mo rspace="5.8pt">=</mo><msqrt><mi>x</mi></msqrt></mrow><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
 <span id="S3.Ex101"><span class="ltx_equation ltx_eqn_row ltx_align_baseline">
 <span class="ltx_eqn_cell ltx_eqn_center_padleft"></span>
 <span class="ltx_td ltx_align_right ltx_eqn_cell"><math id="S3.Ex101.m1" class="ltx_Math" alttext="\displaystyle x" display="inline"><mi>x</mi></math></span>
 <span class="ltx_td ltx_align_center ltx_eqn_cell"><math id="S3.Ex101.m2" class="ltx_Math" alttext="\displaystyle=" display="inline"><mo>=</mo></math></span>
 <span class="ltx_td ltx_align_left ltx_eqn_cell"><math id="S3.Ex101.m3" class="ltx_Math" alttext="\displaystyle w(y)~{}=~{}y^{2}." display="inline"><mrow><mrow><mrow><mi>w</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo rspace="5.8pt" stretchy="false">)</mo></mrow></mrow><mo rspace="5.8pt">=</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>.</mo></mrow></math></span>
 <span class="ltx_eqn_cell ltx_eqn_center_padright"></span></span></span>
-<br>
-</center>
-<br>
+</span>Using the formula, we get
 
-</span>Using the formula, we get: f(y) =8y-4<math id="S3.SS2.p7.m3" class="ltx_Math" display="inline"><msup><mi>y</mi><mn>3</mn></msup></math> (if 1≤y≤<math id="S3.SS2.p7.m3" class="ltx_Math" display="inline"><msqrt><mi>2</mi></msqrt></math>), 0 (otherwise).
-<br>
-<br>
+f_Y(y) =
 
-<em class="ltx_emph ltx_font_italic"><i>Maybe draw pdf and point out mode and approx median.</i></em></span></span>
+                    {
+                    
+                      
+                        
+                          
+                            8y-4y
+                            
+                              
+                                <span class="ltx_text" style="font-size:70%;">3</span>
+                              
+                            
+                          
+                        
+                        
+                          
+                            if  1≤y≤√2,
+                          
+                        
+                      
+                      
+                        
+                          
+                            0
+                          
+                        
+                        
+                          
+                            otherwise.
+                          
+                        
+                      
+                    
+                  
+
+<em class="ltx_emph ltx_font_italic">Maybe draw pdf and point out mode and approx median.</em></span></span>
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"></span></span>
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
 </span>
 </span></p>
 </div>
@@ -2267,23 +2308,20 @@ with large <math id="S4.SS5.SSS2.p3.m7" class="ltx_Math" alttext="n" display="in
 <span class="ltx_tabular ltx_align_middle">
 <span class="ltx_tbody">
 <span class="ltx_tr">
-<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>Let <math id="S4.SS5.SSS2.p4.m1" class="ltx_Math" alttext="X\sim Bin(1000,0.01)" display="inline"><mrow><mi>X</mi><mo>∼</mo><mrow><mi>B</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1000</mn><mo>,</mo><mn>0.01</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, then <math xmlns="http://www.w3.org/1998/Math/MathML" alttext="X\approx Po(10)" display="inline">
-  <mrow>
-    <mi>X</mi>
-    <mo>≈</mo>
-    <mrow>
-      <mi>P</mi>
-      <mo>⁢</mo>
-      <mi>o</mi>
-      <mo>⁢</mo>
-      <mrow>
-        <mo stretchy="false">(</mo>
-        <mn>10</mn>
-        <mo stretchy="false">)</mo>
-      </mrow>
-    </mrow>
-  </mrow>
-</math>.
+<span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span>Let <math id="S4.SS5.SSS2.p4.m1" class="ltx_Math" alttext="X\sim Bin(1000,0.01)" display="inline"><mrow><mi>X</mi><mo>∼</mo><mrow><mi>B</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1000</mn><mo>,</mo><mn>0.01</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, then <math id="S4.SS5.SSS2.p4.m2" class="ltx_Math" alttext="X\mathrel{\vbox{\offinterlineskip\vskip-1.075pt\hbox{ $\cdot$}\vskip-1.075pt%
+\hbox{$\sim$}
+\vskip-2.15pt\hbox{ $\cdot$}}}Po(10)" display="inline"><mrow><mi>X</mi><mtext>
+<span class="ltx_inline-block ltx_align_bottom">
+<span class="ltx_p"> <XMath xmlns="http://dlmf.nist.gov/LaTeXML">
+                                    <XMTok name="cdot" role="MULOP">⋅</XMTok>
+                                  </XMath></span>
+<span class="ltx_p"><XMath xmlns="http://dlmf.nist.gov/LaTeXML">
+                                    <XMTok meaning="similar-to" name="sim" role="RELOP">∼</XMTok>
+                                  </XMath></span>
+<span class="ltx_p"> <XMath xmlns="http://dlmf.nist.gov/LaTeXML">
+                                    <XMTok name="cdot" role="MULOP">⋅</XMTok>
+                                  </XMath></span>
+</span></mtext><mrow><mi>P</mi><mo>⁢</mo><mi>o</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
 Show tables.</span></span>
 <span class="ltx_tr">
 <span class="ltx_td ltx_align_justify" style="width:425.5pt;"><span class="ltx_ERROR undefined">\hdashline</span></span></span>
