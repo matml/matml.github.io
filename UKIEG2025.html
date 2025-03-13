@@ -46,6 +46,45 @@
         a {
             color: #004b87;
         }
+        .price-table {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .price-table .price-header {
+            background-color: #004b87;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .price-table .price-row {
+            padding: 10px 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .price-table .price-row:last-child {
+            border-bottom: none;
+        }
+        .price-table .price-row:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-container p {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .logo-container img {
+            max-height: 100px;
+            width: auto;
+        }
+        .program-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #004b87;
+        }
     </style>
 </head>
 <body>
@@ -61,7 +100,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#keynote">Keynotes</a></li>
-                <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+                <li class="nav-item"><a class="nav-link" href="#program">Program</a></li>
                 <li class="nav-item"><a class="nav-link" href="#venue">Venue</a></li>
                 <li class="nav-item"><a class="nav-link" href="#registration">Registration</a></li>
                 <li class="nav-item"><a class="nav-link" href="#submission">Abstract Submission</a></li>
@@ -77,7 +116,7 @@
         <h1 class="display-4 fw-bold">UKIEG 2025</h1>
         <p class="lead">Annual Conference & AGM</p>
         <p class="fs-5">Hosted by the Healthy Buildings Network<br>University of Leeds | Thursday, 19 June 2025</p>
-        <a href="#registration" class="btn btn-light btn-lg mt-3">Register Now</a>
+        <a href="https://forms.office.com/e/s9VL0nABgL" class="btn btn-primary btn-lg" target="_blank">Submit Abstract</a>
     </div>
 </section>
 
@@ -85,32 +124,40 @@
 <section id="about" class="section">
     <div class="container">
         <h2 class="section-title">About the Conference</h2>
-        <p>The UKIEG Annual Conference & AGM 2025 explores <strong>"The Impact of Net Zero and Climate Change on the Indoor Environment and Health".</strong> Join scholars, industry experts, and policymakers to discuss Indoor Environmental Quality (IEQ), sustainable design, advanced monitoring, and their connections with health outcomes. Abstract submissions close on <strong>14 April 2025</strong>, with notifications by the end of April.</p>
-    <!-- Logos -->
-        <div class="row align-items-center mb-5">
-            <div class="col-md-4 text-center mb-3">
-                <img src="img/mockup/HBNLogo.jpg" alt="Healthy Buildings Network" class="img-fluid" style="max-height:100px;">
-                <p class="mt-2"><strong>Host</strong></p>
+        <p>The UKIEG Annual Conference & AGM 2025 explores <strong>The Impact of Net Zero on Health and the Environment.</strong> 
+            Join academics, industry experts, and policymakers to discuss Indoor Environmental Quality, sustainable design, advanced monitoring, and their connections with health outcomes. 
+            Abstract submissions close on <strong>14 April 2025</strong>, with notifications by the beginning of May 2025. Whilst the theme this year is around net-zero, health and IEQ please consider submission abstracts around other related topics.</p>
+    </div>
+</section>
+
+<!-- Logos Section -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 logo-container">
+                <p>Host</p>
+                <img src="img/HBNLogo.jpg" alt="Healthy Buildings Network" class="img-fluid">
             </div>
-            <div class="col-md-4 text-center mb-3">
-                <img src="img/mockup/UKIEGLogo.jpg" alt="UKIEG" class="img-fluid" style="max-height:100px;">
-                <p class="mt-2"><a href="http://www.ukieg.org/">UK Indoor Environments Group</a></p>
+            <div class="col-md-3 logo-container">
+                <p>UK Indoor Environment Group</p>
+                <img src="img/UKIEGLogo.jpg" alt="UKIEG" class="img-fluid">
             </div>
-            <div class="col-md-4 text-center mb-3">
-                <img src="img/mockup/HorizonsLogo.jpg" alt="Horizons Institute" class="img-fluid" style="max-height:100px;">
-                <img src="img/mockup/LeedsLogo.png" alt="University of Leeds" class="img-fluid" style="max-height:100px;">
-                <p class="mt-2"><strong>Supported by</strong></p>
+            <div class="col-md-3 logo-container">
+                <p>University of Leeds</p>
+                <img src="img/UoL.jpg" alt="University of Leeds" class="img-fluid">
+            </div>
+            <div class="col-md-3 logo-container">
+                <p>Supported by</p>
+                <img src="img/HorizonsLogo.jpg" alt="Horizons Institute" class="img-fluid">
             </div>
         </div>
     </div>
 </section>
 
 <!-- Keynotes Section -->
-<section id="keynote" class="section bg-light">
+<section id="keynote" class="section">
     <div class="container">
         <h2 class="section-title">Keynote Speakers</h2>
-
-        
 
         <!-- Catherine Noakes -->
         <div class="row align-items-center mb-5">
@@ -119,16 +166,17 @@
             </div>
             <div class="col-md-9">
                 <h4>Prof. Catherine Noakes OBE FREng</h4>
-                <p>Catherine Noakes is Professor of Environmental Engineering for Buildings at the University of Leeds, renowned internationally for her pioneering research on airborne disease transmission, ventilation, and indoor air quality. During the COVID-19 pandemic, she advised the UK Government's Scientific Advisory Group for Emergencies (SAGE). Catherine's multidisciplinary approach has significantly advanced understanding of infection risk in indoor environments, influencing both public health policy and building design globally.</p>
+                <p class="text-muted">Professor of Environmental Engineering for Buildings, University of Leeds</p>
+                <p>Catherine Noakes is renowned internationally for her pioneering research on airborne disease transmission, ventilation, and indoor air quality. 
+                    During the COVID-19 pandemic, she advised the UK Government's Scientific Advisory Group for Emergencies (SAGE). 
+                    Catherine's multidisciplinary approach has significantly advanced understanding of infection risk in indoor environments, influencing both public health policy and building design globally.</p>
                 <p><strong>Morning Keynote Address.</strong></p>
             </div>
         </div>
 
         <!-- Panel Debate Introduction -->
         <h3 class="mt-5 mb-4">Afternoon Panel Debate:<br>
-            <br>
-            <center>
-            <b>"Net-Zero Building Standards: Where is Health and Wellbeing?"</b></center>
+            <em>"Net-Zero Building Standards: Where is Health and Wellbeing?"</em>
         </h3>
 
         <!-- Jon Bootland -->
@@ -138,6 +186,7 @@
             </div>
             <div class="col-md-9">
                 <h4>Jon Bootland</h4>
+                <p class="text-muted">Chief Executive, Passivhaus Trust</p>
                 <p>Jon Bootland is Chief Executive of the Passivhaus Trust, the UK's official advocate for Passivhaus standards, and Director of the Sustainable Development Foundation. With over 20 years' experience championing sustainability in the built environment, Jon has established and supported numerous influential networks such as the Good Homes Alliance, SHINE, the Sustainable Traditional Buildings Alliance, and the Alliance for Sustainable Building Products.</p>
             </div>
         </div>
@@ -149,6 +198,7 @@
             </div>
             <div class="col-md-9">
                 <h4>Julie Godefroy</h4>
+                <p class="text-muted">Head of Sustainability, CIBSE</p>
                 <p>Julie Godefroy is a Chartered Engineer and the Head of Sustainability at CIBSE, leading key initiatives including the Net Zero Carbon Building Standard. Julie also works independently as a sustainability consultant specializing in building performance evaluation, climate resilience, and retrofit strategies. She actively contributes to heritage sustainability discussions as a member of the National Trust Historic Environment Group.</p>
             </div>
         </div>
@@ -158,46 +208,163 @@
     </div>
 </section>
 
-<!-- Schedule Section -->
-<section id="schedule" class="section">
+<!-- Program Section -->
+<section id="program" class="section bg-light">
     <div class="container">
-        <h2 class="section-title">Schedule</h2>
-        <p>Full conference schedule coming soon, including a special afternoon debate session on <strong>"Net Zero Building Standards: Where is Health and Wellbeing?"</strong> moderated by Jon Bootland and Julie Godefroy (CIBSE).</p>
+        <h2 class="section-title">Preliminary Conference Program</h2>
+        <p>The full detailed program will be published closer to the event date. Below is the general outline for the day:</p>
+        
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Thursday, 19 June 2025</h5>
+                        
+                        <div class="program-item">
+                            <strong>9:00 - 9:30</strong> | Registration & Coffee
+                        </div>
+                        
+                        <div class="program-item">
+                            <strong>9:30 - 10:30</strong> | Morning Keynote Address by Prof. Catherine Noakes
+                        </div>
+                        
+                        <div class="program-item">
+                            <strong>10:30 - 12:30</strong> | Oral Presentations (selected from abstract submissions)
+                        </div>
+                        
+                        <div class="program-item">
+                            <strong>12:30 - 13:30</strong> | Lunch & Poster Session
+                        </div>
+                        
+                        <div class="program-item">
+                            <strong>13:30 - 14:30</strong> | UKIEG Annual General Meeting
+                        </div>
+                        
+                        <div class="program-item">
+                            <strong>14:30 - 16:00</strong> | Panel Debate: "Net-Zero Building Standards: Where is Health and Wellbeing?"<br>
+                            <em>Featuring Jon Bootland and Julie Godefroy</em>
+                        </div>
+                        
+                        <div class="program-item">
+                            <strong>16:00 - 16:30</strong> | Coffee Break
+                        </div>
+                        
+                        <div class="program-item">
+                            <strong>16:30 - 17:30</strong> | Closing Session & Awards
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center"><em>The detailed program will be finalised after the abstract submission deadline.</em></p>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- Venue Section -->
-<section id="venue" class="section bg-light">
+<section id="venue" class="section">
     <div class="container">
         <h2 class="section-title">Venue</h2>
-        <p><strong>Maurice Keyworth Building (Room G.02)</strong><br>University of Leeds, Leeds LS2 9JT, UK</p>
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Maurice Keyworth Building (Room G.02)</strong><br>University of Leeds, Leeds LS2 9JT, UK</p>
+                <p>The venue is located on the main University of Leeds campus, easily accessible from Leeds city center by bus (56, bustop Moorland Road) or taxi.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="ratio ratio-16x9">
+                    <!-- Replace with actual map embed code when available -->
+                    <img src="/img/mockup/LUBS.png" alt="Map of venue location" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- Registration Section -->
-<section id="registration" class="section">
+<section id="registration" class="section bg-light">
     <div class="container">
         <h2 class="section-title">Registration</h2>
-        <p>Registration will open soon...</p>
-<!--        <a href="#" class="btn btn-primary">Register Here</a> -->
+        <p>Registration will open shortly.</p>
+        
+        <div class="price-table">
+            <div class="price-header">
+                <h4>Registration Fees</h4>
+            </div>
+            <div class="price-row d-flex justify-content-between">
+                <span>PhD student (some registration waivers are aviable)</span>
+                <strong>£50</strong>
+            </div>
+            <div class="price-row d-flex justify-content-between">
+                <span>UKIEG member</span>
+                <strong>£70</strong>
+            </div>
+            <div class="price-row d-flex justify-content-between">
+                <span>University of Leeds staff</span>
+                <strong>£70</strong>
+            </div>
+            <div class="price-row d-flex justify-content-between">
+                <span>Regular</span>
+                <strong>£100</strong>
+            </div>
+            <div class="price-row d-flex justify-content-between">
+                <span>Industry sponsorship</span>
+                <strong>£200</strong>
+            </div>
+        </div>
+        
+        <p><em>For industry sponsorship inquiries, please contact Healthy Buildings Network at <a href="mailto:healthy_buildings_network@leeds.ac.uk">healthy_buildings_network@leeds.ac.uk</a></em></p>
+        <!--    
+        <div class="mt-4">
+            <a href="https://registration-link.com" class="btn btn-primary btn-lg" target="_blank">Register Here</a>
+        </div>
+        -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Industry Exhibition Stands</h5>
+                <p class="card-text">We offer opportunities for industry partners to showcase their products and services related to indoor environmental quality, building technologies, and sustainable design. In the price we include 2 x tickets. Limited exhibition space is available.</p>
+                <p class="card-text">For information about booking an exhibition stand, please contact us at <a href="mailto:healthy_buildings_network@leeds.ac.uk">healthy_buildings_network@leeds.ac.uk</a></p>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- Abstract Submission Section -->
-<section id="submission" class="section bg-light">
+<section id="submission" class="section">
     <div class="container">
         <h2 class="section-title">Abstract Submission</h2>
-        <p>Submit your abstracts for oral presentations or posters by <strong>14 April 2025</strong>.</p>
-        <a href="https://forms.office.com/e/s9VL0nABgL" class="btn btn-primary">Submit Abstract</a>
+        <p>Submit your abstracts for oral presentations or posters by <strong>14 April 2025</strong>. Authors will be notified of acceptance by the end of April 2025.</p>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Submission Guidelines</h5>
+                <ul>
+                    <li>Abstracts should be 300 words</li>
+                    <li>Topics could relate to the conference theme: "The Impact of Net Zero on Health and the Environment", but others are also welcome.</li>
+                    <li>Please indicate your preference for oral or poster presentation</li>
+                    <li>Selected abstracts will be invited for publication in a special issue.</li>
+                    <li>A few registration wavers are available to PhD students who can demonstrate how the conference would be beneficial to their career with a focus on equality, diversity and inclusivity.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <a href="https://forms.office.com/e/s9VL0nABgL" class="btn btn-primary btn-lg" target="_blank">Submit Abstract</a>
     </div>
 </section>
 
 <!-- Contact Section -->
-<section id="contact" class="section">
+<section id="contact" class="section bg-light">
     <div class="container">
         <h2 class="section-title">Contact</h2>
-        <p>For questions or further information:</p>
-        <p>Email: <a href="mailto:healthy_buildings_network@leeds.ac.uk">healthy_buildings_network@leeds.ac.uk</a><br>Phone: +44 (0)113 343 1957</p>
+        <div class="row">
+            <div class="col-md-6">
+                <h5>For general inquiries:</h5>
+                <p>Email: <a href="mailto:healthy_buildings_network@leeds.ac.uk">healthy_buildings_network@leeds.ac.uk</a><br>
+                Phone: +44 (0)113 343 1957</p>
+            </div>
+            <div class="col-md-6">
+                <h5>For registration support:</h5>
+                <p>Email: <a href="mailto:ukieg2025@leeds.ac.uk">ukieg2025@leeds.ac.uk</a></p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -213,4 +380,3 @@
 
 </body>
 </html>
-
