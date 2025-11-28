@@ -212,7 +212,7 @@
         }
 
         .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); }
-        .project-card img { width: 100%; height: 200px; object-fit: cover; }
+        .project-card img { width: 100%; height: auto; object-fit: contain; background: var(--color-highlight); }
         .project-card .project-content { padding: 1.5rem; }
         .project-card h3 { margin-top: 0; }
         .project-card p { font-size: 0.95rem; color: var(--color-text-light); }
@@ -248,7 +248,7 @@
         }
 
         .publication-item:last-child { border-bottom: none; }
-        .publication-item img { width: 120px; height: 90px; object-fit: cover; border-radius: 4px; background: var(--color-highlight); }
+        .publication-item img { width: 120px; height: auto; object-fit: contain; border-radius: 4px; background: var(--color-highlight); }
         .publication-item .pub-content h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
         .publication-item .pub-content h3 a { text-decoration: none; }
         .publication-item .pub-content h3 a:hover { text-decoration: underline; }
@@ -311,7 +311,7 @@
             .social-links { justify-content: center; }
             .hero-text h1 { font-size: 2.2rem; }
             .publication-item { grid-template-columns: 1fr; }
-            .publication-item img { width: 100%; height: 160px; }
+            .publication-item img { width: 100%; height: auto; }
             .teaching-content { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
         }
@@ -330,7 +330,7 @@
                 <li><a href="#group">Group</a></li>
                 <li><a href="#teaching">Teaching</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="CV_MLopezGarcia.pdf">CV</a></li>
+                <!-- <li><a href="CV_MLopezGarcia.pdf">CV</a></li> -->
             </ul>
         </div>
     </nav>
@@ -595,7 +595,7 @@
                     <div class="team-member">
 <!--                        <img src="img/team/academic1.jpg" alt="Academic staff"> -->
                         <h4>Dr Francesca Scarabel</h4>
-                        <p class="role">Lecturer</span></p>
+                        <p class="role">Lecturer</p>
                         <p class="topic">Mathematical Epidemiology</p>
                     </div>
                     <div class="team-member">
@@ -644,7 +644,7 @@
 <!--                        <img src="img/team/academic1.jpg" alt="Academic staff"> -->
                         <h4>Xiaoxuan Qin</h4>
                         <p class="role">PhD Student (2022–)</p>
-                        <p class="topic"><span class="placeholder">Quantiative Microbial Risk Assessment techniques for fomite transmission</span></p>
+                        <p class="topic"><span class="placeholder">Quantitative Microbial Risk Assessment techniques for fomite transmission</span></p>
                     </div>
                     <div class="team-member">
 <!--                        <img src="img/team/academic1.jpg" alt="Academic staff"> -->
@@ -726,7 +726,7 @@
             <div style="margin-top: 2rem;">
                 <h3>PhD Supervision</h3>
                 <p>
-                    In our group, we have supervised numerour PhD students in the past in collaboration 
+                    In our group, we have supervised numerous PhD students in the past in collaboration 
                     with external partners including Dstl, UKHSA, AstraZeneca, and the NHS. I welcome enquiries from 
                     prospective PhD students interested in mathematical biology, stochastic modelling, mathematical epidemiology, immunology and Quantitative Microbial Risk Assessment. 
                     See the <a href="#group">Research Group</a> section for current students and ongoing projects. Please <a href="#contact">get in touch</a> to discuss opportunities.
@@ -773,3 +773,4 @@
     </script>
 </body>
 </html>
+    
