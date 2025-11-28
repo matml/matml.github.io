@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martín López-García | Professor of Mathematical Biology</title>
+    <meta name="description" content="Professor of Mathematical Biology at the University of Leeds. Research in mathematical epidemiology, immunology, and stochastic modelling.">
+    <meta name="author" content="Martín López-García">
+    <meta name="keywords" content="Martin Lopez-Garcia, Mathematical Biology, Epidemiology, Stochastic Modelling, University of Leeds">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Academicons & Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-bg-alt: #ffffff;
+            --color-text: #2d3748;
+            --color-text-light: #64748b;
+            --color-accent: #1e3a5f;
+            --color-accent-light: #2d5a87;
+            --color-border: #e2e8f0;
+            --color-highlight: #f0f4f8;
+            --font-serif: 'Source Serif 4', Georgia, serif;
+            --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            --max-width: 1100px;
+            --spacing-unit: 1rem;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            padding: 0 var(--spacing-unit);
+        }
+
+        nav .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        nav .nav-name {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover { color: var(--color-accent); }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text);
+        }
+
+        /* Sections */
+        section { padding: 5rem var(--spacing-unit); }
+        .container { max-width: var(--max-width); margin: 0 auto; }
+
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            color: var(--color-accent);
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent);
+            display: inline-block;
+        }
+
+        h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1rem; }
+
+        a {
+            color: var(--color-accent-light);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            transition: color 0.2s ease;
+        }
+
+        a:hover { color: var(--color-accent); }
+
+        /* Hero Section */
+        #hero {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            background: linear-gradient(180deg, var(--color-highlight) 0%, var(--color-bg) 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .hero-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-text h1 { font-size: 2.8rem; margin-bottom: 0.5rem; color: var(--color-accent); }
+        .hero-text .title { font-size: 1.25rem; color: var(--color-text-light); margin-bottom: 0.25rem; }
+        .hero-text .affiliation { font-size: 1.1rem; color: var(--color-text-light); margin-bottom: 1.5rem; }
+        .hero-text .intro { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; }
+
+        .social-links { display: flex; gap: 1rem; margin-top: 1.5rem; }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover { background: var(--color-accent-light); transform: translateY(-2px); }
+
+        /* About Section */
+        #about { background: var(--color-bg-alt); }
+
+        .research-interests { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+
+        .interest-tag {
+            background: var(--color-highlight);
+            color: var(--color-accent);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--color-bg-alt);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); }
+        .project-card img { width: 100%; height: 200px; object-fit: cover; }
+        .project-card .project-content { padding: 1.5rem; }
+        .project-card h3 { margin-top: 0; }
+        .project-card p { font-size: 0.95rem; color: var(--color-text-light); }
+        .project-card .funding { font-size: 0.85rem; color: var(--color-accent); font-weight: 500; margin-top: 0.5rem; margin-bottom: 0.25rem; }
+
+        /* Publications Section */
+        #publications { background: var(--color-bg-alt); }
+        .publications-intro { margin-bottom: 2rem; }
+
+        .scholar-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--color-accent);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .scholar-link:hover { background: var(--color-accent-light); color: white; }
+        .publication-list { margin-top: 2.5rem; }
+
+        .publication-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .publication-item:last-child { border-bottom: none; }
+        .publication-item img { width: 120px; height: 90px; object-fit: cover; border-radius: 4px; background: var(--color-highlight); }
+        .publication-item .pub-content h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .publication-item .pub-content h3 a { text-decoration: none; }
+        .publication-item .pub-content h3 a:hover { text-decoration: underline; }
+        .publication-item .authors { font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.25rem; }
+        .publication-item .venue { font-size: 0.9rem; font-style: italic; color: var(--color-text-light); }
+        .publication-item .summary { font-size: 0.9rem; margin-top: 0.5rem; color: var(--color-text); }
+
+        /* Group Section */
+        .group-section { margin-bottom: 3rem; }
+        .group-section:last-child { margin-bottom: 0; }
+        .group-section h3 { font-size: 1.4rem; margin-bottom: 1.5rem; color: var(--color-accent); }
+
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+        .team-member { text-align: center; }
+        .team-member img { width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); }
+        .team-member h4 { font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 0.25rem; color: var(--color-text); }
+        .team-member .role { font-size: 0.85rem; color: var(--color-text-light); margin-bottom: 0.25rem; }
+        .team-member .topic { font-size: 0.85rem; color: var(--color-accent); }
+
+        /* Alumni Table */
+        .alumni-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        .alumni-table th, .alumni-table td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-border); }
+        .alumni-table th { font-weight: 600; color: var(--color-accent); background: var(--color-highlight); }
+        .alumni-table tr:last-child td { border-bottom: none; }
+
+        /* Teaching Section */
+        #teaching { background: var(--color-bg-alt); }
+        .teaching-content { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .teaching-category h3 { margin-bottom: 1rem; }
+        .teaching-category ul { list-style: none; padding: 0; }
+        .teaching-category li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+        .teaching-category li::before { content: "→"; position: absolute; left: 0; color: var(--color-accent); }
+
+        /* Contact Section */
+        #contact { background: var(--color-accent); color: white; }
+        #contact h2 { color: white; border-bottom-color: rgba(255, 255, 255, 0.3); }
+        #contact a { color: white; }
+
+        .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+        .contact-item h3 { color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        .contact-item p { font-size: 1.1rem; margin: 0; }
+        .contact-cta { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+        .contact-cta p { font-size: 1.1rem; opacity: 0.9; }
+
+        /* Footer */
+        footer { background: var(--color-text); color: rgba(255, 255, 255, 0.6); text-align: center; padding: 2rem var(--spacing-unit); font-size: 0.9rem; }
+
+        /* Placeholder */
+        .placeholder { background: var(--color-highlight); color: var(--color-text-light); padding: 0.25rem 0.5rem; border-radius: 4px; font-style: italic; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul { display: none; position: absolute; top: 64px; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; gap: 0; border-bottom: 1px solid var(--color-border); }
+            nav ul.active { display: flex; }
+            nav ul li { padding: 0.75rem 0; border-bottom: 1px solid var(--color-border); }
+            nav ul li:last-child { border-bottom: none; }
+            .nav-toggle { display: block; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-photo { width: 200px; margin: 0 auto; }
+            .social-links { justify-content: center; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .publication-item { grid-template-columns: 1fr; }
+            .publication-item img { width: 100%; height: 160px; }
+            .teaching-content { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#hero" class="nav-name">M. López-García</a>
+            <button class="nav-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#group">Group</a></li>
+                <li><a href="#teaching">Teaching</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="CV_MLopezGarcia.pdf">CV</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="img/mockup/lopezgarcia.jpg" alt="Martín López-García" class="hero-photo">
+                <div class="hero-text">
+                    <h1>Martín López-García</h1>
+                    <p class="title">Professor of Mathematical Biology</p>
+                    <p class="affiliation">Department of Applied Mathematics, School of Mathematics<br>University of Leeds</p>
+                    <p class="intro">
+                        I develop mathematical and computational models to understand the dynamics of infectious diseases, 
+                        immune responses, and healthcare-associated infections. My work combines stochastic modelling, 
+                        probability theory, and data analysis to address real-world health challenges — from understanding 
+                        how pathogens spread in hospitals to informing pandemic response policy.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://scholar.google.com/citations?user=zqaTyfsAAAAJ" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+                        <a href="https://orcid.org/0000-0003-3833-8595" title="ORCID"><i class="ai ai-orcid"></i></a>
+                        <a href="https://www.researchgate.net/profile/Martin_Lopez-Garcia2" title="ResearchGate"><i class="ai ai-researchgate"></i></a>
+                        <a href="mailto:M.LopezGarcia@leeds.ac.uk" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About</h2>
+            <p>
+                I am a Professor of Mathematical Biology in the <a href="https://eps.leeds.ac.uk/maths">School of Mathematics</a> 
+                at the University of Leeds, and a member of the 
+                <a href="http://www1.maths.leeds.ac.uk/school/research/mathbiomed/">Mathematical Biology and Medicine Group</a>.
+                I co-lead the Mathematical Immunology group at Leeds with Prof Grant Lythe.
+            </p>
+            <p>
+                My research focuses on the mathematical modelling of infection across scales — from intracellular and within-host 
+                dynamics to population-level epidemic processes. I am particularly interested in developing stochastic models 
+                that can capture the inherent randomness in biological systems and incorporate realistic environmental conditions 
+                and human behaviour. This work has direct applications in infection control, pandemic preparedness, and public health policy.
+            </p>
+            <p>
+                I have extensive experience collaborating with non-academic partners including the Defence Science and Technology 
+                Laboratory (Dstl), UK Health Security Agency (UKHSA), NHS, and the Department for Transport. During the COVID-19 
+                pandemic, my research contributed to SAGE evidence reports and directly informed government policy on transmission 
+                risk in public transport and healthcare settings.
+            </p>
+            <p>
+                Previously, I held an MRC Skills Development Fellowship (2016–2019), where I developed stochastic models 
+                for understanding the emergence and spread of antibiotic-resistant bacteria in healthcare settings. 
+                I received my PhD in Mathematics from the Complutense University of Madrid (2013), where I remain affiliated 
+                with the <a href="http://www.mat.ucm.es/smg/group.html">Stochastic Modelling Group</a>.
+            </p>
+
+            <h3 style="margin-top: 2rem;">Research Interests</h3>
+            <div class="research-interests">
+                <span class="interest-tag">Mathematical Epidemiology</span>
+                <span class="interest-tag">Stochastic Modelling</span>
+                <span class="interest-tag">Within-host Infection Dynamics</span>
+                <span class="interest-tag">Healthcare-associated Infections</span>
+                <span class="interest-tag">Mathematical Immunology</span>
+                <span class="interest-tag">Airborne Transmission</span>
+                <span class="interest-tag">Quantitative Microbial Risk Assessment</span>
+                <span class="interest-tag">Multi-scale Modelling</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Projects Section -->
+    <section id="research">
+        <div class="container">
+            <h2>Research</h2>
+            <p>
+                My research combines mathematical modelling with experimental and clinical data to address 
+                challenges in infection, immunity, and public health. Below are some current and recent projects.
+            </p>
+
+            <div class="projects-grid">
+                <!-- PROJECT 1: EEID Bunyaviruses -->
+                <div class="project-card">
+                    <img src="img/projects/cchfv.jpg" alt="CCHFV Project">
+                    <div class="project-content">
+                        <h3>Modelling Emerging Bunyaviruses (CCHFV)</h3>
+                        <p>
+                            Developing mathematical models of Crimean-Congo Haemorrhagic Fever at multiple scales — 
+                            from viral reassortment at the cellular level to hospital transmission and phylogenetic analysis. 
+                            This US-UK collaboration combines modelling with experimental virology and clinical data from 
+                            endemic regions.
+                        </p>
+                        <p class="funding">Funded by: BBSRC-NSF EEID (£2.42M at Leeds)</p>
+                        <p class="funding">Collaborators: Prof Grant Lythe, Prof John Barr</p>
+                        <p class="funding">Partners: Los Alamos National Laboratory, UKHSA, clinical partners in Turkey &amp; Tajikistan</p>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2: EPICVIR -->
+                <div class="project-card">
+                    <img src="img/projects/epicvir.jpg" alt="EPICVIR Project">
+                    <div class="project-content">
+                        <h3>EPICVIR: Emerging Porcine Influenza and Coronaviruses</h3>
+                        <p>
+                            Mathematical modelling of emerging porcine respiratory viruses as part of a European consortium. 
+                            Developing within-host models calibrated to experimental infection data to understand viral dynamics 
+                            and inform control strategies.
+                        </p>
+                        <p class="funding">Funded by: BBSRC (European ICRAD Consortium, £145K at Leeds)</p>
+                        <p class="funding">Collaborators: Prof Grant Lythe</p>
+                        <p class="funding">Partners: Pirbright Institute, Utrecht University, Ghent University, CIB Madrid</p>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3: Healthy Buildings Network -->
+                <div class="project-card">
+                    <img src="img/projects/healthy-buildings.jpg" alt="Healthy Buildings">
+                    <div class="project-content">
+                        <h3>Healthy Buildings Network</h3>
+                        <p>
+                            Co-leading a University of Leeds Horizons Institute Challenge Network bringing together researchers 
+                            across engineering, mathematics, medicine, and architecture to address the impact of indoor environments 
+                            on health, particularly in the context of net zero and climate change.
+                        </p>
+                        <p class="funding">Funded by: University of Leeds Horizons Institute (£100K)</p>
+                        <p class="funding">Collaborators: Dr Marco-Felipe King, Dr Irene Mussio</p>
+                        <p class="funding">Partners: University of Leeds (cross-faculty)</p>
+                    </div>
+                </div>
+
+                <!-- PROJECT 4: Multi-scale Anthrax Modelling -->
+                <div class="project-card">
+                    <img src="img/projects/anthrax.jpg" alt="Anthrax Modelling">
+                    <div class="project-content">
+                        <h3>Multi-scale Modelling of Anthrax Infection</h3>
+                        <p>
+                            Developing stochastic multi-scale models linking intracellular bacterial dynamics, 
+                            within-host infection progression, and population-level risk assessment. This work 
+                            has enhanced computational decision-making capabilities for biodefence applications.
+                        </p>
+                        <p class="funding">Funded by: EPSRC CASE Studentships &amp; IAA (with Dstl)</p>
+                        <p class="funding">Collaborators: Prof Grant Lythe, Dr Joseph Gillard (Dstl)</p>
+                        <p class="funding">Partners: Defence Science and Technology Laboratory (Dstl)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="container">
+            <h2>Publications</h2>
+            <div class="publications-intro">
+                <p>
+                    I have published 60+ peer-reviewed articles in mathematical biology, epidemiology, and stochastic processes. 
+                    Below are selected recent highlights. For a complete list, see my Google Scholar profile.
+                </p>
+                <a href="https://scholar.google.com/citations?user=zqaTyfsAAAAJ" class="scholar-link">
+                    <i class="ai ai-google-scholar"></i> View all publications on Google Scholar
+                </a>
+            </div>
+
+            <div class="publication-list">
+                <h3 style="margin-top: 2rem; margin-bottom: 1.5rem;">Selected Highlights</h3>
+
+                <div class="publication-item">
+                    <img src="img/publications/pub1.jpg" alt="Publication figure">
+                    <div class="pub-content">
+                        <h3><a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2023.0400">The reproduction number and its probability distribution for stochastic viral dynamics</a></h3>
+                        <p class="authors">Williams B, Carruthers J, Gillard JJ, Lythe G, Perelson AS, Ribeiro RM, Molina-París C, <strong>López-García M</strong></p>
+                        <p class="venue">Journal of the Royal Society Interface, 2024</p>
+                        <p class="summary">Novel stochastic methodology to estimate the reproduction number in viral kinetics models, developed in collaboration with Los Alamos National Laboratory.</p>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <img src="img/publications/pub2.jpg" alt="Publication figure">
+                    <div class="pub-content">
+                        <h3><a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/risa.14295">The Wells-Riley model revisited: randomness, heterogeneity and transient behaviours</a></h3>
+                        <p class="authors">Edwards AJ, King M-F, Noakes CJ, Peckham D, <strong>López-García M</strong></p>
+                        <p class="venue">Risk Analysis, 2024</p>
+                        <p class="summary">Extending classical airborne transmission models to incorporate stochastic effects and realistic transient behaviours.</p>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <img src="img/publications/pub3.jpg" alt="Publication figure">
+                    <div class="pub-content">
+                        <h3><a href="https://www.nature.com/articles/s41598-024-63500-2">Stochastic journeys of cell progenies through compartments</a></h3>
+                        <p class="authors">Dreiwi H, Feliciangeli F, Castro Ponce M, Lythe G, Molina-París C, <strong>López-García M</strong></p>
+                        <p class="venue">Scientific Reports, 2024</p>
+                        <p class="summary">Mathematical framework for understanding how cell populations are maintained through self-renewal and differentiation.</p>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <img src="img/publications/pub4.jpg" alt="Publication figure">
+                    <div class="pub-content">
+                        <h3><a href="https://www.sciencedirect.com/science/article/pii/S2214140524000756">A quantitative microbial risk assessment approach to estimate exposure to SARS-CoV-2 on a bus</a></h3>
+                        <p class="authors">Bate AM, Miller D, King M-F, Moseley K-A, Xu J, Hall I, <strong>López-García M</strong>, Parker ST, Noakes CJ</p>
+                        <p class="venue">Journal of Transport and Health, 2024</p>
+                        <p class="summary">Part of the TRACK project that provided key evidence to the Department for Transport during the COVID-19 pandemic.</p>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <img src="img/publications/pub5.jpg" alt="Publication figure">
+                    <div class="pub-content">
+                        <h3><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007752">Stochastic dynamics of Francisella tularensis infection and replication</a></h3>
+                        <p class="authors">Carruthers J, Lythe G, <strong>López-García M</strong>, Gillard JJ, Laws TR, Lukaszewski R, Molina-París C</p>
+                        <p class="venue">PLoS Computational Biology, 2020</p>
+                        <p class="summary">Multi-scale stochastic model linking intracellular bacterial dynamics to within-host infection, developed with Dstl.</p>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <img src="img/publications/pub6.jpg" alt="Publication figure">
+                    <div class="pub-content">
+                        <h3><a href="https://elifesciences.org/articles/66014">Competitive binding of STATs to receptor phospho-Tyr motifs accounts for altered cytokine responses</a></h3>
+                        <p class="authors">Wilmes S, Jeffrey P-A, Martinez-Fabregas J, ... <strong>López-García M</strong>, Lythe G, ... Moraga Gonzalez I</p>
+                        <p class="venue">eLife, 2021</p>
+                        <p class="summary">Interdisciplinary work combining mathematical modelling with experimental immunology to understand cytokine signalling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Group Section -->
+    <section id="group">
+        <div class="container">
+            <h2>Research Group</h2>
+
+            <div class="group-section">
+                <h3>Academic Staff</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="img/team/academic1.jpg" alt="Academic staff">
+                        <h4><span class="placeholder">[Name]</span></h4>
+                        <p class="role"><span class="placeholder">[Title/Position]</span></p>
+                        <p class="topic"><span class="placeholder">[Research area]</span></p>
+                    </div>
+                    <div class="team-member">
+                        <img src="img/team/academic2.jpg" alt="Academic staff">
+                        <h4><span class="placeholder">[Name]</span></h4>
+                        <p class="role"><span class="placeholder">[Title/Position]</span></p>
+                        <p class="topic"><span class="placeholder">[Research area]</span></p>
+                    </div>
+                    <div class="team-member">
+                        <img src="img/team/academic3.jpg" alt="Academic staff">
+                        <h4><span class="placeholder">[Name]</span></h4>
+                        <p class="role"><span class="placeholder">[Title/Position]</span></p>
+                        <p class="topic"><span class="placeholder">[Research area]</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group-section">
+                <h3>Postdoctoral Researchers</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="img/team/postdoc1.jpg" alt="Dr Bevelynn Williams">
+                        <h4>Dr Bevelynn Williams</h4>
+                        <p class="role">Postdoctoral Research Fellow</p>
+                        <p class="topic">CCHFV transmission modelling</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="img/team/postdoc2.jpg" alt="Dr Paula Avello">
+                        <h4>Dr Paula Avello</h4>
+                        <p class="role">Postdoctoral Research Fellow</p>
+                        <p class="topic">EPICVIR: Porcine virus modelling</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group-section">
+                <h3>PhD Students</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="img/team/phd1.jpg" alt="Anna Hayward">
+                        <h4>Anna Hayward</h4>
+                        <p class="role">PhD Student (2024–)</p>
+                        <p class="topic"><span class="placeholder">[Thesis topic]</span></p>
+                    </div>
+                    <div class="team-member">
+                        <img src="img/team/phd2.jpg" alt="Marcus Marshall">
+                        <h4>Marcus Marshall</h4>
+                        <p class="role">PhD Student (2022–)</p>
+                        <p class="topic"><span class="placeholder">[Thesis topic]</span></p>
+                    </div>
+                    <div class="team-member">
+                        <img src="img/team/phd3.jpg" alt="Xiaoxuan Qin">
+                        <h4>Xiaoxuan Qin</h4>
+                        <p class="role">PhD Student (2022–)</p>
+                        <p class="topic"><span class="placeholder">[Thesis topic]</span></p>
+                    </div>
+                    <div class="team-member">
+                        <img src="img/team/phd4.jpg" alt="Danny Blundell">
+                        <h4>Danny Blundell</h4>
+                        <p class="role">PhD Student (2022–)</p>
+                        <p class="topic"><span class="placeholder">[Thesis topic]</span></p>
+                    </div>
+                    <div class="team-member">
+                        <img src="img/team/phd5.jpg" alt="Ciara Higham">
+                        <h4>Ciara Higham</h4>
+                        <p class="role">PhD Student (2020–)</p>
+                        <p class="topic">QMRA and airborne transmission</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="img/team/phd6.jpg" alt="Adam Aldridge">
+                        <h4>Adam Aldridge</h4>
+                        <p class="role">PhD Student (2020–)</p>
+                        <p class="topic"><span class="placeholder">[Thesis topic]</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group-section">
+                <h3>Alumni</h3>
+                <p>Former group members and their current positions:</p>
+                <table class="alumni-table">
+                    <thead>
+                        <tr><th>Name</th><th>Role</th><th>Years</th><th>Current Position</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Dr Alexander Edwards</td><td>PhD</td><td>2020–2024</td><td>Lecturer, University of Bristol</td></tr>
+                        <tr><td>Dr James Paterson</td><td>PhD</td><td>2019–2024</td><td><span class="placeholder">[Current position]</span></td></tr>
+                        <tr><td>Dr Macauley Locke</td><td>PhD</td><td>2019–2023</td><td>PDRA, Los Alamos National Laboratory (USA)</td></tr>
+                        <tr><td>Dr Giulia Belluccini</td><td>PhD</td><td>2019–2022</td><td>PDRA, Los Alamos National Laboratory (USA)</td></tr>
+                        <tr><td>Dr Daniel Luque Duque</td><td>PhD</td><td>2018–2022</td><td>PDRA, University of Oxford</td></tr>
+                        <tr><td>Dr Polly-Anne Jeffrey</td><td>PhD / PDRA</td><td>2017–2022</td><td>Senior Cancer Data Analyst, NHS Digital</td></tr>
+                        <tr><td>Dr Flavia Feliciangeli</td><td>PhD</td><td>2019–2023</td><td>Data Scientist (biotech)</td></tr>
+                        <tr><td>Dr Lea Sta</td><td>PhD</td><td>2019–2022</td><td>Data Scientist (biotech)</td></tr>
+                        <tr><td>Dr Maria Nowicka</td><td>PhD</td><td>2012–2018</td><td>PDRA, University of Oxford</td></tr>
+                        <tr><td>Dr Luis de la Higuera</td><td>PhD</td><td>2013–2018</td><td>Data Scientist (industry)</td></tr>
+                        <tr><td>Dr Hanan Dreiwi</td><td>Daphne Jackson Fellow</td><td>2019–2023</td><td>Teaching Assistant, University of Huddersfield</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Section -->
+    <section id="teaching">
+        <div class="container">
+            <h2>Teaching</h2>
+            <p>
+                I teach modules in applied mathematics, probability, and mathematical biology at undergraduate and 
+                postgraduate levels at the University of Leeds. My teaching is research-led, drawing on our group's 
+                work in infection modelling and stochastic processes.
+            </p>
+
+            <div class="teaching-content">
+                <div class="teaching-category">
+                    <h3>Current Teaching</h3>
+                    <ul>
+                        <li>MATH3565: Mathematical Biology (Module co-leader)</li>
+                        <li>MATH5566M: Advanced Mathematical Biology (Module co-leader)</li>
+                        <li>MATH3001: Project in Mathematics (Supervisor)</li>
+                        <li>MEDM5221M: Cancer Biology and Molecular Oncology (Guest lecturer)</li>
+                    </ul>
+                </div>
+                <div class="teaching-category">
+                    <h3>Past Teaching</h3>
+                    <ul>
+                        <li>MATH5315M: Applied Statistics and Probability (2016–2020)</li>
+                        <li>MATH1712: Probability and Statistics II (Tutor)</li>
+                        <li>Stochastic Processes — MSc Statistics, Mozambique &amp; El Salvador</li>
+                        <li>MSc in Pandemics, Public Health and COVID-19 (Madrid, Spain)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3>PhD Supervision</h3>
+                <p>
+                    I have supervised or co-supervised 19 PhD students (13 completed, 6 ongoing), many in collaboration 
+                    with external partners including Dstl, UKHSA, AstraZeneca, and the NHS. I welcome enquiries from 
+                    prospective PhD students interested in mathematical biology, stochastic modelling, and epidemiology. 
+                    See the <a href="#group">Research Group</a> section for current students and projects. 
+                    Please <a href="#contact">get in touch</a> to discuss opportunities.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>Office</h3>
+                    <p>Room 10.18d<br>School of Mathematics<br>University of Leeds<br>Leeds LS2 9JT, UK</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p><a href="mailto:M.LopezGarcia@leeds.ac.uk">M.LopezGarcia@leeds.ac.uk</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <p>+44 (0)113 343 8951</p>
+                </div>
+            </div>
+            <div class="contact-cta">
+                <p>Interested in collaborating or pursuing a PhD in mathematical biology? I'd be happy to hear from you.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Martín López-García · University of Leeds</p>
+    </footer>
+
+    <script>
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+        document.querySelectorAll('nav ul a').forEach(link => {
+            link.addEventListener('click', () => { document.querySelector('nav ul').classList.remove('active'); });
+        });
+    </script>
+</body>
+</html>
