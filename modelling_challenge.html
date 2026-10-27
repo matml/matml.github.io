@@ -84,10 +84,17 @@
   /* Start screen */
   #start {
     position: fixed; inset: 0; background: var(--bg); z-index: 10;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4vh;
-    text-align: center; padding: 16px;
+    display: flex; flex-direction: column; align-items: center; justify-content: safe center; gap: 3vh;
+    text-align: center; padding: 16px; overflow-y: auto;
   }
-  #start h1 { margin: 0; font-size: clamp(32px, 5.5vw, 88px); }
+  #start h1 { margin: 0; font-size: clamp(30px, 4.5vw, 76px); }
+  #rules {
+    margin: 0; padding-left: 1.6em; text-align: left; max-width: 46em;
+    font-size: clamp(15px, 1.75vw, 30px); line-height: 1.35;
+  }
+  #rules li { margin: 0.45em 0; padding-left: 0.3em; }
+  #rules li::marker { color: var(--main); font-weight: 700; }
+  #rules .email { color: var(--warn); font-weight: 700; white-space: nowrap; }
   #start p { margin: 0; color: var(--muted); font-size: clamp(16px, 2vw, 32px); max-width: 34em; }
   #start button {
     font: inherit; font-weight: 700; font-size: clamp(26px, 3.5vw, 56px);
@@ -131,6 +138,14 @@ const CONFIG = {
   email: "m.lopezgarcia@leeds.ac.uk",   // where teams send their work
   bannerSeconds: 15,                       // how long each announcement fills the screen
   revealUpcoming: false,                   // true = show future events on the progress bar
+  // Shown on the start screen. {email} is replaced by the address above.
+  rules: [
+    "<b>The rules may change</b> during the challenge. Watch the screen and follow each new rule straight away.",
+    "At 30:00, <b>email your work</b> to {email}, with everyone's names. A PDF, slides or even one figure is fine.",
+    "<b>Done beats perfect.</b> Get a rough answer early, then improve it.",
+    "<b>Everyone</b> in the team should be able to explain your model.",
+    "<b>AI is a teammate, not an oracle.</b> You may use it (unless the screen says otherwise), but check everything it gives you, and be ready to explain why it's right.",
+  ],
   // at: minutes from the start. ai: true/false. team: "together"/"split".
   // kind sets the colour: go, stop, ok, warn, end. sound: chime, alarm, soft, end.
   events: [
@@ -184,6 +199,7 @@ const CONFIG = {
 <div id="start">
   <h1 id="startTitle"></h1>
   <p id="startText"></p>
+  <ol id="rules"></ol>
   <button id="btnStart">Start challenge</button>
   <small>Keys: Space = pause · → = +1 min · F = full screen · M = mute · Esc / click = close announcement</small>
 </div>
@@ -205,9 +221,10 @@ const CONFIG = {
   const deliverHTML = `Send your team's work to<br><span class="email">${CONFIG.email}</span><br>PDF, slides, or just a figure.`;
   $("hdrTitle").textContent = CONFIG.title;
   $("startTitle").textContent = CONFIG.title;
-  $("startText").innerHTML = `You have <b>${CONFIG.durationMin} minutes</b>. At the end, send your team's work ` +
-    `(a PDF, slides, or just a figure) to <b style="color:var(--warn)">${CONFIG.email}</b>.` +
+  $("startText").innerHTML = `You have <b>${CONFIG.durationMin} minutes</b>. The rules:` +
     (SPEED > 1 ? `<br><b style="color:var(--warn)">Rehearsal mode: ${SPEED}× speed</b>` : "");
+  $("rules").innerHTML = CONFIG.rules
+    .map(r => `<li>${r.replace("{email}", `<span class="email">${CONFIG.email}</span>`)}</li>`).join("");
   $("deliver").innerHTML = deliverHTML;
   $("clock").textContent = fmt(DURATION);
 
