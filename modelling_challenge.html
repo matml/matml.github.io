@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modelling Challenge Timer</title>
+<style>
+  :root {
+    --bg: #0d1b26;
+    --panel: #142838;
+    --ink: #f4f7fa;
+    --muted: #8fa6b8;
+    --main: #2a9be0;      /* blue, as on the exercise sheet */
+    --accent: #ff7a2f;    /* vermillion */
+    --good: #3ccf8e;
+    --bad: #ff5a5a;
+    --warn: #ffc23d;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2vh 2.5vw; color: var(--muted);
+    font-size: clamp(14px, 1.8vw, 26px);
+  }
+  header b { color: var(--ink); }
+  .controls button {
+    background: transparent; color: var(--muted); border: 1px solid #2c4559;
+    border-radius: 8px; font: inherit; font-size: 0.8em; padding: 0.25em 0.7em;
+    margin-left: 0.4em; cursor: pointer;
+  }
+  .controls button:hover { color: var(--ink); border-color: var(--muted); }
+
+  main {
+    flex: 1; display: grid; grid-template-columns: 1fr minmax(260px, 30vw);
+    gap: 2vw; padding: 0 2.5vw 2.5vh; min-height: 0;
+  }
+  @media (max-width: 800px) { main { grid-template-columns: 1fr; overflow-y: auto; } }
+
+  .clockwrap { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 0; }
+  #clock {
+    font-variant-numeric: tabular-nums; font-weight: 700; line-height: 1;
+    font-size: clamp(80px, 21vw, 360px); letter-spacing: -0.02em;
+    transition: color 0.4s;
+  }
+  #clock.low { color: var(--warn); }
+  #clock.last { color: var(--bad); animation: pulse 1s infinite; }
+  @keyframes pulse { 50% { opacity: 0.55; } }
+  #sub { color: var(--muted); font-size: clamp(16px, 2.2vw, 34px); margin-top: 1vh; text-align: center; }
+
+  .bar { width: 100%; max-width: 1100px; margin-top: 4vh; position: relative; height: 8vh; min-height: 64px; }
+  .track { position: absolute; left: 0; right: 0; top: 0; height: 1.4vh; min-height: 10px;
+           background: #22394b; border-radius: 99px; overflow: hidden; }
+  #fill { height: 100%; width: 0; background: var(--main); border-radius: 99px; }
+  .marker { position: absolute; top: -0.5vh; transform: translateX(-50%); text-align: center;
+            color: var(--muted); font-size: clamp(11px, 1.1vw, 18px); white-space: nowrap; }
+  .marker::before { content: ""; display: block; width: 3px; height: 2.4vh; min-height: 18px;
+                    margin: 0 auto 0.4vh; background: var(--ink); border-radius: 2px; }
+  .marker.lower::before { height: 5vh; min-height: 40px; }
+
+  aside { display: flex; flex-direction: column; gap: 1.6vh; min-height: 0; }
+  .card { background: var(--panel); border-radius: 14px; padding: 1.6vh 1.4vw; }
+  .card h3 { margin: 0 0 0.6vh; color: var(--muted); font-weight: 600;
+             font-size: clamp(12px, 1.2vw, 20px); text-transform: uppercase; letter-spacing: 0.08em; }
+  .status { font-size: clamp(22px, 2.8vw, 46px); font-weight: 700; display: flex; align-items: center; gap: 0.4em; }
+  .dot { width: 0.6em; height: 0.6em; border-radius: 50%; flex: none; }
+  .on .dot { background: var(--good); box-shadow: 0 0 18px var(--good); }
+  .off .dot { background: var(--bad); box-shadow: 0 0 18px var(--bad); }
+  .off { color: #ffd0d0; }
+  #deliver { font-size: clamp(15px, 1.5vw, 24px); line-height: 1.35; }
+  #deliver .email { color: var(--warn); font-weight: 700; word-break: break-all; }
+  #log { list-style: none; margin: 0; padding: 0; overflow-y: auto; font-size: clamp(14px, 1.4vw, 22px); }
+  #log li { padding: 0.5vh 0; border-bottom: 1px solid #22394b; }
+  #log time { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 0.6em; }
+  .grow { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+
+  /* Start screen */
+  #start {
+    position: fixed; inset: 0; background: var(--bg); z-index: 10;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4vh;
+    text-align: center; padding: 16px;
+  }
+  #start h1 { margin: 0; font-size: clamp(32px, 5.5vw, 88px); }
+  #start p { margin: 0; color: var(--muted); font-size: clamp(16px, 2vw, 32px); max-width: 34em; }
+  #start button {
+    font: inherit; font-weight: 700; font-size: clamp(26px, 3.5vw, 56px);
+    background: var(--main); color: white; border: 0; border-radius: 999px;
+    padding: 0.5em 1.8em; cursor: pointer; box-shadow: 0 10px 40px rgba(42,155,224,0.35);
+  }
+  #start button:hover { filter: brightness(1.1); }
+  #start small { color: var(--muted); font-size: clamp(12px, 1.2vw, 18px); }
+
+  /* Event banner */
+  #banner {
+    position: fixed; inset: 0; z-index: 20; display: none;
+    flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    padding: 4vw; cursor: pointer; animation: flash 0.5s ease-out;
+  }
+  #banner.show { display: flex; }
+  #banner .icon { font-size: clamp(60px, 11vw, 200px); line-height: 1; }
+  #banner h2 { margin: 2vh 0 1vh; font-size: clamp(40px, 8vw, 150px); line-height: 1.05; }
+  #banner p { margin: 0; font-size: clamp(20px, 3vw, 54px); max-width: 26em; line-height: 1.3; }
+  #banner small { position: absolute; bottom: 3vh; opacity: 0.7; font-size: clamp(12px, 1.2vw, 18px); }
+  #banner .bclock { position: absolute; top: 3vh; right: 3vw; font-variant-numeric: tabular-nums;
+                    font-weight: 700; font-size: clamp(24px, 4vw, 64px); opacity: 0.85; }
+  .k-go    { background: #0f6fa8; }
+  .k-stop  { background: #b3261e; }
+  .k-ok    { background: #1d8a5a; }
+  .k-warn  { background: #c46a00; }
+  .k-end   { background: #5b2a86; }
+  @keyframes flash { from { transform: scale(1.06); opacity: 0; } to { transform: none; opacity: 1; } }
+  #paused { position: fixed; inset: 0; z-index: 15; display: none; align-items: center; justify-content: center;
+            background: rgba(13,27,38,0.8); font-size: clamp(40px, 7vw, 120px); font-weight: 700; }
+  #paused.show { display: flex; }
+</style>
+</head>
+<body>
+
+<script>
+/* ======================== EDIT THE CHALLENGE HERE ======================== */
+const CONFIG = {
+  title: "How fast do bacteria grow?",
+  durationMin: 30,
+  email: "m.lopezgarcia@leeds.ac.uk",   // where teams send their work
+  bannerSeconds: 15,                       // how long each announcement fills the screen
+  revealUpcoming: false,                   // true = show future events on the progress bar
+  // at: minutes from the start. ai: true/false. team: "together"/"split".
+  // kind sets the colour: go, stop, ok, warn, end. sound: chime, alarm, soft, end.
+  events: [
+    { at: 0,  kind: "go",   icon: "🚀", title: "Go!", ai: true, team: "together", sound: "chime",
+      text: "Work through tasks 1–4. Unexpected things may happen…" },
+    { at: 10, kind: "stop", icon: "🚫", title: "GenAI OFF", ai: false, sound: "alarm",
+      text: "Close ChatGPT, Copilot, Claude & co. No AI tools until further notice." },
+    { at: 15, kind: "ok",   icon: "🤖", title: "GenAI back ON", ai: true, sound: "chime",
+      text: "You may use AI tools again." },
+    { at: 20, kind: "stop", icon: "🤫", title: "Split up!", team: "split", sound: "alarm",
+      text: "Everyone works alone. No talking to your teammates." },
+    { at: 25, kind: "ok",   icon: "🤝", title: "Back together", team: "together", sound: "chime",
+      text: "Regroup and combine your work. You have 5 minutes!" },
+    { at: 28, kind: "warn", icon: "⏳", title: "2 minutes left", sound: "soft",
+      text: "Stop fitting. Export what you have and get ready to send it." },
+    { at: 30, kind: "end",  icon: "📧", title: "Time's up!", sound: "end",
+      text: "Email whatever you have: a PDF, a few slides, or even just one figure." },
+  ],
+};
+/* ========================================================================= */
+</script>
+
+<header>
+  <div><b id="hdrTitle"></b> &nbsp;·&nbsp; Modelling challenge</div>
+  <div class="controls">
+    <button id="btnPause" title="Space">Pause</button>
+    <button id="btnSkip" title="Right arrow">+1 min</button>
+    <button id="btnMute" title="M">Sound on</button>
+    <button id="btnFull" title="F">Full screen</button>
+    <button id="btnReset">Reset</button>
+  </div>
+</header>
+
+<main>
+  <section class="clockwrap">
+    <div id="clock">30:00</div>
+    <div id="sub">remaining</div>
+    <div class="bar">
+      <div class="track"><div id="fill"></div></div>
+      <div id="markers"></div>
+    </div>
+  </section>
+  <aside>
+    <div class="card on" id="aiCard"><h3>Generative AI</h3><div class="status"><span class="dot"></span><span id="aiText">Allowed</span></div></div>
+    <div class="card on" id="teamCard"><h3>Team</h3><div class="status"><span class="dot"></span><span id="teamText">Together</span></div></div>
+    <div class="card"><h3>At the end</h3><div id="deliver"></div></div>
+    <div class="card grow"><h3>What has happened</h3><ul id="log"></ul></div>
+  </aside>
+</main>
+
+<div id="start">
+  <h1 id="startTitle"></h1>
+  <p id="startText"></p>
+  <button id="btnStart">Start challenge</button>
+  <small>Keys: Space = pause · → = +1 min · F = full screen · M = mute · Esc / click = close announcement</small>
+</div>
+
+<div id="banner"><div class="bclock" id="bclock"></div><div class="icon" id="bIcon"></div><h2 id="bTitle"></h2><p id="bText"></p><small>click to close</small></div>
+<div id="paused">Paused</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  // ?speed=20 runs the clock 20x faster, for rehearsing the session.
+  const SPEED = Math.max(1, Number(new URLSearchParams(location.search).get("speed")) || 1);
+  const DURATION = CONFIG.durationMin * 60;
+  const events = CONFIG.events.map(e => ({ ...e, fired: false })).sort((a, b) => a.at - b.at);
+
+  let startedAt = null, pausedAt = null, pausedTotal = 0;
+  let muted = false, audio = null, wakeLock = null, bannerTimer = null;
+
+  const deliverHTML = `Send your team's work to<br><span class="email">${CONFIG.email}</span><br>PDF, slides, or just a figure.`;
+  $("hdrTitle").textContent = CONFIG.title;
+  $("startTitle").textContent = CONFIG.title;
+  $("startText").innerHTML = `You have <b>${CONFIG.durationMin} minutes</b>. At the end, send your team's work ` +
+    `(a PDF, slides, or just a figure) to <b style="color:var(--warn)">${CONFIG.email}</b>.` +
+    (SPEED > 1 ? `<br><b style="color:var(--warn)">Rehearsal mode: ${SPEED}× speed</b>` : "");
+  $("deliver").innerHTML = deliverHTML;
+  $("clock").textContent = fmt(DURATION);
+
+  function fmt(s) {
+    s = Math.max(0, Math.ceil(s));
+    return `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
+  }
+
+  function elapsed() {
+    if (startedAt === null) return 0;
+    const now = pausedAt ?? performance.now();
+    return Math.min(DURATION, (now - startedAt - pausedTotal) / 1000 * SPEED);
+  }
+
+  // ---- Sound (Web Audio, so no files are needed) ----------------------------
+  function tone(freq, start, dur, type = "sine", vol = 0.3) {
+    const t = audio.currentTime + start;
+    const o = audio.createOscillator(), g = audio.createGain();
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(vol, t + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g).connect(audio.destination);
+    o.start(t); o.stop(t + dur + 0.05);
+  }
+  const SOUNDS = {
+    chime: () => [[784, 0], [1047, 0.18], [1319, 0.36]].forEach(([f, s]) => tone(f, s, 1.2)),
+    soft:  () => { tone(880, 0, 0.8, "sine", 0.2); tone(880, 0.5, 0.8, "sine", 0.2); },
+    alarm: () => { for (let i = 0; i < 6; i++) tone(i % 2 ? 660 : 880, i * 0.22, 0.18, "square", 0.15); },
+    end:   () => { [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.2, 0.5, "triangle", 0.3));
+                   tone(523, 0.9, 2.5, "sine", 0.3); tone(1047, 0.9, 2.5, "sine", 0.15); },
+  };
+  function play(name) {
+    if (muted || !audio || !SOUNDS[name]) return;
+    if (audio.state === "suspended") audio.resume();
+    SOUNDS[name]();
+  }
+
+  // ---- Screen wake lock, so the projector doesn't go to sleep ---------------
+  async function keepAwake() {
+    try { if ("wakeLock" in navigator) wakeLock = await navigator.wakeLock.request("screen"); } catch (e) {}
+  }
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" && startedAt !== null) keepAwake();
+  });
+
+  // ---- Events ---------------------------------------------------------------
+  function setStatus(e) {
+    if (e.ai !== undefined) {
+      $("aiCard").className = "card " + (e.ai ? "on" : "off");
+      $("aiText").textContent = e.ai ? "Allowed" : "Not allowed";
+    }
+    if (e.team !== undefined) {
+      const split = e.team === "split";
+      $("teamCard").className = "card " + (split ? "off" : "on");
+      $("teamText").textContent = split ? "Split · no talking" : "Together";
+    }
+  }
+
+  function addMarker(e) {
+    if (e.at <= 0 || e.at >= CONFIG.durationMin) return;
+    const m = document.createElement("div");
+    m.className = "marker";
+    m.style.left = (100 * e.at / CONFIG.durationMin) + "%";
+    m.textContent = e.title;
+    // Alternate label rows so that close events (e.g. 25 and 28 min) don't overlap.
+    if ($("markers").children.length % 2) m.classList.add("lower");
+    $("markers").appendChild(m);
+  }
+
+  function showBanner(e) {
+    const b = $("banner");
+    b.className = "show k-" + e.kind;
+    $("bIcon").textContent = e.icon || "";
+    $("bTitle").textContent = e.title;
+    $("bText").textContent = e.text || "";
+    if (e.kind === "end") {
+      const em = document.createElement("div");
+      em.style.cssText = "margin-top:3vh;font-weight:700;color:#ffe08a";
+      em.textContent = CONFIG.email;
+      $("bText").appendChild(em);
+    }
+    clearTimeout(bannerTimer);
+    if (e.kind !== "end") bannerTimer = setTimeout(hideBanner, CONFIG.bannerSeconds * 1000);
+  }
+  function hideBanner() { $("banner").className = ""; }
+
+  function fire(e) {
+    e.fired = true;
+    setStatus(e);
+    if (!CONFIG.revealUpcoming) addMarker(e);
+    const li = document.createElement("li");
+    li.innerHTML = `<time>${fmt(e.at * 60).replace(/^0/, "")}</time>`;
+    li.append(`${e.icon || ""} ${e.title}`);
+    $("log").prepend(li);
+    showBanner(e);
+    play(e.sound);
+  }
+
+  // ---- Main loop ------------------------------------------------------------
+  function tick() {
+    const t = elapsed(), left = DURATION - t;
+    $("clock").textContent = fmt(left);
+    $("clock").className = left <= 60 && left > 0 ? "last" : left <= 300 ? "low" : "";
+    $("bclock").textContent = fmt(left);
+    $("fill").style.width = (100 * t / DURATION) + "%";
+    $("sub").textContent = left <= 0 ? "time's up" : "remaining";
+    if (pausedAt === null) {
+      // Fire only the latest due event if several are due at once (e.g. after sleeping).
+      const due = events.filter(e => !e.fired && e.at * 60 <= t);
+      due.forEach((e, i) => i < due.length - 1 ? (e.fired = true, setStatus(e), CONFIG.revealUpcoming || addMarker(e)) : fire(e));
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ---- Controls -------------------------------------------------------------
+  function start() {
+    audio = new (window.AudioContext || window.webkitAudioContext)();
+    startedAt = performance.now();
+    $("start").style.display = "none";
+    if (CONFIG.revealUpcoming) events.forEach(addMarker);
+    keepAwake();
+    requestAnimationFrame(tick);
+  }
+  function togglePause() {
+    if (startedAt === null || elapsed() >= DURATION) return;
+    if (pausedAt === null) { pausedAt = performance.now(); }
+    else { pausedTotal += performance.now() - pausedAt; pausedAt = null; }
+    $("paused").className = pausedAt === null ? "" : "show";
+    $("btnPause").textContent = pausedAt === null ? "Pause" : "Resume";
+  }
+  function skipMinute() {
+    if (startedAt === null || elapsed() >= DURATION) return;
+    pausedTotal -= 60000 / SPEED;  // shift the start back by one (simulated) minute
+  }
+  function toggleMute() {
+    muted = !muted;
+    $("btnMute").textContent = muted ? "Sound off" : "Sound on";
+  }
+  function toggleFull() {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen?.();
+  }
+
+  $("btnStart").onclick = () => { start(); };
+  $("btnPause").onclick = togglePause;
+  $("btnSkip").onclick = skipMinute;
+  $("btnMute").onclick = toggleMute;
+  $("btnFull").onclick = toggleFull;
+  $("btnReset").onclick = () => { if (confirm("Reset the timer?")) location.reload(); };
+  $("banner").onclick = hideBanner;
+  document.addEventListener("keydown", ev => {
+    if (ev.target.tagName === "BUTTON" && (ev.key === " " || ev.key === "Enter")) ev.preventDefault();
+    if (ev.key === " ") { startedAt === null ? start() : togglePause(); }
+    else if (ev.key === "ArrowRight") skipMinute();
+    else if (ev.key === "f" || ev.key === "F") toggleFull();
+    else if (ev.key === "m" || ev.key === "M") toggleMute();
+    else if (ev.key === "Escape") hideBanner();
+  });
+})();
+</script>
+</body>
+</html>
