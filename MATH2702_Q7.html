@@ -1,0 +1,1223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q7 Hitting Simulation</title>
+<meta name="description" content="Live simulation of hitting probabilities and mean hitting times for MATH2702 Problem Sheet 4, Question 7.">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --s2: #2a78d6;
+  --s3: #eb6834;
+  --s2-wash: rgba(42,120,214,0.14);
+  --s3-wash: rgba(235,104,52,0.14);
+  --s4-wash: rgba(82,81,78,0.10);
+  --s2-strong: rgba(42,120,214,0.34);
+  --s3-strong: rgba(235,104,52,0.34);
+  --s4-strong: rgba(82,81,78,0.26);
+  --node: #ffffff;
+  --btn: #ffffff;
+  --btn-hover: #f0efec;
+  --edge: #6e6d69;
+  --edge-dim: #dcdbd4;
+  --edge-dim-label: #b9b8b1;
+  --exact: #898781;
+  --flash: rgba(11,11,11,0.06);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --ink: #f0efec;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255,255,255,0.10);
+    --s2: #3987e5;
+    --s3: #d95926;
+    --s2-wash: rgba(57,135,229,0.22);
+    --s3-wash: rgba(217,89,38,0.22);
+    --s4-wash: rgba(195,194,183,0.12);
+    --s2-strong: rgba(57,135,229,0.45);
+    --s3-strong: rgba(217,89,38,0.45);
+    --s4-strong: rgba(195,194,183,0.28);
+    --node: #222221;
+    --btn: #242423;
+    --btn-hover: #2e2e2c;
+    --edge: #a3a29b;
+    --edge-dim: #353532;
+    --edge-dim-label: #5e5d58;
+    --exact: #9a9890;
+    --flash: rgba(255,255,255,0.07);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --ink: #f0efec;
+  --ink-2: #c3c2b7;
+  --muted: #898781;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255,255,255,0.10);
+  --s2: #3987e5;
+  --s3: #d95926;
+  --s2-wash: rgba(57,135,229,0.22);
+  --s3-wash: rgba(217,89,38,0.22);
+  --s4-wash: rgba(195,194,183,0.12);
+  --s2-strong: rgba(57,135,229,0.45);
+  --s3-strong: rgba(217,89,38,0.45);
+  --s4-strong: rgba(195,194,183,0.28);
+  --node: #222221;
+  --btn: #242423;
+  --btn-hover: #2e2e2c;
+  --edge: #a3a29b;
+  --edge-dim: #353532;
+  --edge-dim-label: #5e5d58;
+  --exact: #9a9890;
+  --flash: rgba(255,255,255,0.07);
+}
+
+/* Type scales with the viewport so the page fills a projector screen. */
+html { font-size: clamp(12px, min(1.08vw, 2vh), 24px); }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.35;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0.8rem 1.25rem 0.9rem;
+  gap: 0.7rem;
+}
+
+/* Header */
+header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.eyebrow { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.02em; }
+h1 { font-size: 1.45rem; font-weight: 650; margin: 0.05rem 0 0.15rem; letter-spacing: -0.01em; }
+.lede { font-size: 0.88rem; color: var(--ink-2); margin: 0; max-width: 70rem; }
+.math { font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", Cambria, Georgia, serif; font-style: italic; }
+.math.up { font-style: normal; }
+
+/* Controls */
+.controls {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem 0.9rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+}
+.group { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+.group-label { font-size: 0.75rem; color: var(--muted); margin-right: 0.15rem; }
+.sep { width: 1px; align-self: stretch; background: var(--border); }
+button {
+  font: inherit; font-size: 0.92rem; font-weight: 550;
+  height: 2.25rem; padding: 0 0.85rem; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--btn); color: var(--ink);
+  cursor: pointer; white-space: nowrap;
+}
+button:hover:not(:disabled) { background: var(--btn-hover); }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--s2); outline-offset: 2px; }
+button:disabled { opacity: 0.38; cursor: default; }
+button.primary { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+button.primary:hover:not(:disabled) { background: var(--ink-2); border-color: var(--ink-2); }
+.speed { display: flex; align-items: center; gap: 0.45rem; font-size: 0.85rem; color: var(--ink-2); }
+.speed input { width: 6.5rem; accent-color: var(--ink-2); }
+.speed output { min-width: 2.4rem; font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; }
+.head-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; flex: none; }
+.head-row { display: flex; align-items: center; gap: 0.9rem; }
+.runs { font-size: 1.5rem; font-weight: 650; white-space: nowrap; }
+.runs .math { font-weight: 500; }
+.status-text { font-size: 0.82rem; color: var(--ink-2); max-width: 27rem; text-align: right; min-height: 1.1rem; }
+.theme-btn { height: 2rem; font-size: 0.8rem; padding: 0 0.7rem; color: var(--ink-2); }
+.keys { margin-left: auto; font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
+.keys kbd { font: inherit; border: 1px solid var(--border); border-radius: 4px; padding: 0 0.3rem; color: var(--ink-2); }
+
+/* Main grid */
+.main {
+  flex: 1; min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) minmax(0, 1.1fr);
+  grid-template-areas: "diag ta tb" "diag ra rb" "diag tab hist";
+  gap: 0.75rem;
+}
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 0.7rem 0.9rem; min-height: 0; min-width: 0;
+  display: flex; flex-direction: column;
+}
+.card h2 { font-size: 0.95rem; font-weight: 620; margin: 0; }
+.card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
+.legend { display: flex; gap: 0.8rem; flex-wrap: wrap; font-size: 0.74rem; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
+.key { display: inline-block; vertical-align: middle; }
+.key-sq { width: 0.7rem; height: 0.7rem; border-radius: 3px; }
+.key-dot { width: 0.7rem; height: 0.7rem; border-radius: 50%; }
+.legend .exact-key { transition: opacity 0.4s; opacity: 0.4; }
+body.revealed .legend .exact-key { opacity: 1; }
+
+.diag { grid-area: diag; }
+.ta { grid-area: ta; } .tb { grid-area: tb; }
+.ra { grid-area: ra; } .rb { grid-area: rb; }
+.tab { grid-area: tab; } .hist { grid-area: hist; }
+
+/* Diagram */
+.diagram-wrap { flex: 1; min-height: 0; position: relative; }
+#diagram { width: 100%; height: 100%; display: block; overflow: visible; }
+.edge { fill: none; stroke: var(--edge); stroke-width: 2.2; transition: stroke 0.25s, stroke-width 0.25s; }
+.edge.dim { stroke: var(--edge-dim); stroke-width: 1.8; }
+.edge.hot { stroke: var(--ink); stroke-width: 4; }
+#arr path { fill: var(--edge); }
+#arr-dim path { fill: var(--edge-dim); }
+#arr-hot path { fill: var(--ink); }
+.sfrac text { fill: var(--ink-2); font-family: "Cambria Math", "STIX Two Math", Cambria, Georgia, serif; }
+.sfrac line { stroke: var(--ink-2); }
+.sfrac.dim text { fill: var(--edge-dim-label); }
+.sfrac.dim line { stroke: var(--edge-dim-label); }
+.node-base { fill: var(--node); }
+.node-ring { fill: none; stroke: var(--ink-2); stroke-width: 2.5; }
+.node-ring.a2 { fill: var(--s2-wash); stroke: var(--s2); stroke-width: 4; }
+.node-ring.a3 { fill: var(--s3-wash); stroke: var(--s3); stroke-width: 4; }
+.node-ring.here { stroke: var(--ink); stroke-width: 6; }
+.node-label { fill: var(--ink); font-size: 30px; font-weight: 600; pointer-events: none; paint-order: stroke; stroke: var(--node); stroke-width: 5px; stroke-linejoin: round; }
+.count-label { fill: var(--ink); font-size: 19px; font-weight: 600; }
+.count-label tspan.u { fill: var(--ink-2); font-weight: 400; }
+.start-label { fill: var(--muted); font-size: 17px; }
+.start-arrow { stroke: var(--muted); stroke-width: 2; }
+#arr-start path { fill: var(--muted); }
+.pt { fill: var(--ink); stroke: var(--surface); stroke-width: 2.5; }
+.pt.s2 { fill: var(--s2); }
+.pt.s3 { fill: var(--s3); }
+.pulse { fill: none; stroke-width: 3; }
+.pulse.s2 { stroke: var(--s2); }
+.pulse.s3 { stroke: var(--s3); }
+
+/* Random draw panel */
+.draw { margin-top: 0.3rem; transition: opacity 0.3s; }
+.draw.idle { opacity: 0.42; }
+.draw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; font-size: 0.84rem; color: var(--ink-2); }
+.draw-result { font-weight: 600; color: var(--ink); white-space: nowrap; }
+.draw-bar { position: relative; height: 2.3rem; margin-top: 1.45rem; }
+.seg {
+  position: absolute; top: 0; bottom: 0; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center; gap: 0.35rem;
+  font-size: 0.86rem; color: var(--ink); transition: background 0.2s;
+  overflow: visible; white-space: nowrap;
+}
+.seg.t1, .seg.t4 { background: var(--s4-wash); box-shadow: inset 0 -3px 0 var(--ink-2); }
+.seg.t2 { background: var(--s2-wash); box-shadow: inset 0 -3px 0 var(--s2); }
+.seg.t3 { background: var(--s3-wash); box-shadow: inset 0 -3px 0 var(--s3); }
+.seg.t1.chosen, .seg.t4.chosen { background: var(--s4-strong); }
+.seg.t2.chosen { background: var(--s2-strong); }
+.seg.t3.chosen { background: var(--s3-strong); }
+.seg.chosen { font-weight: 650; }
+.needle {
+  position: absolute; top: -0.45rem; bottom: -0.35rem; width: 2.5px; margin-left: -1.25px;
+  background: var(--ink); border-radius: 2px; display: none;
+}
+.needle::before {
+  content: ""; position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  border-left: 0.35rem solid transparent; border-right: 0.35rem solid transparent; border-top: 0.45rem solid var(--ink);
+}
+.needle-label {
+  position: absolute; bottom: calc(100% + 0.15rem); left: 50%; transform: translateX(-50%);
+  font-size: 0.8rem; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+.draw-scale { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--muted); margin-top: 0.4rem; font-variant-numeric: tabular-nums; }
+.path-line {
+  margin-top: 0.55rem; min-height: 2.1rem; display: flex; align-items: center; flex-wrap: wrap; gap: 0.3rem;
+  font-size: 1rem; border-top: 1px solid var(--border); padding-top: 0.5rem;
+}
+.path-line .muted { color: var(--ink-2); font-size: 0.86rem; }
+.diag-legend { font-size: 0.74rem; color: var(--ink-2); margin-top: 0.35rem; display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; }
+.diag-legend span { display: inline-flex; align-items: center; gap: 0.3rem; }
+
+/* State badges used in text */
+.nd {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.5em; height: 1.5em; border-radius: 50%; border: 2px solid var(--ink-2);
+  font-size: 0.85em; font-weight: 600; background: var(--node); line-height: 1; flex: none;
+}
+.nd.s2 { border-color: var(--s2); background: var(--s2-wash); }
+.nd.s3 { border-color: var(--s3); background: var(--s3-wash); }
+.ar { color: var(--muted); margin: 0 0.1em; }
+.tchip { margin-left: 0.5rem; font-weight: 600; }
+
+/* Fractions in HTML */
+.fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; font-size: 0.8em; line-height: 1.05; margin: 0 0.08em; font-family: "Cambria Math", "STIX Two Math", Cambria, Georgia, serif; }
+.fr > span:first-child { border-bottom: 1.5px solid currentColor; padding: 0 0.15em 0.05em; }
+.fr > span:last-child { padding-top: 0.05em; }
+
+/* Result tiles */
+.tile { padding: 0.65rem 0.9rem 0.7rem; }
+.tile-label { font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; }
+.tile-label .notation { font-weight: 400; color: var(--ink-2); }
+.tile-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.35rem; }
+.tile-col { min-width: 0; }
+.tile-col + .tile-col { border-left: 1px solid var(--border); padding-left: 0.8rem; }
+.k { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.big { font-size: 2.15rem; font-weight: 650; line-height: 1.1; letter-spacing: -0.01em; }
+.big .fr { font-size: 0.6em; }
+.small { font-size: 0.78rem; color: var(--ink-2); margin-top: 0.15rem; }
+.stack { display: grid; }
+.stack > * { grid-area: 1 / 1; transition: opacity 0.45s; }
+.stack .when-exact { opacity: 0; }
+.stack .when-pending { opacity: 1; }
+body.revealed .stack .when-exact { opacity: 1; }
+body.revealed .stack .when-pending { opacity: 0; }
+.pending-note { font-size: 0.8rem; color: var(--muted); align-self: center; }
+.exact-val { display: flex; align-items: baseline; gap: 0.35rem; flex-wrap: wrap; }
+.exact-val .approx { font-size: 1.15rem; font-weight: 500; color: var(--ink-2); }
+.diff { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink); }
+.reveal-only { opacity: 0; transition: opacity 0.45s; }
+body.revealed .reveal-only { opacity: 1; }
+
+/* Charts */
+.chart { flex: 1; min-height: 0; position: relative; }
+.chart svg { position: absolute; inset: 0; display: block; overflow: visible; }
+.chart text { fill: var(--ink-2); font-size: 0.74rem; }
+.chart .tick-label { fill: var(--muted); font-variant-numeric: tabular-nums; }
+.chart .axis-title { fill: var(--muted); font-size: 0.72rem; }
+.chart .gridline { stroke: var(--grid); stroke-width: 1; }
+.chart .baseline { stroke: var(--axis); stroke-width: 1; }
+.chart .minor { stroke: var(--axis); stroke-width: 1; }
+.chart .series { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart .end-dot { fill: var(--ink); stroke: var(--surface); stroke-width: 2; }
+.chart .exact-line { stroke: var(--exact); stroke-width: 2.5; stroke-dasharray: 7 5; fill: none; }
+.chart .exact { opacity: 0; transition: opacity 0.5s; }
+body.revealed .chart .exact { opacity: 1; }
+.chart .sfrac text { fill: var(--ink-2); }
+.chart .sfrac line { stroke: var(--ink-2); }
+.chart .mean-line { stroke: var(--ink); stroke-width: 2; }
+.chart .mean-label { fill: var(--ink); font-weight: 600; }
+.chart .exact-label { fill: var(--ink-2); }
+.chart .bar2 { fill: var(--s2); }
+.chart .bar3 { fill: var(--s3); }
+.chart .hover-band { fill: var(--flash); }
+.chart .cross { stroke: var(--muted); stroke-width: 1; }
+
+/* Path table */
+table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+th { font-size: 0.7rem; font-weight: 600; color: var(--muted); text-align: left; padding: 0 0.35rem 0.25rem; border-bottom: 1px solid var(--grid); text-transform: uppercase; letter-spacing: 0.05em; }
+td { padding: 0.12rem 0.35rem; border-bottom: 1px solid var(--grid); height: 2.05rem; vertical-align: middle; transition: background 0.6s; }
+td .nd { font-size: 0.78em; }
+td .fr { font-size: 0.72em; }
+tr:last-child td { border-bottom: none; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.path { white-space: nowrap; }
+tr.flash td { background: var(--flash); transition: none; }
+td.ex { white-space: nowrap; }
+td.ex .approx { color: var(--ink-2); font-size: 0.8rem; margin-left: 0.25rem; }
+td.ex .q { color: var(--muted); }
+.table-wrap { flex: 1; min-height: 0; overflow: auto; }
+
+/* Tooltip */
+.tip {
+  position: fixed; pointer-events: none; z-index: 10; display: none;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12); border-radius: 8px;
+  padding: 0.4rem 0.6rem; font-size: 0.8rem; line-height: 1.4; font-variant-numeric: tabular-nums;
+}
+.tip b { font-weight: 650; }
+
+/* Medium screens: diagram on top, two columns below */
+@media (max-width: 1100px) {
+  html { font-size: 15px; }
+  .app { height: auto; min-height: 100vh; }
+  .main {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: "diag diag" "ta tb" "ra rb" "tab hist";
+  }
+  .diagram-wrap { height: 26rem; flex: none; }
+  .chart { min-height: 13rem; }
+  .keys { display: none; }
+}
+/* Phones: one column */
+@media (max-width: 720px) {
+  .app { padding: 0.8rem 16px; }
+  .main { grid-template-columns: minmax(0, 1fr); grid-template-areas: "diag" "ta" "ra" "tab" "tb" "rb" "hist"; }
+  .diagram-wrap { height: 21rem; }
+  h1 { font-size: 1.25rem; }
+  header { flex-direction: column; }
+  .head-right { align-items: flex-start; }
+  .status-text { text-align: left; }
+  .sep { display: none; }
+  .big { font-size: 1.9rem; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div>
+      <div class="eyebrow">MATH2702 Stochastic Processes · Problem sheet 4 · Question 7</div>
+      <h1>Hitting <span class="math">A</span> = {2, 3}, starting from state 1</h1>
+      <p class="lede">Each run starts at 1 and stops on first entering <span class="math">A</span>. Over many runs, the share reaching 2 first estimates <span class="math">k</span><sub>1</sub> and the average number of steps estimates <span class="math">η</span><sub>1<span class="math">A</span></sub>.</p>
+    </div>
+    <div class="head-right">
+      <div class="head-row">
+        <span class="runs"><span class="math">n</span> = <span id="nRuns">0</span> runs</span>
+        <button class="theme-btn" id="themeBtn" title="Switch light / dark (T)">Light / dark</button>
+      </div>
+      <div class="status-text" id="statusText" aria-live="polite">Ready. Exact values appear when a simulation finishes.</div>
+    </div>
+  </header>
+
+  <div class="controls" role="toolbar" aria-label="Simulation controls">
+    <div class="group">
+      <span class="group-label">One run</span>
+      <button id="btnStep" title="Advance a single run by one transition (Space)">Step</button>
+      <button id="btnRun1" title="Animate one complete run (1)">Run 1</button>
+    </div>
+    <div class="sep"></div>
+    <div class="group">
+      <span class="group-label">Many runs</span>
+      <button class="primary" data-n="10" title="(2)">Run 10</button>
+      <button class="primary" data-n="100" title="(3)">Run 100</button>
+      <button class="primary" data-n="1000" title="(4)">Run 1,000</button>
+      <button class="primary" data-n="10000" title="(5)">Run 10,000</button>
+    </div>
+    <div class="sep"></div>
+    <label class="speed">Speed <input type="range" id="speed" min="0" max="4" step="1" value="2" aria-label="Animation speed"><output id="speedOut">1×</output></label>
+    <div class="group">
+      <button id="btnFinish" title="Complete the current runs instantly (F)" disabled>Finish now</button>
+      <button id="btnReset" title="Clear all runs (R)">Reset</button>
+    </div>
+    <div class="keys">Keys: <kbd>Space</kbd> step · <kbd>1</kbd>–<kbd>5</kbd> run · <kbd>F</kbd> finish · <kbd>R</kbd> reset</div>
+  </div>
+
+  <main class="main">
+    <section class="card diag" aria-label="Transition diagram with simulated runs">
+      <div class="card-head">
+        <h2>Transition diagram</h2>
+        <div class="legend">
+          <span><i class="key key-dot" style="background:var(--ink)"></i>run in progress</span>
+          <span><i class="key key-dot" style="background:var(--s2)"></i>hit 2 first</span>
+          <span><i class="key key-dot" style="background:var(--s3)"></i>hit 3 first</span>
+        </div>
+      </div>
+      <div class="diagram-wrap"><svg id="diagram" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Four-state transition diagram; states 2 and 3 form the target set A"></svg></div>
+
+      <div class="draw idle" id="draw">
+        <div class="draw-head">
+          <span id="drawHead">From state 1, draw <span class="math">U</span> ~ Uniform(0, 1)</span>
+          <span class="draw-result" id="drawResult"></span>
+        </div>
+        <div class="draw-bar" id="drawBar">
+          <div class="needle" id="needle"><span class="needle-label" id="needleLabel"></span></div>
+        </div>
+        <div class="draw-scale"><span>0</span><span>1</span></div>
+      </div>
+      <div class="path-line" id="pathLine"><span class="muted">Press <b>Step</b> or <b>Run 1</b> to follow a single run, or run many at once.</span></div>
+      <div class="diag-legend">
+        <span>Shaded states form <span class="math">A</span> = {2, 3}: a run stops as soon as it enters <span class="math">A</span>.</span>
+        <span>Faded arrows are never used.</span>
+      </div>
+    </section>
+
+    <section class="card tile ta" aria-label="Part (a) result">
+      <div class="tile-label"><i class="key key-dot" style="background:var(--s2)"></i>(a) Probability of hitting 2 before 3 <span class="notation">· <span class="math">k</span><sub>1</sub></span></div>
+      <div class="tile-body">
+        <div class="tile-col">
+          <div class="k">Simulated</div>
+          <div class="big" id="aSim">—</div>
+          <div class="small" id="aSimSub">No runs yet</div>
+          <div class="small reveal-only">difference from exact: <b class="diff" id="aDiff">—</b></div>
+        </div>
+        <div class="tile-col stack">
+          <div class="when-pending pending-note">Exact value appears when the simulation finishes.</div>
+          <div class="when-exact">
+            <div class="k">Exact</div>
+            <div class="exact-val big"><span class="fr"><span>1</span><span>3</span></span><span class="approx">≈ 0.3333</span></div>
+            <div class="small"><span class="math">k</span><sub>1</sub> = <span class="fr"><span>1</span><span>4</span></span> + <span class="fr"><span>1</span><span>4</span></span>·<span class="fr"><span>1</span><span>3</span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card tile tb" aria-label="Part (b) result">
+      <div class="tile-label"><i class="key key-dot" style="background:var(--ink)"></i>(b) Expected time to hit <span class="math">A</span> = {2, 3} <span class="notation">· <span class="math">η</span><sub>1<span class="math">A</span></sub></span></div>
+      <div class="tile-body">
+        <div class="tile-col">
+          <div class="k">Simulated</div>
+          <div class="big" id="bSim">—</div>
+          <div class="small" id="bSimSub">No runs yet</div>
+          <div class="small reveal-only">difference from exact: <b class="diff" id="bDiff">—</b></div>
+        </div>
+        <div class="tile-col stack">
+          <div class="when-pending pending-note">Exact value appears when the simulation finishes.</div>
+          <div class="when-exact">
+            <div class="k">Exact</div>
+            <div class="exact-val big"><span class="fr"><span>5</span><span>4</span></span><span class="approx">= 1.25</span></div>
+            <div class="small"><span class="math">η</span><sub>1<span class="math">A</span></sub> = 1·<span class="fr"><span>3</span><span>4</span></span> + 2·<span class="fr"><span>1</span><span>4</span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card ra" aria-label="Running estimate of k1">
+      <div class="card-head">
+        <h2>Running estimate of <span class="math">k</span><sub>1</sub></h2>
+        <div class="legend">
+          <span><svg class="key" width="20" height="8"><line x1="1" y1="4" x2="19" y2="4" stroke="var(--ink)" stroke-width="2"/></svg>simulated</span>
+          <span class="exact-key"><svg class="key" width="20" height="8"><line x1="1" y1="4" x2="19" y2="4" stroke="var(--exact)" stroke-width="2.5" stroke-dasharray="5 3"/></svg>exact</span>
+        </div>
+      </div>
+      <div class="chart" id="chartA"></div>
+    </section>
+
+    <section class="card rb" aria-label="Running average of T">
+      <div class="card-head">
+        <h2>Running average of <span class="math">T</span></h2>
+        <div class="legend">
+          <span><svg class="key" width="20" height="8"><line x1="1" y1="4" x2="19" y2="4" stroke="var(--ink)" stroke-width="2"/></svg>simulated</span>
+          <span class="exact-key"><svg class="key" width="20" height="8"><line x1="1" y1="4" x2="19" y2="4" stroke="var(--exact)" stroke-width="2.5" stroke-dasharray="5 3"/></svg>exact</span>
+        </div>
+      </div>
+      <div class="chart" id="chartB"></div>
+    </section>
+
+    <section class="card tab" aria-label="Table of the four possible paths">
+      <div class="card-head"><h2>The four possible paths</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Path</th><th class="num"><span class="math" style="text-transform:none">T</span></th><th class="num">Count</th><th class="num">Simulated</th><th>Exact</th></tr></thead>
+          <tbody id="pathBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card hist" aria-label="Histogram of the hitting time">
+      <div class="card-head">
+        <h2>Histogram of <span class="math">T</span> (share of runs)</h2>
+        <div class="legend">
+          <span><i class="key key-sq" style="background:var(--s2)"></i>hit 2 first</span>
+          <span><i class="key key-sq" style="background:var(--s3)"></i>hit 3 first</span>
+          <span><svg class="key" width="8" height="14"><line x1="4" y1="1" x2="4" y2="13" stroke="var(--ink)" stroke-width="2"/></svg>sample mean</span>
+          <span class="exact-key"><svg class="key" width="8" height="14"><line x1="4" y1="1" x2="4" y2="13" stroke="var(--exact)" stroke-width="2.5" stroke-dasharray="3 2"/></svg>exact</span>
+        </div>
+      </div>
+      <div class="chart" id="chartH"></div>
+    </section>
+  </main>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+(() => {
+'use strict';
+
+/* ---------- Helpers ---------- */
+const NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+const $ = id => document.getElementById(id);
+const fmtInt = n => n.toLocaleString('en-GB');
+const remPx = () => parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+const fr = (n, d) => `<span class="fr"><span>${n}</span><span>${d}</span></span>`;
+const nd = s => `<span class="nd${s === 2 || s === 3 ? ' s' + s : ''}">${s}</span>`;
+const ease = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+
+// Stacked fraction in SVG, centred on the fraction bar at (x, y).
+function svgFrac(parent, x, y, num, den, fs, cls) {
+  const g = el('g', { class: 'sfrac' + (cls ? ' ' + cls : ''), transform: `translate(${x} ${y})` }, parent);
+  const w = Math.max(String(num).length, String(den).length) * fs * 0.6 + fs * 0.35;
+  el('text', { x: 0, y: -fs * 0.2, 'text-anchor': 'middle', 'font-size': fs }, g).textContent = num;
+  el('line', { x1: -w / 2, x2: w / 2, y1: 0, y2: 0, 'stroke-width': Math.max(1.2, fs * 0.075) }, g);
+  el('text', { x: 0, y: fs * 0.9, 'text-anchor': 'middle', 'font-size': fs }, g).textContent = den;
+  return g;
+}
+
+/* ---------- The chain (only rows of states outside A are ever used) ---------- */
+const ROWS = {
+  1: [{ to: 2, n: 1, d: 4 }, { to: 3, n: 1, d: 2 }, { to: 4, n: 1, d: 4 }],
+  4: [{ to: 2, n: 1, d: 3 }, { to: 3, n: 2, d: 3 }],
+};
+const inA = s => s === 2 || s === 3;
+function nextState(s, u) {
+  let c = 0;
+  for (const e of ROWS[s]) { c += e.n / e.d; if (u < c) return e.to; }
+  return ROWS[s][ROWS[s].length - 1].to;
+}
+function sampleRun() {
+  const states = [1], us = [];
+  let s = 1;
+  while (!inA(s)) { const u = Math.random(); us.push(u); s = nextState(s, u); states.push(s); }
+  return { states, us };
+}
+
+const PATHS = [
+  { key: '1-2',   states: [1, 2],    exact: 1 / 4,  expr: fr(1, 4) },
+  { key: '1-3',   states: [1, 3],    exact: 1 / 2,  expr: fr(1, 2) },
+  { key: '1-4-2', states: [1, 4, 2], exact: 1 / 12, expr: `${fr(1, 4)}·${fr(1, 3)} = ${fr(1, 12)}` },
+  { key: '1-4-3', states: [1, 4, 3], exact: 1 / 6,  expr: `${fr(1, 4)}·${fr(2, 3)} = ${fr(1, 6)}` },
+];
+const EXACT_K1 = 1 / 3, EXACT_ETA = 5 / 4;
+
+/* ---------- Statistics ---------- */
+const stats = {};
+function resetStats() {
+  stats.n = 0; stats.hit2 = 0; stats.sumT = 0;
+  stats.path = {}; PATHS.forEach(p => stats.path[p.key] = 0);
+  stats.T = {}; for (let t = 1; t <= 4; t++) stats.T[t] = { 2: 0, 3: 0 };
+  stats.cumHit2 = []; stats.cumT = [];
+}
+resetStats();
+let dirty = true;
+function record(run) {
+  const end = run.states[run.states.length - 1], T = run.states.length - 1;
+  stats.n++;
+  if (end === 2) stats.hit2++;
+  stats.sumT += T;
+  stats.path[run.states.join('-')]++;
+  if (stats.T[T]) stats.T[T][end]++;
+  stats.cumHit2.push(stats.hit2);
+  stats.cumT.push(stats.sumT);
+  dirty = true;
+}
+
+/* ---------- Diagram ---------- */
+const svgD = $('diagram');
+const NODES = { 1: [95, 300], 2: [300, 95], 3: [300, 505], 4: [505, 300] };
+const R = 36;
+// Same layout as Figure 3: outer arcs, inner arcs and the straight 1 -> 4 edge.
+const EDGES = [
+  { from: 1, to: 2, c: [125, 125], p: [1, 4], active: true },
+  { from: 2, to: 1, c: [222, 222], p: [1, 2] },
+  { from: 2, to: 4, c: [475, 125], p: [1, 2] },
+  { from: 4, to: 2, c: [378, 222], p: [1, 3], active: true },
+  { from: 4, to: 3, c: [475, 475], p: [2, 3], active: true },
+  { from: 3, to: 4, c: [378, 378], p: [1, 2] },
+  { from: 1, to: 3, c: [125, 475], p: [1, 2], active: true },
+  { from: 3, to: 1, c: [222, 378], p: [1, 2] },
+  { from: 1, to: 4, c: null, p: [1, 4], active: true },
+];
+const EDGE_BY = {};
+EDGES.forEach(e => { EDGE_BY[e.from + '-' + e.to] = e; });
+
+const defs = el('defs', {}, svgD);
+for (const id of ['arr', 'arr-dim', 'arr-hot', 'arr-start']) {
+  const m = el('marker', { id, viewBox: '0 0 10 10', refX: 9, refY: 5, markerWidth: 13, markerHeight: 13, markerUnits: 'userSpaceOnUse', orient: 'auto' }, defs);
+  el('path', { d: 'M0,0.5 L10,5 L0,9.5 z' }, m);
+}
+const gEdges = el('g', {}, svgD);
+const gEdgeLabels = el('g', {}, svgD);
+const gNodes = el('g', {}, svgD);
+const gFx = el('g', {}, svgD);
+const gParticles = el('g', {}, svgD);
+const gNodeLabels = el('g', {}, svgD);
+
+const unit = (x, y) => { const l = Math.hypot(x, y) || 1; return [x / l, y / l]; };
+function ctrl(e) {
+  const A = NODES[e.from], B = NODES[e.to];
+  return e.c || [(A[0] + B[0]) / 2, (A[1] + B[1]) / 2];
+}
+for (const e of EDGES) {
+  const A = NODES[e.from], B = NODES[e.to], C = ctrl(e);
+  const ua = unit(C[0] - A[0], C[1] - A[1]), ub = unit(C[0] - B[0], C[1] - B[1]);
+  const s = [A[0] + ua[0] * (R + 2), A[1] + ua[1] * (R + 2)];
+  const t = [B[0] + ub[0] * (R + 3), B[1] + ub[1] * (R + 3)];
+  const d = e.c ? `M${s[0]},${s[1]} Q${C[0]},${C[1]} ${t[0]},${t[1]}` : `M${s[0]},${s[1]} L${t[0]},${t[1]}`;
+  e.path = el('path', { d, class: 'edge' + (e.active ? '' : ' dim'), 'marker-end': `url(#${e.active ? 'arr' : 'arr-dim'})` }, gEdges);
+  // Probability label beside the midpoint of the curve.
+  let lx, ly;
+  if (e.c) {
+    const mx = 0.25 * A[0] + 0.5 * C[0] + 0.25 * B[0], my = 0.25 * A[1] + 0.5 * C[1] + 0.25 * B[1];
+    const off = unit(C[0] - (A[0] + B[0]) / 2, C[1] - (A[1] + B[1]) / 2);
+    lx = mx + off[0] * 22; ly = my + off[1] * 22;
+  } else { lx = (A[0] + B[0]) / 2; ly = A[1] - 24; }
+  svgFrac(gEdgeLabels, lx, ly, e.p[0], e.p[1], 19, e.active ? '' : 'dim');
+}
+// Start arrow into state 1.
+el('line', { x1: 8, y1: 300, x2: NODES[1][0] - R - 3, y2: 300, class: 'start-arrow', 'marker-end': 'url(#arr-start)' }, gEdges);
+el('text', { x: 30, y: 287, 'text-anchor': 'middle', class: 'start-label' }, gEdges).textContent = 'start';
+
+const nodeRing = {};
+for (const s of [1, 2, 3, 4]) {
+  const [x, y] = NODES[s];
+  el('circle', { cx: x, cy: y, r: R, class: 'node-base' }, gNodes);
+  nodeRing[s] = el('circle', { cx: x, cy: y, r: R, class: 'node-ring' + (inA(s) ? ' a' + s : '') }, gNodes);
+  el('text', { x, y: y + 1, class: 'node-label', 'text-anchor': 'middle', 'dominant-baseline': 'central' }, gNodeLabels).textContent = s;
+}
+const countText = {};
+countText[2] = el('text', { x: NODES[2][0], y: NODES[2][1] - R - 16, 'text-anchor': 'middle', class: 'count-label' }, gNodeLabels);
+countText[3] = el('text', { x: NODES[3][0], y: NODES[3][1] + R + 30, 'text-anchor': 'middle', class: 'count-label' }, gNodeLabels);
+function setCount(s, c) {
+  countText[s].innerHTML = '';
+  countText[s].appendChild(document.createTextNode(fmtInt(c)));
+  const u = el('tspan', { class: 'u' }, countText[s]);
+  u.textContent = c === 1 ? ' run' : ' runs';
+}
+
+function posOnEdge(a, b, t) {
+  const e = EDGE_BY[a + '-' + b], A = NODES[a], B = NODES[b], C = ctrl(e), u = 1 - t;
+  return [u * u * A[0] + 2 * u * t * C[0] + t * t * B[0], u * u * A[1] + 2 * u * t * C[1] + t * t * B[1]];
+}
+let trail = [];
+function setHot(a, b) {
+  const e = EDGE_BY[a + '-' + b];
+  e.path.classList.add('hot');
+  e.path.setAttribute('marker-end', 'url(#arr-hot)');
+  trail.push(e);
+}
+function clearTrail() {
+  for (const e of trail) { e.path.classList.remove('hot'); e.path.setAttribute('marker-end', 'url(#arr)'); }
+  trail = [];
+}
+
+/* ---------- Random-draw panel (single runs only) ---------- */
+const drawEl = $('draw'), drawBar = $('drawBar'), needle = $('needle'), needleLabel = $('needleLabel');
+let segEls = {};
+function setDrawRow(s) {
+  drawBar.querySelectorAll('.seg').forEach(x => x.remove());
+  segEls = {};
+  let c = 0;
+  for (const e of ROWS[s]) {
+    const w = e.n / e.d;
+    const seg = document.createElement('div');
+    seg.className = 'seg t' + e.to;
+    seg.style.left = `calc(${c * 100}% + ${c > 0 ? 1 : 0}px)`;
+    seg.style.width = `calc(${w * 100}% - ${c > 0 ? 2 : 1}px)`;
+    seg.innerHTML = `<span>→ ${e.to}</span>${fr(e.n, e.d)}`;
+    drawBar.insertBefore(seg, needle);
+    segEls[e.to] = seg;
+    c += w;
+  }
+  $('drawHead').innerHTML = `From state ${s}, draw <span class="math">U</span> ~ Uniform(0, 1)`;
+}
+function setNeedle(u, label) {
+  needle.style.display = 'block';
+  needle.style.left = (u * 100) + '%';
+  needleLabel.textContent = label || '';
+  needleLabel.style.transform = u < 0.12 ? 'translateX(-10%)' : u > 0.88 ? 'translateX(-90%)' : 'translateX(-50%)';
+}
+function setDrawIdle(s, msg) {
+  setDrawRow(s || 1);
+  drawEl.classList.add('idle');
+  needle.style.display = 'none';
+  $('drawResult').textContent = msg || '';
+}
+setDrawIdle(1);
+
+/* ---------- Particles and batches ---------- */
+let particles = [];
+let batch = null;
+let fx = [];
+let speed = 1;
+let lastPulse = { 2: -1e9, 3: -1e9 };
+let clock = 0;
+const SINGLE = { draw: 1150, move: 900, absorb: 650 };
+
+function randDisk(r) {
+  const a = Math.random() * 2 * Math.PI, d = r * Math.sqrt(Math.random());
+  return [Math.cos(a) * d, Math.sin(a) * d];
+}
+function spawn(run, kind, opts) {
+  const single = kind !== 'batch';
+  const r = single ? 10 : opts.r;
+  const jit = single ? [0, 0] : randDisk(14);
+  const node = el('circle', { r, class: 'pt', cx: NODES[1][0] + jit[0], cy: NODES[1][1] + jit[1] }, gParticles);
+  const p = {
+    run, kind, leg: 0, t: 0, r, jit, node, recorded: false,
+    phase: single ? 'draw' : 'move',
+    move: single ? SINGLE.move : opts.move,
+    pause: single ? 0 : opts.pause,
+    absorb: single ? SINGLE.absorb : 420,
+    runNo: stats.n + particles.filter(q => !q.recorded).length + 1,
+  };
+  particles.push(p);
+  if (single) { node.style.opacity = '0'; setHere(1); startDraw(p); showPath(p); }
+  return p;
+}
+// While a single run sits at a state, the state itself is highlighted (the dot would hide its label).
+let hereNode = null;
+function setHere(s) {
+  if (hereNode) nodeRing[hereNode].classList.remove('here');
+  hereNode = s;
+  if (s) nodeRing[s].classList.add('here');
+}
+function startDraw(p) {
+  setDrawRow(p.run.states[p.leg]);
+  drawEl.classList.remove('idle');
+  needle.style.display = 'none';
+  $('drawResult').textContent = '';
+  p.landed = false; p.lastRoll = -1e9;
+}
+function updateDraw(p) {
+  const u = p.run.us[p.leg];
+  if (p.t < SINGLE.draw * 0.5) {
+    // Needle flickers like a spinner before settling on the real draw.
+    if (p.t - p.lastRoll > 70) { setNeedle(Math.random(), ''); p.lastRoll = p.t; }
+  } else if (!p.landed) {
+    const to = p.run.states[p.leg + 1];
+    setNeedle(u, 'U = ' + u.toFixed(3));
+    segEls[to] && segEls[to].classList.add('chosen');
+    $('drawResult').textContent = `→ move to state ${to}`;
+    p.landed = true;
+  }
+}
+function showPath(p) {
+  const seen = p.run.states.slice(0, p.leg + 1);
+  const done = inA(seen[seen.length - 1]);
+  let html = `<span class="muted">Run ${fmtInt(p.runNo)}:</span> ` + seen.map(nd).join('<span class="ar">→</span>');
+  if (done) html += `<span class="tchip"><span class="math">T</span> = ${seen.length - 1}</span>`;
+  else if (p.kind === 'step' && p.phase === 'wait') html += '<span class="ar">→ … </span><span class="muted">press Step</span>';
+  else html += '<span class="ar">→ …</span>';
+  $('pathLine').innerHTML = html;
+}
+function pulse(s) {
+  if (clock - lastPulse[s] < 110) return;
+  lastPulse[s] = clock;
+  const [x, y] = NODES[s];
+  fx.push({ el: el('circle', { cx: x, cy: y, r: R, class: 'pulse s' + s }, gFx), t: 0 });
+}
+function absorb(p, s) {
+  p.phase = 'absorb'; p.t = 0;
+  p.node.classList.add('s' + s);
+  record(p.run); p.recorded = true;
+  pulse(s);
+  if (p.kind !== 'batch') {
+    setHere(null);
+    showPath(p);
+    flashRow(p.run.states.join('-'));
+    $('drawResult').textContent = `reached state ${s}, run stops`;
+  }
+}
+function removeParticle(p) {
+  p.node.remove();
+  particles.splice(particles.indexOf(p), 1);
+}
+function updateParticle(p, dt) {
+  p.t += dt;
+  if (p.phase === 'draw') {
+    updateDraw(p);
+    if (p.t >= SINGLE.draw) {
+      p.phase = 'move'; p.t = 0;
+      setHot(p.run.states[p.leg], p.run.states[p.leg + 1]);
+      setHere(null); p.node.style.opacity = '1';
+    }
+  } else if (p.phase === 'move') {
+    const a = p.run.states[p.leg], b = p.run.states[p.leg + 1];
+    const k = Math.min(1, p.t / p.move);
+    const [x, y] = posOnEdge(a, b, ease(k));
+    p.node.setAttribute('cx', x + p.jit[0]);
+    p.node.setAttribute('cy', y + p.jit[1]);
+    if (k >= 1) {
+      p.leg++; p.t = 0;
+      const s = p.run.states[p.leg];
+      if (inA(s)) absorb(p, s);
+      else if (p.kind === 'batch') p.phase = 'pause';
+      else {
+        p.node.style.opacity = '0'; setHere(s);
+        if (p.kind === 'step') { p.phase = 'wait'; showPath(p); setDrawIdle(s, 'press Step to draw again'); }
+        else { p.phase = 'draw'; showPath(p); startDraw(p); }
+      }
+    }
+  } else if (p.phase === 'pause') {
+    if (p.t >= p.pause) { p.phase = 'move'; p.t = 0; }
+  } else if (p.phase === 'absorb') {
+    const k = Math.min(1, p.t / p.absorb);
+    p.node.setAttribute('r', p.r * (1 + 1.1 * k));
+    p.node.style.opacity = String(1 - k);
+    if (k >= 1) removeParticle(p);
+  }
+}
+
+function startBatch(total) {
+  if (isBusy()) return;
+  clearTrail();
+  setDrawIdle(1, '');
+  const cfg = total <= 10 ? { interval: 420, move: 700, pause: 170, allVisual: true, r: 8 }
+            : total <= 100 ? { interval: 55, move: 480, pause: 110, allVisual: true, r: 6.5 }
+            : total <= 1000 ? { duration: 4000, move: 420, pause: 90, gap: 30, r: 5.5 }
+            : { duration: 5000, move: 380, pause: 80, gap: 20, r: 5 };
+  batch = Object.assign({ total, launched: 0, elapsed: 0, lastVisual: -1e9, visual: 0, startN: stats.n }, cfg);
+  $('pathLine').innerHTML = total >= 1000
+    ? `<span class="muted">Batch of ${fmtInt(total)} runs. Only a sample is drawn as particles, but <b>every</b> run is counted.</span>`
+    : `<span class="muted">Batch of ${fmtInt(total)} runs, each drawn as a particle.</span>`;
+  onStarted();
+}
+function updateBatch(dt) {
+  const b = batch;
+  if (b.launched >= b.total) return;
+  b.elapsed += dt;
+  const target = b.allVisual
+    ? Math.min(b.total, Math.floor(b.elapsed / b.interval) + 1)
+    : Math.min(b.total, Math.ceil(b.elapsed / b.duration * b.total));
+  while (b.launched < target) {
+    b.launched++;
+    const run = sampleRun();
+    if (b.allVisual || (b.elapsed - b.lastVisual >= b.gap && particles.length < 160)) {
+      spawn(run, 'batch', b);
+      b.lastVisual = b.elapsed; b.visual++;
+    } else record(run);
+  }
+}
+function isBusy() { return (batch && batch.launched < batch.total) || particles.length > 0; }
+
+function finishNow() {
+  if (batch) while (batch.launched < batch.total) { batch.launched++; record(sampleRun()); }
+  let lastSingle = null;
+  setHere(null);
+  for (const p of particles.slice()) {
+    if (!p.recorded) { record(p.run); p.recorded = true; }
+    if (p.kind !== 'batch') { lastSingle = p; p.leg = p.run.states.length - 1; }
+    removeParticle(p);
+  }
+  if (lastSingle) {
+    const st = lastSingle.run.states;
+    for (let i = 0; i < st.length - 1; i++) if (!trail.includes(EDGE_BY[st[i] + '-' + st[i + 1]])) setHot(st[i], st[i + 1]);
+    showPath(lastSingle);
+    setDrawIdle(1, '');
+  }
+  dirty = true;
+  if (wasBusy) { wasBusy = false; onFinished(); }
+}
+function newSingle(kind) {
+  clearTrail();
+  spawn(sampleRun(), kind);
+  onStarted();
+}
+function doStep() {
+  if (batch) return;
+  const p = particles.find(q => q.kind === 'step' && q.phase !== 'absorb');
+  if (p) {
+    if (p.phase === 'wait') { p.phase = 'draw'; p.t = 0; startDraw(p); showPath(p); }
+    return;
+  }
+  if (particles.some(q => q.phase !== 'absorb')) return;
+  newSingle('step');
+}
+function resetAll() {
+  for (const p of particles.slice()) removeParticle(p);
+  for (const f of fx) f.el.remove();
+  fx = []; batch = null;
+  resetStats(); clearTrail(); setHere(null); setDrawIdle(1, '');
+  $('pathLine').innerHTML = '<span class="muted">Press <b>Step</b> or <b>Run 1</b> to follow a single run, or run many at once.</span>';
+  setRevealed(false);
+  setStatus('Ready. Exact values appear when a simulation finishes.');
+  dirty = true;
+}
+
+/* ---------- Reveal and status ---------- */
+function setRevealed(b) { document.body.classList.toggle('revealed', b); }
+function setStatus(t) { $('statusText').textContent = t; }
+let wasBusy = false;
+function onStarted() { setRevealed(false); wasBusy = true; updateButtons(); }
+function onFinished() {
+  const done = batch ? stats.n - batch.startN : 1;
+  batch = null;
+  setRevealed(stats.n > 0);
+  if (stats.n > 0) setStatus(`Finished (${fmtInt(done)} new ${done === 1 ? 'run' : 'runs'}). Exact values shown for comparison.`);
+  updateButtons();
+}
+const runBtns = [...document.querySelectorAll('button[data-n]')];
+function updateButtons() {
+  const busy = isBusy();
+  const stepWaiting = particles.some(q => q.kind === 'step' && q.phase === 'wait');
+  const anyMoving = particles.some(q => q.phase !== 'absorb');
+  $('btnStep').disabled = !!batch || (anyMoving && !stepWaiting);
+  $('btnRun1').disabled = busy;
+  runBtns.forEach(b => { b.disabled = busy; });
+  $('btnFinish').disabled = !busy;
+}
+
+/* ---------- Charts ---------- */
+const tip = $('tip');
+let mouse = { x: 0, y: 0 };
+function setupChart(id) {
+  const box = $(id);
+  const svg = el('svg', {}, box);
+  const c = { box, svg, w: 0, h: 0, hover: null };
+  new ResizeObserver(() => { c.w = box.clientWidth; c.h = box.clientHeight; svg.setAttribute('width', c.w); svg.setAttribute('height', c.h); dirty = true; }).observe(box);
+  svg.addEventListener('pointermove', ev => { const r = svg.getBoundingClientRect(); c.hover = { x: ev.clientX - r.left, y: ev.clientY - r.top }; mouse = { x: ev.clientX, y: ev.clientY }; dirty = true; });
+  svg.addEventListener('pointerleave', () => { c.hover = null; tip.style.display = 'none'; dirty = true; });
+  return c;
+}
+const chartA = setupChart('chartA'), chartB = setupChart('chartB'), chartH = setupChart('chartH');
+let tipOwner = null;
+function showTip(c, html) {
+  tipOwner = c;
+  tip.innerHTML = html;
+  tip.style.display = 'block';
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  let x = mouse.x + 14, y = mouse.y + 14;
+  if (x + tw > innerWidth - 8) x = mouse.x - tw - 14;
+  if (y + th > innerHeight - 8) y = mouse.y - th - 14;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+const fmtTick = n => n >= 1e6 ? (n / 1e6) + 'M' : n >= 1000 ? (n / 1000) + 'K' : String(n);
+
+// Sample n values for drawing: every n early on, then log-spaced.
+function sampleNs(N) {
+  if (N <= 700) return Array.from({ length: N }, (_, i) => i + 1);
+  const out = [], seen = new Set();
+  for (let n = 1; n <= 150; n++) { out.push(n); seen.add(n); }
+  const M = 550, L = Math.log(N), L0 = Math.log(150);
+  for (let k = 1; k <= M; k++) {
+    const n = Math.round(Math.exp(L0 + (L - L0) * k / M));
+    if (!seen.has(n)) { out.push(n); seen.add(n); }
+  }
+  if (!seen.has(N)) out.push(N);
+  return out;
+}
+
+function renderRunning(c, cfg) {
+  const svg = c.svg; svg.innerHTML = '';
+  if (!c.w || !c.h) return;
+  const r = remPx();
+  const m = { l: 2.6 * r, r: 2.6 * r, t: 0.7 * r, b: 2.3 * r };
+  const W = Math.max(10, c.w - m.l - m.r), H = Math.max(10, c.h - m.t - m.b);
+  const N = stats.n;
+  const xmax = Math.max(10, Math.pow(10, Math.ceil(Math.log10(Math.max(N, 1)) - 1e-9)));
+  const LX = Math.log10(xmax);
+  const X = n => m.l + Math.log10(n) / LX * W;
+  const Y = v => m.t + (1 - (v - cfg.y0) / (cfg.y1 - cfg.y0)) * H;
+
+  const ticks = H < 5.5 * r ? cfg.ticks.filter((_, i) => i % 2 === 0) : cfg.ticks;
+  for (const v of ticks) {
+    el('line', { x1: m.l, x2: m.l + W, y1: Y(v), y2: Y(v), class: v === cfg.y0 ? 'baseline' : 'gridline' }, svg);
+    el('text', { x: m.l - 0.4 * r, y: Y(v) + 0.27 * r, 'text-anchor': 'end', class: 'tick-label' }, svg).textContent = v.toFixed(2);
+  }
+  for (let k = 0; k <= LX; k++) {
+    const n = Math.pow(10, k), x = X(n);
+    el('line', { x1: x, x2: x, y1: m.t, y2: m.t + H, class: 'gridline' }, svg);
+    el('text', { x, y: m.t + H + 1.05 * r, 'text-anchor': 'middle', class: 'tick-label' }, svg).textContent = fmtTick(n);
+    if (k < LX) for (let j = 2; j <= 9; j++) {
+      const xm = X(j * n);
+      el('line', { x1: xm, x2: xm, y1: m.t + H, y2: m.t + H + 0.25 * r, class: 'minor' }, svg);
+    }
+  }
+  el('text', { x: m.l + W / 2, y: c.h - 0.2 * r, 'text-anchor': 'middle', class: 'axis-title' }, svg).textContent = 'number of runs n (log scale)';
+
+  // Exact value, shown once a simulation finishes.
+  const gx = el('g', { class: 'exact' }, svg);
+  el('line', { x1: m.l, x2: m.l + W, y1: Y(cfg.exact), y2: Y(cfg.exact), class: 'exact-line' }, gx);
+  svgFrac(gx, m.l + W + 1.25 * r, Y(cfg.exact), cfg.frac[0], cfg.frac[1], 0.8 * r);
+
+  if (N > 0) {
+    const ns = sampleNs(N);
+    let d = '';
+    for (let i = 0; i < ns.length; i++) {
+      const n = ns[i];
+      d += (i ? 'L' : 'M') + X(n).toFixed(1) + ',' + Y(cfg.value(n)).toFixed(1);
+    }
+    if (N === 1) d += 'l0.1,0';
+    el('path', { d, class: 'series' }, svg);
+    el('circle', { cx: X(N), cy: Y(cfg.value(N)), r: 4.5, class: 'end-dot' }, svg);
+  }
+
+  if (c.hover && N > 0) {
+    const fx_ = (c.hover.x - m.l) / W;
+    if (fx_ >= -0.02 && fx_ <= 1.02) {
+      const n = Math.max(1, Math.min(N, Math.round(Math.pow(10, Math.max(0, fx_) * LX))));
+      const x = X(n), v = cfg.value(n);
+      el('line', { x1: x, x2: x, y1: m.t, y2: m.t + H, class: 'cross' }, svg);
+      el('circle', { cx: x, cy: Y(v), r: 5, class: 'end-dot' }, svg);
+      showTip(c, `after <b>${fmtInt(n)}</b> ${n === 1 ? 'run' : 'runs'}<br>${cfg.name} = <b>${v.toFixed(4)}</b>`);
+    } else if (tipOwner === c) tip.style.display = 'none';
+  }
+}
+
+function renderHist(c) {
+  const svg = c.svg; svg.innerHTML = '';
+  if (!c.w || !c.h) return;
+  const r = remPx();
+  const m = { l: 2.6 * r, r: 0.8 * r, t: 1.9 * r, b: 2.3 * r };
+  const W = Math.max(10, c.w - m.l - m.r), H = Math.max(10, c.h - m.t - m.b);
+  const N = stats.n;
+  const X = t => m.l + (t - 0.5) / 4 * W;
+  const Y = v => m.t + (1 - v) * H;
+  const slot = W / 4, bw = Math.min(1.7 * r, slot * 0.42);
+
+  if (c.hover) {
+    const t = Math.floor((c.hover.x - m.l) / slot) + 1;
+    if (t >= 1 && t <= 4) {
+      el('rect', { x: X(t) - slot / 2, y: m.t, width: slot, height: H, class: 'hover-band' }, svg);
+      const a = stats.T[t][2], b = stats.T[t][3], tot = a + b;
+      const pct = x => N ? (100 * x / N).toFixed(1) + '%' : '—';
+      showTip(c, `<b>T = ${t}</b>: ${fmtInt(tot)} runs (${pct(tot)})<br>` +
+        `<i class="key key-sq" style="background:var(--s2)"></i> hit 2 first: ${fmtInt(a)}<br>` +
+        `<i class="key key-sq" style="background:var(--s3)"></i> hit 3 first: ${fmtInt(b)}`);
+    } else if (tipOwner === c) tip.style.display = 'none';
+  }
+
+  for (const v of (H < 5.5 * r ? [0, 0.5, 1] : [0, 0.25, 0.5, 0.75, 1])) {
+    el('line', { x1: m.l, x2: m.l + W, y1: Y(v), y2: Y(v), class: v === 0 ? 'baseline' : 'gridline' }, svg);
+    el('text', { x: m.l - 0.4 * r, y: Y(v) + 0.27 * r, 'text-anchor': 'end', class: 'tick-label' }, svg).textContent = v.toFixed(2);
+  }
+  for (let t = 1; t <= 4; t++) {
+    el('text', { x: X(t), y: m.t + H + 1.05 * r, 'text-anchor': 'middle', class: 'tick-label' }, svg).textContent = t;
+  }
+  el('text', { x: m.l + W / 2, y: c.h - 0.2 * r, 'text-anchor': 'middle', class: 'axis-title' }, svg).textContent = 'hitting time T (number of steps)';
+
+  // Stacked bars: hit 2 first (bottom), hit 3 first (top), 2px surface gap between.
+  if (N > 0) {
+    for (let t = 1; t <= 4; t++) {
+      const f2 = stats.T[t][2] / N, f3 = stats.T[t][3] / N;
+      const x0 = X(t) - bw / 2, yb = Y(0), y2 = Y(f2), y3 = Y(f2 + f3);
+      const h2 = yb - y2, h3 = Math.max(0, y2 - y3 - 2);
+      if (h2 > 0.3) el('path', { d: barPath(x0, y2, bw, h2, f3 > 0 && h3 > 0.5 ? 0 : 4), class: 'bar2' }, svg);
+      if (f3 > 0 && h3 > 0.3) el('path', { d: barPath(x0, y3, bw, h3, 4), class: 'bar3' }, svg);
+    }
+  }
+
+  // Exact P(T = t), shown once a simulation finishes.
+  const gx = el('g', { class: 'exact' }, svg);
+  [[1, 3, 4], [2, 1, 4]].forEach(([t, a, b]) => {
+    const y = Y(a / b);
+    el('line', { x1: X(t) - bw / 2 - 0.45 * r, x2: X(t) + bw / 2 + 0.45 * r, y1: y, y2: y, class: 'exact-line' }, gx);
+    svgFrac(gx, X(t) - bw / 2 - 1.25 * r, y, a, b, 0.78 * r);
+  });
+  const xe = X(EXACT_ETA);
+  el('line', { x1: xe, x2: xe, y1: Y(0), y2: m.t - 1.45 * r, class: 'exact-line' }, gx);
+  el('text', { x: xe - 0.35 * r, y: m.t - 0.65 * r, 'text-anchor': 'end', class: 'exact-label' }, gx).textContent = 'exact 5/4';
+
+  if (N > 0) {
+    const mean = stats.sumT / N, xm = X(mean);
+    el('line', { x1: xm, x2: xm, y1: Y(0), y2: m.t - 1.45 * r, class: 'mean-line' }, svg);
+    el('text', { x: xm + 0.35 * r, y: m.t - 0.65 * r, 'text-anchor': 'start', class: 'mean-label' }, svg).textContent = 'mean ' + mean.toFixed(3);
+  }
+}
+function barPath(x, y, w, h, rad) {
+  const rr = Math.min(rad, w / 2, h);
+  if (rr <= 0) return `M${x},${y}h${w}v${h}h${-w}z`;
+  return `M${x},${y + h}V${y + rr}Q${x},${y} ${x + rr},${y}H${x + w - rr}Q${x + w},${y} ${x + w},${y + rr}V${y + h}z`;
+}
+
+/* ---------- Tiles, table, counters ---------- */
+const pathBody = $('pathBody');
+const rowEls = {};
+for (const p of PATHS) {
+  const tr = document.createElement('tr');
+  const end = p.states[p.states.length - 1];
+  tr.innerHTML =
+    `<td class="path">${p.states.map(nd).join('<span class="ar">→</span>')}</td>` +
+    `<td class="num">${p.states.length - 1}</td>` +
+    `<td class="num" data-k="count">0</td>` +
+    `<td class="num" data-k="sim">—</td>` +
+    `<td class="ex"><div class="stack"><span class="when-pending q">?</span><span class="when-exact">${p.expr}<span class="approx">≈ ${p.exact.toFixed(3)}</span></span></div></td>`;
+  tr.title = `ends in state ${end}`;
+  pathBody.appendChild(tr);
+  rowEls[p.key] = { tr, count: tr.querySelector('[data-k=count]'), sim: tr.querySelector('[data-k=sim]') };
+}
+function flashRow(key) {
+  const r = rowEls[key]; if (!r) return;
+  r.tr.classList.add('flash');
+  setTimeout(() => r.tr.classList.remove('flash'), 900);
+}
+
+function render() {
+  const N = stats.n;
+  $('nRuns').textContent = fmtInt(N);
+  setCount(2, stats.hit2);
+  setCount(3, N - stats.hit2);
+
+  if (N > 0) {
+    const k = stats.hit2 / N, eta = stats.sumT / N;
+    $('aSim').textContent = k.toFixed(4);
+    $('aSimSub').textContent = `${fmtInt(stats.hit2)} of ${fmtInt(N)} runs hit 2 first`;
+    $('bSim').textContent = eta.toFixed(4);
+    $('bSimSub').textContent = `average of T over ${fmtInt(N)} ${N === 1 ? 'run' : 'runs'}`;
+    $('aDiff').textContent = Math.abs(k - EXACT_K1).toFixed(4);
+    $('bDiff').textContent = Math.abs(eta - EXACT_ETA).toFixed(4);
+  } else {
+    $('aSim').textContent = '—'; $('aSimSub').textContent = 'No runs yet';
+    $('bSim').textContent = '—'; $('bSimSub').textContent = 'No runs yet';
+  }
+  for (const p of PATHS) {
+    const c = stats.path[p.key];
+    rowEls[p.key].count.textContent = fmtInt(c);
+    rowEls[p.key].sim.textContent = N ? (c / N).toFixed(3) : '—';
+  }
+
+  renderRunning(chartA, { y0: 0, y1: 1, ticks: [0, 0.25, 0.5, 0.75, 1], exact: EXACT_K1, frac: [1, 3], name: 'estimate of k₁', value: n => stats.cumHit2[n - 1] / n });
+  renderRunning(chartB, { y0: 1, y1: 2, ticks: [1, 1.25, 1.5, 1.75, 2], exact: EXACT_ETA, frac: [5, 4], name: 'average T', value: n => stats.cumT[n - 1] / n });
+  renderHist(chartH);
+}
+
+/* ---------- Main loop ---------- */
+let last = performance.now();
+function frame(now) {
+  const dt = Math.min(60, now - last) * speed;
+  last = now;
+  clock += dt;
+  if (batch) updateBatch(dt);
+  for (const p of particles.slice()) updateParticle(p, dt);
+  for (const f of fx.slice()) {
+    f.t += dt;
+    const k = Math.min(1, f.t / 550);
+    f.el.setAttribute('r', R + 18 * k);
+    f.el.style.opacity = String(0.85 * (1 - k));
+    if (k >= 1) { f.el.remove(); fx.splice(fx.indexOf(f), 1); }
+  }
+  const busy = isBusy();
+  if (busy) {
+    if (batch) setStatus(`Simulating… ${fmtInt(stats.n - batch.startN)} of ${fmtInt(batch.total)} runs done`);
+    else if (particles.some(q => q.kind === 'step' && q.phase === 'wait')) setStatus('Run in progress. Press Step for the next transition.');
+    else setStatus('Run in progress…');
+  }
+  if (busy !== wasBusy) { wasBusy = busy; if (!busy) onFinished(); }
+  updateButtons();
+  if (dirty) { dirty = false; render(); }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+/* ---------- Wiring ---------- */
+const SPEEDS = [0.25, 0.5, 1, 2, 4];
+const speedIn = $('speed');
+function setSpeed() { speed = SPEEDS[+speedIn.value]; $('speedOut').textContent = (speed === 0.25 ? '¼' : speed === 0.5 ? '½' : speed) + '×'; }
+speedIn.addEventListener('input', setSpeed);
+setSpeed();
+
+$('btnStep').addEventListener('click', doStep);
+$('btnRun1').addEventListener('click', () => { if (!isBusy()) newSingle('single'); });
+runBtns.forEach(b => b.addEventListener('click', () => startBatch(+b.dataset.n)));
+$('btnFinish').addEventListener('click', finishNow);
+$('btnReset').addEventListener('click', resetAll);
+
+function toggleTheme() {
+  const root = document.documentElement;
+  const cur = root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  root.dataset.theme = cur === 'dark' ? 'light' : 'dark';
+  dirty = true;
+}
+$('themeBtn').addEventListener('click', toggleTheme);
+
+document.addEventListener('keydown', ev => {
+  if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+  const k = ev.key.toLowerCase();
+  const map = { '2': 10, '3': 100, '4': 1000, '5': 10000 };
+  if (k === ' ' || k === 'arrowright') { ev.preventDefault(); if (!$('btnStep').disabled) doStep(); }
+  else if (k === '1') { if (!isBusy()) newSingle('single'); }
+  else if (map[k]) startBatch(map[k]);
+  else if (k === 'f') { if (isBusy()) finishNow(); }
+  else if (k === 'r') resetAll();
+  else if (k === 't') toggleTheme();
+});
+})();
+</script>
+</body>
+</html>
